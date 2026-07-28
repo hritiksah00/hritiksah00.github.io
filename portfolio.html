@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ritik Sah — Cloud Infrastructure Architect &amp; Cybersecurity Portfolio</title>
+  <meta name="description" content="Personal engineering portfolio of Ritik Sah, Cloud Computing student at KFA Business School & IT, Kathmandu, Nepal. AWS CloudFront, S3, Terraform, Hardened Linux, and DevOps." />
+  
+  <!-- Tailwind CSS & Iconify -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+  <!-- Google Fonts: Geist & Inter -->
+  <link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+
+  <style>
+    /* Custom Styling & Range Sliders */
+    .font-geist { font-family: 'Geist', 'Inter', sans-serif !important; }
+    
+    input[type=range] {
+      -webkit-appearance: none;
+      background: transparent;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #1c1917;
+      cursor: pointer;
+      margin-top: -8px;
+      box-shadow: 0 0 0 4px #e7e5e4;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 4px;
+      cursor: pointer;
+      background: #d6d3d1;
+      border-radius: 2px;
+    }
+    input[type=range]:focus::-webkit-slider-thumb {
+      box-shadow: 0 0 0 4px #a8a29e;
+    }
+    .hide-scroll::-webkit-scrollbar { display: none; }
+    .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* FAQ Sweep Animation */
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] summary ~ * { animation: sweep .3s ease-in-out; }
+    @keyframes sweep {
+      0%    { opacity: 0; transform: translateY(-8px); }
+      100%  { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Portfolio Filter Fade Animation */
+    .fade-in { animation: fadeIn 0.4s ease-out; }
+    @keyframes fadeIn {
+      0%   { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-[#F5F2EF] font-sans antialiased selection:bg-stone-200 selection:text-stone-900 relative text-stone-800 font-geist">
+
+    <!-- Personal Portfolio Navigation -->
+    <nav class="fixed top-0 w-full z-40 bg-[#F5F2EF]/85 backdrop-blur-md border-b border-stone-200/60">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <!-- User Profile Photo in Navbar Logo -->
+                <div class="w-10 h-10 rounded-xl overflow-hidden border border-stone-300 bg-stone-900 flex items-center justify-center flex-shrink-0 shadow-xs">
+                    <img src="ritik_photo.jpg" alt="Ritik Sah" class="w-full h-full object-cover object-center" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-stone-900 text-white font-bold text-sm flex items-center justify-center\'>RS</div>';">
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-stone-900 tracking-tight">RITIK SAH</span>
+                    <span class="text-[10px] text-stone-500 font-medium tracking-widest uppercase">Personal Cloud Portfolio</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#about" class="text-sm font-medium transition-colors text-stone-600 hover:text-stone-900">About Me</a>
+                <a href="#expertise" class="text-sm font-medium transition-colors text-stone-600 hover:text-stone-900">Expertise</a>
+                <a href="#projects" class="text-sm font-medium transition-colors text-stone-600 hover:text-stone-900">AWS Projects</a>
+                <a href="#estimator" class="text-sm font-medium transition-colors text-stone-600 hover:text-stone-900">Cloud Calculator</a>
+                <a href="#certifications" class="text-sm font-medium transition-colors text-stone-600 hover:text-stone-900">Certifications</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="https://github.com/hritiksah00" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 text-xs font-semibold px-4 py-2.5 rounded-full border border-stone-300 bg-white hover:bg-stone-100 text-stone-900 transition-all">
+                    <iconify-icon icon="solar:code-square-linear" class="text-base"></iconify-icon>
+                    GitHub
+                </a>
+                <a href="#contact" class="text-sm font-medium px-5 py-2.5 rounded-full transition-all shadow-xs bg-stone-900 hover:bg-stone-800 text-white inline-block">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Personal Hero Section -->
+    <header class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden" id="about">
+        <div class="z-10 max-w-7xl mx-auto px-6 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-8">
+                    <div class="inline-flex items-center gap-2 uppercase text-xs font-semibold text-stone-700 tracking-[0.2em] bg-white/70 border-stone-300 border rounded-full mb-6 pt-1.5 pr-4 pb-1.5 pl-3 backdrop-blur-xs shadow-xs">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Kathmandu, Nepal · Cloud Computing &amp; Cybersecurity Student
+                    </div>
+                    
+                    <h1 class="leading-[0.98] uppercase md:text-7xl text-4xl font-semibold text-stone-950 tracking-tighter mb-8">
+                        Building <br class="hidden sm:inline"> Invisible Cloud <br> Architecture.
+                    </h1>
+                    
+                    <p class="leading-relaxed text-lg md:text-xl text-stone-700 mb-10 max-w-2xl">
+                        Hi, I'm <strong>Ritik Sah</strong>. I study Cloud Computing &amp; Cybersecurity at KFA Business School &amp; IT. I focus on deploying static websites via AWS CloudFront CDN &amp; S3, building multi-region Auto-Scaling infrastructures, configuring hardened Linux servers, and writing Terraform code.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-16">
+                        <a href="#projects" class="inline-flex items-center justify-center transition-all hover:shadow-xl hover:-translate-y-0.5 hover:bg-stone-800 font-medium text-white bg-stone-900 rounded-full pt-4 pr-8 pb-4 pl-8 shadow-lg">
+                            Explore AWS Projects
+                            <iconify-icon icon="solar:arrow-right-linear" class="ml-2 text-lg"></iconify-icon>
+                        </a>
+                        <a href="https://github.com/hritiksah00" target="_blank" rel="noopener" class="inline-flex items-center justify-center transition-all hover:bg-stone-50 font-medium text-stone-900 bg-white border-stone-200 border rounded-full pt-4 pr-8 pb-4 pl-8 shadow-xs">
+                            <iconify-icon icon="solar:code-file-linear" class="mr-2 text-lg"></iconify-icon>
+                            GitHub Profile (@hritiksah00)
+                        </a>
+                    </div>
+
+                    <div class="flex items-center gap-8 md:gap-12 pt-8 border-t border-stone-300/60">
+                        <div>
+                            <div class="flex items-center gap-1.5 mb-1">
+                                <iconify-icon icon="solar:shield-check-linear" class="w-5 h-5 text-xl text-stone-900"></iconify-icon>
+                                <span class="text-2xl font-bold tracking-tight text-stone-900">AWS</span>
+                            </div>
+                            <p class="leading-tight text-xs font-medium text-stone-600 uppercase tracking-wider">Cloud Practitioner Certified</p>
+                        </div>
+                        <div class="w-px h-12 bg-stone-300/60"></div>
+                        <div>
+                            <div class="flex items-center gap-1 mb-1">
+                                <span class="text-2xl font-bold tracking-tight text-stone-900">ISC²</span>
+                            </div>
+                            <p class="leading-tight text-xs font-medium text-stone-600 uppercase tracking-wider">Certified in Cybersecurity</p>
+                        </div>
+                        <div class="w-px h-12 bg-stone-300/60"></div>
+                        <div>
+                            <div class="flex items-center gap-1 mb-1">
+                                <span class="text-2xl font-bold tracking-tight text-stone-900">LPI</span>
+                            </div>
+                            <p class="leading-tight text-xs font-medium text-stone-600 uppercase tracking-wider">Linux Essentials Certified</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Profile Card with Profile Image -->
+                <div class="lg:col-span-4">
+                    <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-xl relative overflow-hidden">
+                        <div class="flex items-center gap-4 mb-6 pb-6 border-b border-stone-100">
+                            <div class="w-16 h-16 rounded-2xl overflow-hidden border border-stone-300 bg-stone-900 flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <img src="ritik_photo.jpg" alt="Ritik Sah" class="w-full h-full object-cover object-center" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-stone-900 text-white font-bold text-xl flex items-center justify-center\'>RS</div>';">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-stone-900">Ritik Sah</h3>
+                                <p class="text-xs text-stone-500 font-medium">Cloud &amp; Security Engineer</p>
+                                <span class="inline-block mt-1 text-[10px] font-semibold tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">KFA BUSINESS SCHOOL &amp; IT</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 text-xs font-medium text-stone-600">
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-stone-50 border border-stone-100">
+                                <span class="flex items-center gap-2 text-stone-800">
+                                    <iconify-icon icon="solar:server-linear" class="text-base text-stone-600"></iconify-icon> Primary Focus
+                                </span>
+                                <span class="font-semibold text-stone-900">AWS / Linux / DevOps</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-stone-50 border border-stone-100">
+                                <span class="flex items-center gap-2 text-stone-800">
+                                    <iconify-icon icon="solar:verified-check-linear" class="text-base text-stone-600"></iconify-icon> Key AWS Skills
+                                </span>
+                                <span class="font-semibold text-stone-900">CloudFront, S3, EC2, RDS</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-stone-50 border border-stone-100">
+                                <span class="flex items-center gap-2 text-stone-800">
+                                    <iconify-icon icon="solar:code-file-linear" class="text-base text-stone-600"></iconify-icon> GitHub Handle
+                                </span>
+                                <span class="font-semibold text-stone-900">@hritiksah00</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-stone-50 border border-stone-100">
+                                <span class="flex items-center gap-2 text-stone-800">
+                                    <iconify-icon icon="solar:point-on-map-linear" class="text-base text-stone-600"></iconify-icon> Location
+                                </span>
+                                <span class="font-semibold text-stone-900">Kathmandu, Nepal</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-6 border-t border-stone-100 text-center">
+                            <a href="#contact" class="text-xs font-semibold text-stone-900 hover:text-stone-600 inline-flex items-center gap-1">
+                                Email: hritiksah38@gmail.com <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Expertise Section -->
+    <section class="bg-[#F5F2EF] pt-24 pb-24 border-t border-stone-200" id="expertise">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                <div class="md:col-span-4">
+                    <span class="uppercase block text-xs font-semibold text-stone-700 tracking-[0.2em] mb-4">Technical Domains</span>
+                    <h2 class="text-4xl font-semibold tracking-tight mb-6 leading-tight text-stone-900">MY ENGINEERING EXPERTISE.</h2>
+                    <p class="leading-relaxed text-lg text-stone-600 mb-8">
+                        I focus on cloud infrastructure, web deployment pipelines, server security, and system automation. Here is how I build modern web applications and infrastructure.
+                    </p>
+                    <a href="#projects" class="inline-flex items-center text-base font-medium border-b pb-1 text-stone-900 hover:text-stone-600 border-stone-900">
+                        View AWS Project Showcase <iconify-icon icon="solar:arrow-right-up-linear" style="stroke-width: 1.5;" class="w-4 h-4 text-lg ml-2"></iconify-icon>
+                    </a>
+                </div>
+                
+                <div class="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-[#EBE8E4] p-8 rounded-xl hover:shadow-lg transition-shadow duration-300 group cursor-pointer border border-stone-300/50">
+                        <div class="w-12 h-12 rounded-xl mb-6 bg-stone-900 text-white flex items-center justify-center shadow-xs"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg></div>
+                        <h3 class="text-xl font-semibold tracking-tight mb-2 text-stone-900">AWS CloudFront &amp; S3 Deployment</h3>
+                        <p class="text-xs font-semibold uppercase text-stone-500 mb-3 tracking-wider">CDN &amp; Static Site Hosting</p>
+                        <p class="text-sm leading-relaxed text-stone-600">Deploying static websites using Amazon S3 bucket origin storage, AWS CloudFront global edge caching, Route 53 custom domain management, and ACM SSL certificates.</p>
+                    </div>
+
+                    <div class="p-8 rounded-xl shadow-xs hover:shadow-lg transition-shadow duration-300 group cursor-pointer bg-white border border-stone-200">
+                        <div class="w-12 h-12 rounded-xl mb-6 bg-sky-900 text-white flex items-center justify-center shadow-xs"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15a4 4 0 004 4h9a5 5 0 001-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"></path></svg></div>
+                        <h3 class="text-xl font-semibold tracking-tight mb-2 text-stone-900">AWS High Availability</h3>
+                        <p class="text-xs font-semibold uppercase text-stone-500 mb-3 tracking-wider">Auto-Scaling &amp; Multi-AZ</p>
+                        <p class="text-sm leading-relaxed text-stone-600">Architecting multi-region EC2 Auto Scaling Groups, Application Load Balancers, Route 53 latency routing, and RDS database replication to ensure maximum uptime.</p>
+                    </div>
+
+                    <div class="p-8 rounded-xl shadow-xs hover:shadow-lg transition-shadow duration-300 group cursor-pointer bg-white border border-stone-200">
+                        <div class="w-12 h-12 rounded-xl mb-6 bg-amber-900 text-white flex items-center justify-center shadow-xs"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></div>
+                        <h3 class="text-xl font-semibold tracking-tight mb-2 text-stone-900">Terraform &amp; CI/CD Pipelines</h3>
+                        <p class="text-xs font-semibold uppercase text-stone-500 mb-3 tracking-wider">Infrastructure as Code</p>
+                        <p class="text-sm leading-relaxed text-stone-600">Writing modular Terraform code with Amazon S3 state storage, DynamoDB lock keys, and automated GitHub Actions workflows for zero-drift deployments.</p>
+                    </div>
+
+                    <div class="p-8 rounded-xl border border-stone-200 hover:shadow-lg transition-shadow duration-300 group cursor-pointer bg-[#EBE8E4]">
+                        <div class="w-12 h-12 rounded-xl mb-6 bg-emerald-950 text-white flex items-center justify-center shadow-xs"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
+                        <h3 class="text-xl font-semibold tracking-tight mb-2 text-stone-900">Linux Hardening &amp; Security</h3>
+                        <p class="text-xs font-semibold uppercase text-stone-500 mb-3 tracking-wider">Ubuntu 24 &amp; CIS Benchmarks</p>
+                        <p class="text-sm leading-relaxed text-stone-600">Applying Level 1 CIS Benchmark security controls to Ubuntu servers: UFW firewall configuration, Fail2ban brute-force protection, Auditd log management, and Lynis auditing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section class="py-24 border-t bg-white border-stone-200" id="process">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b pb-12 gap-8 border-stone-100">
+                <div class="max-w-2xl">
+                    <span class="uppercase block text-xs font-semibold text-stone-700 tracking-[0.2em] mb-2">My Engineering Workflow</span>
+                    <h2 class="text-4xl font-semibold tracking-tight mb-4 text-stone-900">How I Deploy Projects</h2>
+                    <p class="text-lg text-stone-600">A structured process for building reliable cloud infrastructure.</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-8 rounded-2xl border bg-stone-50 border-stone-200 relative overflow-hidden group">
+                    <div class="text-6xl font-bold text-stone-200 absolute -top-4 -right-4 group-hover:scale-110 transition-transform">1</div>
+                    <div class="relative z-10">
+                        <span class="text-xs font-semibold uppercase text-stone-500 tracking-wider">Step One</span>
+                        <h3 class="text-xl font-semibold text-stone-900 mb-3 mt-2">Architecture Planning</h3>
+                        <p class="leading-relaxed text-sm text-stone-700">Defining system requirements, choosing AWS resources (S3, CloudFront, EC2, RDS), and drafting network subnets.</p>
+                    </div>
+                </div>
+                
+                <div class="p-8 rounded-2xl border bg-stone-50 border-stone-200 relative overflow-hidden group">
+                    <div class="text-6xl font-bold text-stone-200 absolute -top-4 -right-4 group-hover:scale-110 transition-transform">2</div>
+                    <div class="relative z-10">
+                        <span class="text-xs font-semibold uppercase text-stone-500 tracking-wider">Step Two</span>
+                        <h3 class="text-xl font-semibold text-stone-900 mb-3 mt-2">Terraform &amp; Code Setup</h3>
+                        <p class="leading-relaxed text-sm text-stone-700">Writing clean, modular Terraform IaC modules or Docker Compose definitions to automate resource creation.</p>
+                    </div>
+                </div>
+
+                <div class="p-8 rounded-2xl border bg-stone-50 border-stone-200 relative overflow-hidden group">
+                    <div class="text-6xl font-bold text-stone-200 absolute -top-4 -right-4 group-hover:scale-110 transition-transform">3</div>
+                    <div class="relative z-10">
+                        <span class="text-xs font-semibold uppercase text-stone-500 tracking-wider">Step Three</span>
+                        <h3 class="text-xl font-semibold text-stone-900 mb-3 mt-2">Deployment &amp; Hardening</h3>
+                        <p class="leading-relaxed text-sm text-stone-700">Deploying static assets to S3 + CloudFront CDN, configuring SSL/TLS certificates via ACM, and hardening Linux servers with UFW and Fail2ban.</p>
+                    </div>
+                </div>
+
+                <div class="p-8 rounded-2xl border bg-stone-50 border-stone-200 relative overflow-hidden group">
+                    <div class="text-6xl font-bold text-stone-200 absolute -top-4 -right-4 group-hover:scale-110 transition-transform">4</div>
+                    <div class="relative z-10">
+                        <span class="text-xs font-semibold uppercase text-stone-500 tracking-wider">Step Four</span>
+                        <h3 class="text-xl font-semibold text-stone-900 mb-3 mt-2">Testing &amp; Verification</h3>
+                        <p class="leading-relaxed text-sm text-stone-700">Testing global CDN latency, verifying Route 53 DNS records, running Lynis vulnerability scans, and monitoring logs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Portfolio Section -->
+    <section class="bg-stone-50 border-stone-200 border-t pt-24 pb-24" id="projects">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row mb-12 items-start md:items-end justify-between">
+                <div>
+                    <span class="uppercase block text-xs font-semibold text-stone-700 tracking-[0.2em] mb-2">My Engineering Portfolio</span>
+                    <h2 class="text-4xl font-semibold text-stone-900 text-left">Selected Projects &amp; AWS Deployments</h2>
+                </div>
+
+                <div class="mt-6 md:mt-0 relative w-full md:w-auto">
+                    <div class="flex gap-2 overflow-x-auto hide-scroll pb-2 md:pb-0 w-full md:w-auto">
+                        <button onclick="filterPortfolio('all')" class="filter-btn active whitespace-nowrap px-4 py-2 rounded-full text-xs font-semibold transition-all bg-stone-900 text-white flex-shrink-0">All Projects</button>
+                        <button onclick="filterPortfolio('cloudfront')" class="filter-btn whitespace-nowrap px-4 py-2 rounded-full text-xs font-semibold transition-all bg-stone-200/60 text-stone-700 hover:bg-stone-300 flex-shrink-0">CloudFront &amp; S3</button>
+                        <button onclick="filterPortfolio('aws')" class="filter-btn whitespace-nowrap px-4 py-2 rounded-full text-xs font-semibold transition-all bg-stone-200/60 text-stone-700 hover:bg-stone-300 flex-shrink-0">AWS Infrastructure</button>
+                        <button onclick="filterPortfolio('security')" class="filter-btn whitespace-nowrap px-4 py-2 rounded-full text-xs font-semibold transition-all bg-stone-200/60 text-stone-700 hover:bg-stone-300 flex-shrink-0">Linux &amp; Security</button>
+                        <button onclick="filterPortfolio('github')" class="filter-btn whitespace-nowrap px-4 py-2 rounded-full text-xs font-semibold transition-all bg-stone-200/60 text-stone-700 hover:bg-stone-300 flex-shrink-0">GitHub Repos</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                
+                <!-- FEATURED AWS PROJECT: Website Deployment via CloudFront & S3 -->
+                <div class="portfolio-item p-8 rounded-2xl bg-white border border-stone-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between md:col-span-2 lg:col-span-2" data-category="cloudfront">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[10px] font-bold tracking-widest uppercase text-sky-700 bg-sky-50 px-2.5 py-1 rounded-full border border-sky-200">AWS FEATURED PROJECT · CLOUDFRONT &amp; S3</span>
+                            <iconify-icon icon="solar:globe-line-duotone" class="text-2xl text-sky-600"></iconify-icon>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold text-stone-900 mb-3">Global Website Deployment via AWS S3 &amp; CloudFront CDN</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed mb-6">
+                            Deployed and secured a high-performance, globally distributed static website on AWS. Configured an Amazon S3 bucket for origin asset storage, created an AWS CloudFront CDN distribution with Origin Access Control (OAC) to block direct public access to S3, linked a custom domain via Amazon Route 53, and provisioned SSL/TLS certificates using AWS Certificate Manager (ACM). Achieved sub-50ms latency across global edge locations.
+                        </p>
+
+                        <!-- High-Quality Architecture Diagram Image Graphic -->
+                        <div class="mb-6 rounded-xl overflow-hidden border border-stone-200 bg-[#FAF8F5] p-2 shadow-xs">
+                            <div class="flex items-center justify-between px-3 py-2 text-[11px] font-mono text-stone-600 border-b border-stone-200 mb-2">
+                                <span class="font-bold text-stone-900">AWS ARCHITECTURE DIAGRAM</span>
+                                <span class="text-sky-700 font-semibold">S3 + CloudFront CDN + ACM SSL + Route 53</span>
+                            </div>
+                            <svg width="100%" height="190" viewBox="0 0 600 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="600" height="190" rx="8" fill="#1C1917"/>
+                                <!-- User -->
+                                <rect x="25" y="75" width="85" height="42" rx="6" fill="#292524" stroke="#38BDF8" stroke-width="1.5"/>
+                                <text x="67.5" y="101" font-family="sans-serif" font-size="10" font-weight="600" fill="#F8FAFC" text-anchor="middle">Users / Clients</text>
+                                
+                                <!-- Route 53 -->
+                                <rect x="150" y="25" width="110" height="38" rx="6" fill="#292524" stroke="#F59E0B" stroke-width="1.5"/>
+                                <text x="205" y="48" font-family="sans-serif" font-size="10" font-weight="600" fill="#F59E0B" text-anchor="middle">Route 53 DNS</text>
+                                
+                                <!-- CloudFront CDN -->
+                                <rect x="290" y="55" width="140" height="80" rx="8" fill="#0284C7" stroke="#38BDF8" stroke-width="2"/>
+                                <text x="360" y="87" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">AWS CloudFront CDN</text>
+                                <text x="360" y="105" font-family="sans-serif" font-size="9" fill="#E0F2FE" text-anchor="middle">Global Edge Cache</text>
+                                <text x="360" y="120" font-family="sans-serif" font-size="9" fill="#BAE6FD" text-anchor="middle">ACM SSL / TLS Encryption</text>
+                                
+                                <!-- S3 Origin -->
+                                <rect x="475" y="75" width="100" height="42" rx="6" fill="#292524" stroke="#10B981" stroke-width="1.5"/>
+                                <text x="525" y="101" font-family="sans-serif" font-size="10" font-weight="600" fill="#10B981" text-anchor="middle">Amazon S3 Origin</text>
+
+                                <!-- Flow Arrows -->
+                                <path d="M110 96 H290" stroke="#38BDF8" stroke-width="2"/>
+                                <path d="M205 63 V96" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3 3"/>
+                                <path d="M430 96 H475" stroke="#10B981" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-4 border-t border-stone-100 flex items-center justify-between">
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="text-[11px] font-mono bg-stone-100 text-stone-800 px-2.5 py-1 rounded font-medium">AWS CloudFront</span>
+                            <span class="text-[11px] font-mono bg-stone-100 text-stone-800 px-2.5 py-1 rounded font-medium">Amazon S3</span>
+                            <span class="text-[11px] font-mono bg-stone-100 text-stone-800 px-2.5 py-1 rounded font-medium">ACM SSL</span>
+                            <span class="text-[11px] font-mono bg-stone-100 text-stone-800 px-2.5 py-1 rounded font-medium">Route 53</span>
+                        </div>
+                        <span class="text-xs font-semibold text-emerald-700">✓ Live Project</span>
+                    </div>
+                </div>
+
+                <!-- AWS PROJECT: Serverless Cloud Resume -->
+                <div class="portfolio-item p-8 rounded-2xl bg-white border border-stone-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="aws cloudfront">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[10px] font-bold tracking-widest uppercase text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">AWS CLOUD TRAINEE · SERVERLESS</span>
+                            <iconify-icon icon="solar:document-text-line-duotone" class="text-2xl text-emerald-600"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-semibold text-stone-900 mb-3">Serverless Cloud Resume</h3>
+                        <p class="text-xs font-semibold text-stone-500 mb-3 uppercase tracking-wider">Role: AWS Cloud Trainee</p>
+
+                        <!-- 3 Concise Bullet Points -->
+                        <ul class="space-y-2.5 text-xs text-stone-600 mb-6 leading-relaxed">
+                            <li class="flex items-start gap-2">
+                                <span class="text-emerald-600 font-bold text-sm leading-none mt-0.5">•</span>
+                                <span><strong>Overview &amp; Hosting:</strong> Designed and deployed a highly available, serverless static resume website hosted on Amazon S3 to demonstrate foundational cloud capabilities.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-emerald-600 font-bold text-sm leading-none mt-0.5">•</span>
+                                <span><strong>Security &amp; IAM:</strong> Authored custom JSON bucket policies and IAM access rules to enable secure public read access while restricting backend resource settings.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-emerald-600 font-bold text-sm leading-none mt-0.5">•</span>
+                                <span><strong>Core Learnings:</strong> Gained hands-on experience in cloud storage architecture, object-level security management, and AWS console resource provisioning.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-stone-100 flex items-center justify-between">
+                        <div class="flex gap-1.5 flex-wrap">
+                            <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded font-medium">Amazon S3</span>
+                            <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded font-medium">AWS IAM</span>
+                            <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded font-medium">HTML/CSS</span>
+                        </div>
+                        <span class="text-xs font-semibold text-emerald-700">✓ Deployed</span>
+                    </div>
+                </div>
+
+                <!-- AWS PROJECT 2: Multi-Region Auto Scaling -->
+                <div class="portfolio-item p-8 rounded-2xl bg-white border border-stone-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="aws">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[10px] font-bold tracking-widest uppercase text-sky-700 bg-sky-50 px-2.5 py-1 rounded-full border border-sky-200">AWS CLOUD · EC2 &amp; RDS</span>
+                            <iconify-icon icon="solar:cloud-line-duotone" class="text-2xl text-stone-400"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-semibold text-stone-900 mb-3">AWS Multi-Region Auto-Scaling Stack</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed mb-4">
+                            Multi-region web infrastructure utilizing EC2 Auto Scaling Groups, Application Load Balancers (ALB), Route 53 health check failover, and RDS Multi-AZ replication.
+                        </p>
+
+                        <!-- Architecture Graphic -->
+                        <div class="mb-4 rounded-lg overflow-hidden border border-stone-200 bg-[#1C1917] p-3 text-[10px] font-mono text-stone-300">
+                            <div class="text-amber-400 font-bold mb-1">AWS Multi-Region Architecture</div>
+                            <div class="text-stone-400">Route 53 Latency Routing ➔ ALB ➔ EC2 Auto Scaling (us-east-1 &amp; us-west-2) ➔ RDS Replication</div>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-stone-100 flex items-center justify-between">
+                        <div class="flex gap-1.5 flex-wrap">
+                            <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">EC2 ASG</span>
+                            <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">ALB</span>
+                            <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">RDS Multi-AZ</span>
+                        </div>
+                        <span class="text-xs font-semibold text-stone-900">Case Study</span>
+                    </div>
+                </div>
+
+                <!-- AWS PROJECT 3: Terraform GitOps Pipeline -->
+                <div class="portfolio-item p-8 rounded-2xl bg-white border border-stone-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="aws">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[10px] font-bold tracking-widest uppercase text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">DEVOPS / IAC · TERRAFORM</span>
+                            <iconify-icon icon="solar:code-file-line-duotone" class="text-2xl text-stone-400"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-semibold text-stone-900 mb-3">Terraform AWS GitOps Pipeline</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed mb-4">
+                            Automated Terraform IaC project provisioning AWS VPC subnets, Security Groups, and EC2 instances with S3 remote state storage and GitHub Actions CI/CD workflows.
+                        </p>
+
+                        <!-- Architecture Graphic -->
+                        <div class="mb-4 rounded-lg overflow-hidden border border-stone-200 bg-[#1C1917] p-3 text-[10px] font-mono text-stone-300">
+                            <div class="text-sky-400 font-bold mb-1">Terraform IaC Pipeline</div>
+                            <div class="text-stone-400">GitHub Commit ➔ Actions CI/CD ➔ Checkov Scan ➔ S3 State Lock ➔ AWS Provision</div>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-stone-100 flex items-center justify-between">
+                        <div class="flex gap-1.5 flex-wrap">
+                            <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">Terraform</span>
+                            <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">S3 State</span>
+                            <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">GitHub Actions</span>
+                        </div>
+                        <span class="text-xs font-semibold text-stone-900">Case Study</span>
+                    </div>
+                </div>
+
+                <!-- PROJECT 4: CIS Hardened Ubuntu Server -->
+                <div class="portfolio-item p-8 rounded-2xl bg-white border border-stone-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="security">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[10px] font-bold tracking-widest uppercase text-rose-700 bg-rose-50 px-2.5 py-1 rounded-full border border-rose-200">LINUX SECURITY · 2026</span>
+                            <iconify-icon icon="solar:shield-keyhole-line-duotone" class="text-2xl text-stone-400"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-semibold text-stone-900 mb-3">CIS Hardened Ubuntu 24.04 Server</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed mb-6">
+                            Security hardening script applying CIS Level 1 benchmarks on Ubuntu Linux: UFW firewall posture, Fail2ban SSH protection, Auditd system auditing, and Lynis compliance reporting.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-100 flex items-center justify-between">
+                        <div class="flex gap-1.5 flex-wrap">
+                            <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">Ubuntu</span>
+                            <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">UFW</span>
+                            <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">Lynis</span>
+                        </div>
+                        <span class="text-xs font-semibold text-stone-900">Case Study</span>
+                    </div>
+                </div>
+
+                <!-- GITHUB REPO 1: server-health-monitor -->
+                <div class="portfolio-item p-8 rounded-2xl bg-[#EBE8E4] border border-stone-300/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="github">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[10px] font-bold tracking-widest uppercase text-stone-800 bg-stone-200 px-2.5 py-1 rounded-full border border-stone-300">GITHUB REPO · SHELL</span>
+                            <iconify-icon icon="solar:terminal-line-duotone" class="text-2xl text-stone-600"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-semibold text-stone-900 mb-3">server-health-monitor</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed mb-6">
+                            Automated Bash script to monitor server health metrics, check disk usage, verify web service uptime, and trigger automated system alerts.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-300/40 flex items-center justify-between">
+                        <span class="text-[10px] font-mono text-stone-700 font-semibold">Shell / Bash Script</span>
+                        <a href="https://github.com/hritiksah00/server-health-monitor" target="_blank" rel="noopener" class="text-xs font-semibold text-stone-900 hover:text-stone-600 flex items-center gap-1">View on GitHub ↗</a>
+                    </div>
+                </div>
+
+                <!-- GITHUB REPO 2: PFM Personal Finance Manager -->
+                <div class="portfolio-item p-8 rounded-2xl bg-[#EBE8E4] border border-stone-300/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="github">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[10px] font-bold tracking-widest uppercase text-stone-800 bg-stone-200 px-2.5 py-1 rounded-full border border-stone-300">GITHUB REPO · PYTHON</span>
+                            <iconify-icon icon="solar:wallet-money-line-duotone" class="text-2xl text-stone-600"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-semibold text-stone-900 mb-3">PFM — Personal Finance Manager</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed mb-6">
+                            Personal finance tracking application built in Python to log transactions, compute monthly category spending, and export analytics.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-300/40 flex items-center justify-between">
+                        <span class="text-[10px] font-mono text-stone-700 font-semibold">Python 3</span>
+                        <a href="https://github.com/hritiksah00/PFM" target="_blank" rel="noopener" class="text-xs font-semibold text-stone-900 hover:text-stone-600 flex items-center gap-1">View on GitHub ↗</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Cloud Architecture & Resource Estimator Tool -->
+    <section id="estimator" class="py-24 bg-white border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-16 items-start">
+                
+                <!-- Inputs Column -->
+                <div class="w-full md:w-2/3">
+                    <span class="uppercase block text-xs font-semibold text-stone-700 tracking-[0.2em] mb-2">Interactive Planning Tool</span>
+                    <h2 class="text-4xl font-semibold text-stone-900 tracking-tight mb-8">Cloud Architecture Resource Estimator</h2>
+                    
+                    <form id="cloudForm" class="space-y-10" onsubmit="return false;">
+                        <div>
+                            <label class="block text-sm font-semibold mb-4 text-stone-900">Select Architecture Scope</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <label class="cursor-pointer relative">
+                                    <input type="radio" name="archTier" value="150" class="peer sr-only" checked onchange="calculatePrice()">
+                                    <div class="p-4 rounded-xl border peer-checked:border-stone-900 peer-checked:ring-1 peer-checked:ring-stone-900 transition-all h-full flex flex-col gap-2 border-stone-200 bg-stone-50 hover:bg-stone-100">
+                                        <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-800 flex items-center justify-center shadow-xs">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                                        </div>
+                                        <span class="font-semibold text-stone-900 tier-name text-sm">Static CDN Deployment</span>
+                                        <span class="text-xs text-stone-500">AWS CloudFront + S3 + ACM SSL + Route 53.</span>
+                                    </div>
+                                </label>
+
+                                <label class="cursor-pointer relative">
+                                    <input type="radio" name="archTier" value="450" class="peer sr-only" onchange="calculatePrice()">
+                                    <div class="p-4 rounded-xl border peer-checked:border-stone-900 peer-checked:ring-1 peer-checked:ring-stone-900 transition-all h-full flex flex-col gap-2 border-stone-200 bg-stone-50 hover:bg-stone-100">
+                                        <div class="w-8 h-8 rounded-lg bg-stone-900 text-white flex items-center justify-center shadow-xs">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15a4 4 0 004 4h9a5 5 0 001-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                                        </div>
+                                        <span class="font-semibold text-stone-900 tier-name text-sm">High-Availability AWS VPC</span>
+                                        <span class="text-xs text-stone-500">EC2 ASG + ALB + Terraform IaC + RDS.</span>
+                                    </div>
+                                </label>
+
+                                <label class="cursor-pointer relative">
+                                    <input type="radio" name="archTier" value="850" class="peer sr-only" onchange="calculatePrice()">
+                                    <div class="p-4 rounded-xl border peer-checked:border-stone-900 peer-checked:ring-1 peer-checked:ring-stone-900 transition-all h-full flex flex-col gap-2 border-stone-200 bg-stone-50 hover:bg-stone-100">
+                                        <div class="w-8 h-8 rounded-lg bg-emerald-950 text-white flex items-center justify-center shadow-xs">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                        </div>
+                                        <span class="font-semibold text-stone-900 tier-name text-sm">Zero-Trust Security Stack</span>
+                                        <span class="text-xs text-stone-500">CIS Hardened + WireGuard + Auditd.</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label class="text-sm font-semibold text-stone-900">Compute Node Count</label>
+                                    <span class="text-sm text-stone-600 font-mono font-bold" id="nodeVal">2 Nodes</span>
+                                </div>
+                                <input type="range" id="nodes" min="1" max="20" value="2" class="w-full" oninput="calculatePrice()">
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label class="text-sm font-semibold text-stone-900">Traffic Request Volume (K Req/Min)</label>
+                                    <span id="reqVal" class="text-sm font-mono text-stone-600 font-bold">25K RPM</span>
+                                </div>
+                                <input type="range" id="requests" min="5" max="250" value="25" step="5" class="w-full" oninput="calculatePrice()">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-4 text-stone-900">Architecture Enhancements &amp; Security Add-ons</label>
+                            <div class="space-y-3">
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" id="addonFailover" class="peer sr-only" onchange="calculatePrice()">
+                                    <div class="w-5 h-5 border rounded flex items-center justify-center peer-checked:bg-stone-900 peer-checked:border-stone-900 transition-colors border-stone-300 bg-white">
+                                        <iconify-icon icon="solar:check-read-linear" class="w-3.5 h-3.5 opacity-0 peer-checked:opacity-100 text-white"></iconify-icon>
+                                    </div>
+                                    <span class="text-sm text-stone-700 group-hover:text-stone-900">Multi-Region Route 53 Automatic Failover (+$350/mo)</span>
+                                </label>
+
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" id="addonHardening" class="peer sr-only" onchange="calculatePrice()">
+                                    <div class="w-5 h-5 border rounded flex items-center justify-center peer-checked:bg-stone-900 peer-checked:border-stone-900 transition-colors border-stone-300 bg-white">
+                                        <iconify-icon icon="solar:check-read-linear" class="w-3.5 h-3.5 opacity-0 peer-checked:opacity-100 text-white"></iconify-icon>
+                                    </div>
+                                    <span class="text-sm text-stone-700 group-hover:text-stone-900">Automated CIS Level 1 Hardening &amp; Lynis Compliance Audit (+$250/mo)</span>
+                                </label>
+
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" id="addonDatabase" class="peer sr-only" onchange="calculatePrice()">
+                                    <div class="w-5 h-5 border rounded flex items-center justify-center peer-checked:bg-stone-300 peer-checked:border-stone-900 transition-colors border-stone-300 bg-white">
+                                        <iconify-icon icon="solar:check-read-linear" class="w-3.5 h-3.5 opacity-0 peer-checked:opacity-100 text-stone-900"></iconify-icon>
+                                    </div>
+                                    <span class="text-sm text-stone-700 group-hover:text-stone-900">Managed RDS Multi-AZ Database Cluster (+$400/mo)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Price Summary Card -->
+                <div class="w-full md:w-1/3 sticky top-24">
+                    <div class="p-8 rounded-2xl shadow-2xl relative overflow-hidden bg-stone-900 text-white">
+                        <div class="absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-40 -mr-10 -mt-10 bg-stone-700"></div>
+                        <h3 class="text-xl font-semibold tracking-tight mb-6 relative z-10">Estimated Resource Scope</h3>
+                        
+                        <div class="space-y-4 mb-8 border-b pb-8 text-xs relative z-10 border-stone-700 text-stone-300">
+                            <div class="flex justify-between">
+                                <span>Selected Scope</span>
+                                <span id="summaryTier" class="font-medium text-white">Static CDN Deployment</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Compute Nodes</span>
+                                <span id="summaryNodes" class="font-medium text-white">2 Nodes</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Base Setup Cost</span>
+                                <span class="font-medium text-white">$300</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Selected Add-ons</span>
+                                <span class="text-white font-medium" id="summaryAddonCost">$0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-end justify-between mb-8 relative z-10">
+                            <span class="text-xs text-stone-400">Total Estimated Budget</span>
+                            <span class="text-3xl font-bold tracking-tight" id="totalPrice">$650/mo</span>
+                        </div>
+                        
+                        <a href="#contact" class="transition-colors hover:bg-stone-100 font-semibold text-stone-900 bg-white w-full z-10 rounded-lg pt-3.5 pb-3.5 relative inline-flex items-center justify-center text-sm shadow-md">
+                            Contact Me About This Stack
+                        </a>
+                        <p class="text-[11px] text-stone-400 mt-4 text-center relative z-10">
+                            *Estimated monthly cost based on AWS resource pricing &amp; configuration.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verified Certifications & Technical Matrix Section -->
+    <section id="certifications" class="py-24 bg-[#F5F2EF] border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-16 gap-8">
+                <div>
+                    <span class="uppercase block text-xs font-semibold text-stone-700 tracking-[0.2em] mb-2">Academic &amp; Professional Credentials</span>
+                    <h2 class="text-4xl font-semibold text-stone-900">Industry Certifications &amp; Skills</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Certifications Cards -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="p-6 bg-white rounded-xl border border-stone-200 flex items-center gap-4 shadow-xs">
+                        <div class="w-12 h-12 rounded-lg bg-amber-500 text-white font-bold text-xs flex items-center justify-center flex-shrink-0">
+                            AWS
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-900 text-sm">AWS Cloud Practitioner</h4>
+                            <p class="text-xs text-stone-500">Amazon Web Services · 2025</p>
+                            <span class="inline-block mt-1 text-[10px] font-semibold text-emerald-700">✓ Official Verified Badge</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-white rounded-xl border border-stone-200 flex items-center gap-4 shadow-xs">
+                        <div class="w-12 h-12 rounded-lg bg-blue-900 text-white font-bold text-xs flex items-center justify-center flex-shrink-0">
+                            ISC²
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-900 text-sm">Certified in Cybersecurity (CC)</h4>
+                            <p class="text-xs text-stone-500">ISC² Security Council · 2025</p>
+                            <span class="inline-block mt-1 text-[10px] font-semibold text-emerald-700">✓ Official Verified Badge</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-white rounded-xl border border-stone-200 flex items-center gap-4 shadow-xs">
+                        <div class="w-12 h-12 rounded-lg bg-red-700 text-white font-bold text-xs flex items-center justify-center flex-shrink-0">
+                            LPI
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-900 text-sm">Linux Essentials Certificate</h4>
+                            <p class="text-xs text-stone-500">Linux Professional Institute · 2024</p>
+                            <span class="inline-block mt-1 text-[10px] font-semibold text-emerald-700">✓ Official Verified Badge</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Skills Matrix Table -->
+                <div class="lg:col-span-8 bg-white p-8 rounded-2xl border border-stone-200 shadow-xs">
+                    <h3 class="text-lg font-semibold text-stone-900 mb-6 pb-4 border-b border-stone-100">Technical Skillset &amp; Technologies</h3>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs text-left">
+                            <thead>
+                                <tr class="text-stone-500 uppercase tracking-wider border-b border-stone-200 pb-3">
+                                    <th class="pb-3 font-semibold">Skill Area</th>
+                                    <th class="pb-3 font-semibold">Tools &amp; Technologies</th>
+                                    <th class="pb-3 font-semibold">Proficiency</th>
+                                    <th class="pb-3 font-semibold text-right">Years</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-stone-100 text-stone-700">
+                                <tr>
+                                    <td class="py-3.5 font-semibold text-stone-900">AWS Cloud Services</td>
+                                    <td>CloudFront, S3, EC2, VPC, Route 53, ALB, RDS, Lambda</td>
+                                    <td>
+                                        <div class="flex gap-1"><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-200"></span></div>
+                                    </td>
+                                    <td class="py-3.5 text-right font-mono">2 Yrs</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3.5 font-semibold text-stone-900">Linux Administration</td>
+                                    <td>Ubuntu 24.04, UFW, Fail2ban, Auditd, Bash Shell Scripting</td>
+                                    <td>
+                                        <div class="flex gap-1"><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span></div>
+                                    </td>
+                                    <td class="py-3.5 text-right font-mono">3 Yrs</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3.5 font-semibold text-stone-900">Infrastructure as Code</td>
+                                    <td>Terraform, GitHub Actions CI/CD, Checkov, TFLint</td>
+                                    <td>
+                                        <div class="flex gap-1"><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-200"></span></div>
+                                    </td>
+                                    <td class="py-3.5 text-right font-mono">1.5 Yrs</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3.5 font-semibold text-stone-900">Containers &amp; Web Servers</td>
+                                    <td>Docker, Docker Compose, Nginx Reverse Proxy, Redis</td>
+                                    <td>
+                                        <div class="flex gap-1"><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-200"></span></div>
+                                    </td>
+                                    <td class="py-3.5 text-right font-mono">2 Yrs</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3.5 font-semibold text-stone-900">Network Security</td>
+                                    <td>Nmap, Wireshark, Lynis Auditing, WireGuard VPN</td>
+                                    <td>
+                                        <div class="flex gap-1"><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span><span class="w-2.5 h-2.5 rounded-full bg-stone-200"></span></div>
+                                    </td>
+                                    <td class="py-3.5 text-right font-mono">2 Yrs</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-white border-t border-stone-200">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="uppercase block text-xs font-semibold text-stone-700 tracking-[0.2em] mb-2">Common Questions</span>
+                <h2 class="text-4xl font-semibold tracking-tight text-stone-900">Frequently Asked Questions</h2>
+            </div>
+            
+            <div class="space-y-4">
+                <details class="group rounded-xl border overflow-hidden transition-all open:ring-1 open:ring-stone-900/5 bg-stone-50 border-stone-200 hover:border-stone-300">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer text-base font-semibold select-none text-stone-900">
+                        How did you set up static website deployment on AWS CloudFront &amp; S3?
+                        <span class="ml-4 flex-shrink-0 transition-transform duration-300 group-open:rotate-180">
+                            <iconify-icon icon="solar:alt-arrow-down-linear" class="w-5 h-5 text-xl text-stone-700"></iconify-icon>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-sm leading-relaxed text-stone-600 border-t border-stone-200/50 pt-4">
+                        I hosted static website files in an Amazon S3 bucket, blocked public S3 access, configured AWS CloudFront CDN with Origin Access Control (OAC), provisioned a free SSL/TLS certificate via ACM, and routed custom DNS records using Amazon Route 53.
+                    </div>
+                </details>
+
+                <details class="group rounded-xl border overflow-hidden transition-all open:ring-1 open:ring-stone-900/5 bg-stone-50 border-stone-200 hover:border-stone-300">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer text-base font-semibold select-none text-stone-900">
+                        What Linux security hardening steps do you apply?
+                        <span class="ml-4 flex-shrink-0 transition-transform duration-300 group-open:rotate-180">
+                            <iconify-icon icon="solar:alt-arrow-down-linear" class="w-5 h-5 text-xl text-stone-700"></iconify-icon>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-sm leading-relaxed text-stone-600 border-t border-stone-200/50 pt-4">
+                        I follow CIS Level 1 benchmarks on Ubuntu Linux: disabling root SSH logins, configuring strict UFW firewall policies, enabling Fail2ban SSH brute-force protection, setting sysctl kernel parameters, and running Lynis security audits.
+                    </div>
+                </details>
+                
+                <details class="group rounded-xl border overflow-hidden transition-all open:ring-1 open:ring-stone-900/5 bg-stone-50 border-stone-200 hover:border-stone-300">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer text-base font-semibold select-none text-stone-900">
+                        What institution are you studying at?
+                        <span class="ml-4 flex-shrink-0 transition-transform duration-300 group-open:rotate-180">
+                            <iconify-icon icon="solar:alt-arrow-down-linear" class="w-5 h-5 text-xl text-stone-700"></iconify-icon>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-sm leading-relaxed text-stone-600 border-t border-stone-200/50 pt-4">
+                        I am currently studying Cloud Computing and Cybersecurity at KFA Business School &amp; IT in Kathmandu, Nepal.
+                    </div>
+                </details>
+
+                <details class="group rounded-xl border overflow-hidden transition-all open:ring-1 open:ring-stone-900/5 bg-stone-50 border-stone-200 hover:border-stone-300">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer text-base font-semibold select-none text-stone-900">
+                        Are you available for internships, full-time roles, or projects?
+                        <span class="ml-4 flex-shrink-0 transition-transform duration-300 group-open:rotate-180">
+                            <iconify-icon icon="solar:alt-arrow-down-linear" class="w-5 h-5 text-xl text-stone-700"></iconify-icon>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-sm leading-relaxed text-stone-600 border-t border-stone-200/50 pt-4">
+                        Yes! I am open to Cloud Engineer, DevOps, and Systems Infrastructure roles, internships, and project collaborations.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Contact Section -->
+    <section id="contact" class="py-24 bg-[#F5F2EF] border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+                
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <span class="uppercase block text-xs font-semibold text-stone-700 tracking-[0.2em] mb-2">Get In Touch</span>
+                        <h2 class="text-4xl font-semibold text-stone-900 tracking-tight mb-6">Let's Connect &amp; Collaborate</h2>
+                        <p class="text-stone-600 mb-8 leading-relaxed">Whether you have an inquiry about cloud infrastructure, DevOps deployment, or career opportunities, feel free to send me a message.</p>
+                        
+                        <form id="contactForm" class="space-y-6" onsubmit="handleContact(event)">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-xs font-semibold text-stone-900 uppercase tracking-wider">Your Name</label>
+                                    <input type="text" required class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-stone-900 border-stone-300 bg-white text-sm" placeholder="e.g. Sarah Connor">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-semibold text-stone-900 uppercase tracking-wider">Your Email</label>
+                                    <input type="email" required class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-stone-900 border-stone-300 bg-white text-sm" placeholder="sarah@example.com">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold text-stone-900 uppercase tracking-wider">Topic / Opportunity</label>
+                                <select class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-stone-900 border-stone-300 bg-white text-sm">
+                                    <option>AWS Cloud / Deployment Project</option>
+                                    <option>DevOps &amp; Terraform Automation</option>
+                                    <option>Linux Security Hardening</option>
+                                    <option>Internship / Job Opportunity</option>
+                                    <option>Other Inquiry</option>
+                                </select>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold text-stone-900 uppercase tracking-wider">Message</label>
+                                <textarea rows="4" required class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-stone-900 border-stone-300 bg-white text-sm" placeholder="Hi Ritik, I would like to connect regarding..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full font-semibold py-4 rounded-lg transition-all shadow-md bg-stone-900 text-white hover:bg-stone-800 text-sm">
+                                Send Message
+                            </button>
+                            <div id="contactSuccess" class="hidden p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs text-center font-medium">
+                                ✓ Thanks! Message received. I will respond to your email within 24 hours.
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="mt-16 pt-12 border-t border-stone-300">
+                        <div class="flex items-center gap-2 mb-4">
+                            <iconify-icon icon="solar:point-on-map-linear" class="text-xl text-stone-800"></iconify-icon>
+                            <h4 class="font-semibold text-stone-900 text-sm">Academic Base &amp; Location</h4>
+                        </div>
+                        <p class="text-xs text-stone-600 mb-6 leading-relaxed">
+                            Ritik Sah · KFA Business School &amp; IT · Kathmandu, Nepal.<br>
+                            Available for remote roles and projects worldwide.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-8 md:p-12 rounded-2xl border shadow-sm flex flex-col justify-between bg-white border-stone-200">
+                    <div>
+                        <div class="inline-flex items-center justify-center p-3 rounded-xl mb-6 bg-stone-900 text-white shadow-xs">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-stone-900 tracking-tight mb-2">Direct Contact Channels</h3>
+                        <p class="text-sm text-stone-600 mb-8">Feel free to connect via any of my personal links below.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-stone-50 border border-stone-100">
+                            <div class="w-9 h-9 rounded-lg bg-stone-900 text-white flex items-center justify-center shadow-xs flex-shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-xs text-stone-500 uppercase">Personal Email</h4>
+                                <a href="mailto:hritiksah38@gmail.com" class="text-sm font-semibold text-stone-900 hover:text-stone-600">hritiksah38@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-stone-50 border border-stone-100">
+                            <div class="w-9 h-9 rounded-lg bg-[#0A66C2] text-white flex items-center justify-center shadow-xs flex-shrink-0">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-xs text-stone-500 uppercase">LinkedIn Profile</h4>
+                                <a href="https://www.linkedin.com/in/ritik-sah-aws/" target="_blank" rel="noopener" class="text-sm font-semibold text-stone-900 hover:text-stone-600">linkedin.com/in/ritik-sah-aws</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-stone-50 border border-stone-100">
+                            <div class="w-9 h-9 rounded-lg bg-stone-900 text-white flex items-center justify-center shadow-xs flex-shrink-0">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-xs text-stone-500 uppercase">GitHub Profile</h4>
+                                <a href="https://github.com/hritiksah00" target="_blank" rel="noopener" class="text-sm font-semibold text-stone-900 hover:text-stone-600">github.com/hritiksah00</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-stone-100">
+                        <p class="text-xs text-stone-500 text-center">
+                            Response time: Within 24 hours.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pre-Footer CTA -->
+    <section class="bg-stone-900 py-16 text-center border-b border-stone-800">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-3xl font-semibold tracking-tight text-white mb-4">Let's Build Something Resilient Together.</h2>
+            <p class="text-stone-300 mb-8 text-base">Open for Cloud Infrastructure, DevOps, and Cybersecurity roles and project collaborations.</p>
+            <a href="#contact" class="inline-flex items-center justify-center transition-all hover:bg-stone-100 font-medium text-stone-900 bg-white rounded-full pt-3.5 pr-8 pb-3.5 pl-8 text-sm">Send Me A Message</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-950 border-stone-800 border-t pt-16 pb-28 text-stone-400 text-xs">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+                <div class="max-w-xs">
+                    <div class="flex items-center gap-2 mb-4 text-white">
+                        <div class="p-1 rounded bg-white text-stone-900 flex items-center justify-center">
+                            <iconify-icon icon="solar:cloud-square-linear" class="w-4 h-4"></iconify-icon>
+                        </div>
+                        <span class="text-sm font-bold tracking-tight">RITIK SAH</span>
+                    </div>
+                    <p class="text-stone-400 leading-relaxed">Cloud Infrastructure &amp; Cybersecurity Portfolio. KFA Business School &amp; IT · Kathmandu, Nepal.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-10 w-full md:w-auto">
+                    <div>
+                        <h4 class="font-semibold mb-3 text-xs uppercase text-white">Projects</h4>
+                        <ul class="space-y-2 text-stone-400">
+                            <li><a href="#projects" class="hover:text-white transition-colors">AWS CloudFront Deployment</a></li>
+                            <li><a href="#projects" class="hover:text-white transition-colors">AWS Auto-Scaling Stack</a></li>
+                            <li><a href="#projects" class="hover:text-white transition-colors">Terraform IaC Pipeline</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-3 text-xs uppercase text-white">Certifications</h4>
+                        <ul class="space-y-2 text-stone-400">
+                            <li><a href="#certifications" class="hover:text-white transition-colors">AWS Cloud Practitioner</a></li>
+                            <li><a href="#certifications" class="hover:text-white transition-colors">ISC² Cybersecurity CC</a></li>
+                            <li><a href="#certifications" class="hover:text-white transition-colors">Linux Essentials</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-3 text-xs uppercase text-white">GitHub</h4>
+                        <ul class="space-y-2 text-stone-400">
+                            <li><a href="https://github.com/hritiksah00/server-health-monitor" target="_blank" class="hover:text-white transition-colors">server-health-monitor</a></li>
+                            <li><a href="https://github.com/hritiksah00/PFM" target="_blank" class="hover:text-white transition-colors">PFM App</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center border-t border-stone-800 pt-8 gap-4">
+                <div>
+                    <span>© 2026 Ritik Sah — Personal Engineering Portfolio</span>
+                </div>
+                <div class="flex gap-6 text-stone-400">
+                    <a href="https://github.com/hritiksah00" target="_blank" class="hover:text-white">GitHub</a>
+                    <a href="https://www.linkedin.com/in/ritik-sah-aws/" target="_blank" class="hover:text-white">LinkedIn</a>
+                    <a href="mailto:hritiksah38@gmail.com" class="hover:text-white">Email</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Quick Contact Widget -->
+    <div class="fixed group flex flex-col z-50 right-6 bottom-6 gap-y-3 items-end">
+        <div class="flex flex-col gap-2 transition-all duration-300 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto opacity-0 translate-y-4 items-end">
+            <a href="mailto:hritiksah38@gmail.com" class="flex items-center gap-3 transition-colors hover:bg-stone-50 text-stone-900 bg-white border border-stone-200 rounded-full py-2 px-4 shadow-lg text-xs font-medium">
+                <span>Email Ritik</span>
+                <div class="w-7 h-7 rounded-full bg-stone-900 flex items-center justify-center text-white">
+                    <iconify-icon icon="solar:letter-linear" class="text-sm"></iconify-icon>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com/in/ritik-sah-aws/" target="_blank" rel="noopener" class="flex items-center gap-3 transition-colors hover:bg-stone-50 text-stone-900 bg-white border border-stone-200 rounded-full py-2 px-4 shadow-lg text-xs font-medium">
+                <span>LinkedIn</span>
+                <div class="w-7 h-7 rounded-full bg-[#0A66C2] flex items-center justify-center text-white">
+                    <iconify-icon icon="solar:users-group-rounded-linear" class="text-sm"></iconify-icon>
+                </div>
+            </a>
+        </div>
+
+        <button class="flex transition-transform duration-300 group-hover:scale-105 text-white bg-stone-900 w-12 h-12 rounded-full relative shadow-xl items-center justify-center ring-1 ring-stone-900/10">
+            <iconify-icon icon="solar:envelope-linear" class="w-5 h-5 text-xl transition-all duration-300 group-hover:rotate-12"></iconify-icon>
+        </button>
+    </div>
+
+    <!-- Application Script -->
+    <script>
+        window.addEventListener('load', () => {
+            calculatePrice();
+        });
+
+        // Portfolio Filtering Logic
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                if (btn.getAttribute('onclick').includes(category)) {
+                    btn.classList.remove('bg-stone-200/60', 'text-stone-700');
+                    btn.classList.add('bg-stone-900', 'text-white');
+                } else {
+                    btn.classList.add('bg-stone-200/60', 'text-stone-700');
+                    btn.classList.remove('bg-stone-900', 'text-white');
+                }
+            });
+
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'flex';
+                    item.classList.remove('fade-in');
+                    void item.offsetWidth;
+                    item.classList.add('fade-in');
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Cloud Calculator Logic
+        function calculatePrice() {
+            const tierRadio = document.querySelector('input[name="archTier"]:checked');
+            const tierBasePrice = parseInt(tierRadio.value);
+            
+            const tierCard = tierRadio.nextElementSibling;
+            const tierName = tierCard.querySelector('.tier-name').innerText;
+            document.getElementById('summaryTier').innerText = tierName;
+
+            const nodes = parseInt(document.getElementById('nodes').value);
+            const requests = parseInt(document.getElementById('requests').value);
+
+            document.getElementById('nodeVal').innerText = nodes + ' Nodes';
+            document.getElementById('reqVal').innerText = requests + 'K RPM';
+            document.getElementById('summaryNodes').innerText = nodes + ' Nodes';
+
+            let baseCost = tierBasePrice + (nodes * 90) + (requests * 3);
+            
+            let addonCost = 0;
+            if(document.getElementById('addonFailover').checked) addonCost += 350;
+            if(document.getElementById('addonHardening').checked) addonCost += 250;
+            if(document.getElementById('addonDatabase').checked) addonCost += 400;
+
+            document.getElementById('summaryAddonCost').innerText = '$' + addonCost.toLocaleString();
+
+            const setupFee = 300;
+            const total = Math.floor(baseCost + setupFee + addonCost);
+            
+            document.getElementById('totalPrice').innerText = '$' + total.toLocaleString() + '/mo';
+        }
+
+        function handleContact(e) {
+            e.preventDefault();
+            const msg = document.getElementById('contactSuccess');
+            msg.classList.remove('hidden');
+            document.getElementById('contactForm').reset();
+            setTimeout(() => {
+                msg.classList.add('hidden');
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
