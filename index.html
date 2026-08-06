@@ -3,12 +3,1114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ritik Sah — Cloud Infrastructure Architect &amp; Cybersecurity Portfolio</title>
+  <title>Ritik Sah Cloud Infrastructure Architect &amp; Cybersecurity Portfolio</title>
   <meta name="description" content="Personal engineering portfolio of Ritik Sah, Cloud Computing student at KFA Business School & IT, Kathmandu, Nepal. AWS CloudFront, S3, Terraform, Hardened Linux, and DevOps." />
   
   <!-- Tailwind CSS & Iconify -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script src="https://cdn.tailwindcss.com">
+        // Project Details Data Store for Dynamic Modal
+        const PROJECT_MODAL_DATA = {
+            'cloudfront-s3': {
+                title: 'Global Website Deployment via AWS S3 & CloudFront CDN',
+                badge: 'AWS FEATURED PROJECT',
+                category: 'AWS CloudFront & S3',
+                role: 'Cloud Infrastructure Architect',
+                description: `
+                    <p>Designed and deployed a highly available, globally distributed static website hosting infrastructure leveraging Amazon S3 as origin storage and AWS CloudFront CDN for edge caching across 600+ Points of Presence (PoPs).</p>
+                    <p><strong>Security Hardening:</strong> Configured Origin Access Control (OAC) to completely block direct public access to the S3 bucket, forcing all traffic through CloudFront edge locations with ACM SSL/TLS certificates and Route 53 custom domain DNS routing.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="180" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="600" height="180" rx="8" fill="#1C1917"/>
+                        <rect x="25" y="70" width="85" height="40" rx="6" fill="#292524" stroke="#38BDF8" stroke-width="1.5"/>
+                        <text x="67.5" y="94" font-family="sans-serif" font-size="10" font-weight="600" fill="#F8FAFC" text-anchor="middle">Users / Clients</text>
+                        <rect x="150" y="20" width="110" height="36" rx="6" fill="#292524" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="205" y="42" font-family="sans-serif" font-size="10" font-weight="600" fill="#F59E0B" text-anchor="middle">Route 53 DNS</text>
+                        <rect x="290" y="50" width="140" height="80" rx="8" fill="#0284C7" stroke="#38BDF8" stroke-width="2"/>
+                        <text x="360" y="80" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">AWS CloudFront CDN</text>
+                        <text x="360" y="98" font-family="sans-serif" font-size="9" fill="#E0F2FE" text-anchor="middle">Global Edge Cache</text>
+                        <text x="360" y="113" font-family="sans-serif" font-size="9" fill="#BAE6FD" text-anchor="middle">ACM SSL Encryption</text>
+                        <rect x="475" y="70" width="100" height="40" rx="6" fill="#292524" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="525" y="94" font-family="sans-serif" font-size="10" font-weight="600" fill="#10B981" text-anchor="middle">Amazon S3 Origin</text>
+                        <path d="M110 90 H290" stroke="#38BDF8" stroke-width="2"/>
+                        <path d="M205 56 V90" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3 3"/>
+                        <path d="M430 90 H475" stroke="#10B981" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'S3 Origin Access Control (OAC) Policy',
+                codeSnippet: `{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCloudFrontServicePrincipalReadOnly",
+      "Effect": "Allow",
+      "Principal": { "Service": "cloudfront.amazonaws.com" },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::ritik-cloud-portfolio-origin/*",
+      "Condition": {
+        "StringEquals": {
+          "AWS:SourceArn": "arn:aws:cloudfront::123456789012:distribution/EDFDV2608EXAMPLE"
+        }
+      }
+    }
+  ]
+}`,
+                screenshots: [
+                    { title: 'CloudFront Edge Distribution', desc: 'Active edge cache deployment with sub-50ms latency.' },
+                    { title: 'ACM TLS 1.3 Certificate', desc: 'Secure custom domain SSL certificate binding.' }
+                ],
+                tags: ['AWS CloudFront', 'Amazon S3', 'ACM SSL', 'Route 53', 'OAC Security'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'serverless-resume': {
+                title: 'Serverless Cloud Resume Website',
+                badge: 'AWS SERVERLESS PROJECT',
+                category: 'Amazon S3 & IAM Security',
+                role: 'AWS Cloud Trainee',
+                description: `
+                    <p><strong>Overview & Hosting:</strong> Designed and deployed a highly available, serverless static resume website hosted on Amazon S3 to demonstrate foundational cloud infrastructure capabilities.</p>
+                    <p><strong>Security & IAM:</strong> Authored custom JSON bucket policies and IAM access rules to enable secure public read access while restricting backend resource settings.</p>
+                    <p><strong>Core Learnings:</strong> Gained hands-on experience in cloud storage architecture, object-level security management, and AWS console resource provisioning.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="160" viewBox="0 0 500 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="160" rx="8" fill="#1C1917"/>
+                        <rect x="30" y="60" width="100" height="40" rx="6" fill="#292524" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="80" y="84" font-family="sans-serif" font-size="10" font-weight="600" fill="#10B981" text-anchor="middle">Browser User</text>
+                        <rect x="200" y="45" width="120" height="70" rx="6" fill="#047857" stroke="#34D399" stroke-width="2"/>
+                        <text x="260" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Amazon S3 Bucket</text>
+                        <text x="260" y="93" font-family="sans-serif" font-size="9" fill="#A7F3D0" text-anchor="middle">Static Website Hosting</text>
+                        <rect x="370" y="60" width="100" height="40" rx="6" fill="#292524" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="420" y="84" font-family="sans-serif" font-size="10" font-weight="600" fill="#F59E0B" text-anchor="middle">AWS IAM Policy</text>
+                        <path d="M130 80 H200" stroke="#10B981" stroke-width="2"/>
+                        <path d="M320 80 H370" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3 3"/>
+                    </svg>
+                `,
+                codeLang: 'Amazon S3 Public Bucket Policy (JSON)',
+                codeSnippet: `{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::serverless-cloud-resume-ritik/*"
+    }
+  ]
+}`,
+                screenshots: [
+                    { title: 'S3 Static Endpoint', desc: 'Bucket static web hosting enabled.' },
+                    { title: 'IAM Policy Editor', desc: 'Custom JSON read permissions applied.' }
+                ],
+                tags: ['Amazon S3', 'AWS IAM', 'Serverless', 'HTML/CSS'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'multiregion-aws': {
+                title: 'AWS Multi-Region Auto-Scaling Stack',
+                badge: 'HIGH AVAILABILITY STACK',
+                category: 'AWS EC2, ALB & RDS',
+                role: 'Cloud Systems Engineer',
+                description: `
+                    <p>Engineered a multi-region, fault-tolerant cloud architecture across <code>us-east-1</code> and <code>us-west-2</code> AWS regions to guarantee zero-downtime application availability.</p>
+                    <p><strong>Traffic Routing & Failover:</strong> Configured Amazon Route 53 Latency Routing and Health Checks to automatically redirect web traffic to secondary active region during outages. Deployed EC2 Auto Scaling Groups behind Application Load Balancers with Multi-AZ RDS MySQL database replication.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="170" viewBox="0 0 550 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="550" height="170" rx="8" fill="#1C1917"/>
+                        <rect x="210" y="15" width="130" height="35" rx="6" fill="#292524" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="275" y="37" font-family="sans-serif" font-size="10" font-weight="600" fill="#F59E0B" text-anchor="middle">Route 53 Latency Routing</text>
+                        
+                        <rect x="40" y="65" width="200" height="85" rx="6" fill="#1F2937" stroke="#38BDF8" stroke-width="1.5"/>
+                        <text x="140" y="85" font-family="sans-serif" font-size="10" font-weight="bold" fill="#38BDF8" text-anchor="middle">Region A: us-east-1</text>
+                        <text x="140" y="105" font-family="sans-serif" font-size="9" fill="#9CA3AF" text-anchor="middle">ALB + EC2 Auto Scaling Group</text>
+                        <text x="140" y="125" font-family="sans-serif" font-size="9" fill="#10B981" text-anchor="middle">RDS Primary Database</text>
+
+                        <rect x="310" y="65" width="200" height="85" rx="6" fill="#1F2937" stroke="#38BDF8" stroke-width="1.5"/>
+                        <text x="410" y="85" font-family="sans-serif" font-size="10" font-weight="bold" fill="#38BDF8" text-anchor="middle">Region B: us-west-2</text>
+                        <text x="410" y="105" font-family="sans-serif" font-size="9" fill="#9CA3AF" text-anchor="middle">ALB + EC2 Auto Scaling Group</text>
+                        <text x="410" y="125" font-family="sans-serif" font-size="9" fill="#F59E0B" text-anchor="middle">RDS Multi-AZ Replica</text>
+
+                        <path d="M275 50 L140 65" stroke="#F59E0B" stroke-width="1.5"/>
+                        <path d="M275 50 L410 65" stroke="#F59E0B" stroke-width="1.5"/>
+                        <path d="M240 125 H310" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3 3"/>
+                    </svg>
+                `,
+                codeLang: 'AWS Target Tracking Auto Scaling Policy',
+                codeSnippet: `resource "aws_autoscaling_policy" "cpu_target_tracking" {
+  name                   = "target-cpu-70-percent"
+  autoscaling_group_name = aws_autoscaling_group.web_asg.name
+  policy_type            = "TargetTrackingScaling"
+
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+    target_value = 70.0
+  }
+}`,
+                screenshots: [
+                    { title: 'Target Group Health', desc: 'Dual-AZ EC2 instances pass HTTP health checks.' },
+                    { title: 'Multi-AZ Database Failover', desc: 'Synchronous standby replica ready.' }
+                ],
+                tags: ['EC2 ASG', 'ALB', 'RDS Multi-AZ', 'Route 53', 'VPC Peering'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'terraform-pipeline': {
+                title: 'Terraform AWS GitOps Pipeline',
+                badge: 'DEVOPS & IAC PIPELINE',
+                category: 'Terraform & GitHub Actions',
+                role: 'DevOps & IaC Specialist',
+                description: `
+                    <p>Built an automated Infrastructure as Code (IaC) GitOps delivery pipeline leveraging Terraform modules to provision AWS VPC subnets, Security Groups, and EC2 instances.</p>
+                    <p><strong>State & Security Automation:</strong> Implemented remote state persistence using Amazon S3 with state locking via Amazon DynamoDB. Integrated Checkov and TFLint static security scanners directly into GitHub Actions workflows to catch misconfigurations before deployment.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="160" viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="520" height="160" rx="8" fill="#1C1917"/>
+                        <rect x="25" y="60" width="100" height="40" rx="6" fill="#292524" stroke="#A855F7" stroke-width="1.5"/>
+                        <text x="75" y="84" font-family="sans-serif" font-size="10" font-weight="600" fill="#A855F7" text-anchor="middle">Git Push / PR</text>
+                        
+                        <rect x="165" y="45" width="130" height="70" rx="6" fill="#581C87" stroke="#C084FC" stroke-width="2"/>
+                        <text x="230" y="72" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">GitHub Actions</text>
+                        <text x="230" y="90" font-family="sans-serif" font-size="9" fill="#E9D5FF" text-anchor="middle">Checkov + TF Plan</text>
+
+                        <rect x="335" y="45" width="160" height="70" rx="6" fill="#1F2937" stroke="#38BDF8" stroke-width="1.5"/>
+                        <text x="415" y="72" font-family="sans-serif" font-size="11" font-weight="bold" fill="#38BDF8" text-anchor="middle">AWS Cloud Infra</text>
+                        <text x="415" y="90" font-family="sans-serif" font-size="9" fill="#9CA3AF" text-anchor="middle">S3 State + DynamoDB Lock</text>
+
+                        <path d="M125 80 H165" stroke="#A855F7" stroke-width="2"/>
+                        <path d="M295 80 H335" stroke="#38BDF8" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'main.tf — Terraform S3 Remote State Backend',
+                codeSnippet: `terraform {
+  required_version = ">= 1.5.0"
+  backend "s3" {
+    bucket         = "ritik-tf-state-backend"
+    key            = "prod/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "ritik-tf-locks"
+    encrypt        = true
+  }
+}`,
+                screenshots: [
+                    { title: 'GitHub Actions Workflow', desc: 'Automated terraform plan & security scans.' },
+                    { title: 'DynamoDB Lock Table', desc: 'Concurrency lock protecting state file.' }
+                ],
+                tags: ['Terraform', 'GitHub Actions', 'S3 Backend', 'DynamoDB', 'Checkov'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'ubuntu-hardening': {
+                title: 'CIS Hardened Ubuntu 24.04 Server',
+                badge: 'LINUX SECURITY & HARDENING',
+                category: 'Ubuntu Linux & CIS Compliance',
+                role: 'Systems Security Engineer',
+                description: `
+                    <p>Developed and executed automated Linux server hardening scripts applying CIS (Center for Internet Security) Level 1 Benchmark security guidelines on Ubuntu 24.04 LTS servers.</p>
+                    <p><strong>Security Controls:</strong> Disabled root SSH logins, configured strict UFW firewall rule sets, deployed Fail2ban for automated SSH brute-force IP ban enforcement, configured Auditd kernel audit rules, and conducted automated compliance audits using Lynis.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="160" viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="520" height="160" rx="8" fill="#1C1917"/>
+                        <rect x="30" y="45" width="130" height="70" rx="6" fill="#881337" stroke="#F43F5E" stroke-width="2"/>
+                        <text x="95" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Ubuntu 24.04 LTS</text>
+                        <text x="95" y="93" font-family="sans-serif" font-size="9" fill="#FECDD3" text-anchor="middle">CIS Level 1 Benchmark</text>
+
+                        <rect x="200" y="45" width="130" height="70" rx="6" fill="#1F2937" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="265" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#10B981" text-anchor="middle">UFW & Fail2ban</text>
+                        <text x="265" y="93" font-family="sans-serif" font-size="9" fill="#D1D5DB" text-anchor="middle">SSH Brute-Force Ban</text>
+
+                        <rect x="370" y="45" width="120" height="70" rx="6" fill="#1F2937" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="430" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#F59E0B" text-anchor="middle">Lynis Audit</text>
+                        <text x="430" y="93" font-family="sans-serif" font-size="9" fill="#D1D5DB" text-anchor="middle">Auditd Kernel Logs</text>
+
+                        <path d="M160 80 H200" stroke="#F43F5E" stroke-width="2"/>
+                        <path d="M330 80 H370" stroke="#10B981" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'Bash Hardening Script snippet',
+                codeSnippet: `#!/usr/bin/env bash
+# Disable Root SSH Login & Password Authentication
+sed -i 's/^PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
+sed -i 's/^PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
+
+# UFW Firewall Baseline
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow 22/tcp
+ufw --force enable`,
+                screenshots: [
+                    { title: 'Lynis Security Score', desc: 'Achieved 84+ rating on CIS benchmarks.' },
+                    { title: 'Fail2ban Jail Status', desc: 'Active SSH brute-force protection.' }
+                ],
+                tags: ['Ubuntu 24.04', 'CIS Benchmark', 'UFW Firewall', 'Fail2ban', 'Lynis'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'server-monitor': {
+                title: 'server-health-monitor',
+                badge: 'GITHUB REPOSITORY · SHELL',
+                category: 'Linux Automation & Shell',
+                role: 'Systems Automation Specialist',
+                description: `
+                    <p>Automated Shell script designed to monitor system vitals, disk space utilization, CPU/RAM thresholds, and active web services on Linux servers.</p>
+                    <p>Triggers immediate system alerts when resource thresholds exceed predefined limits, ensuring continuous uptime and system reliability.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="150" viewBox="0 0 500 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="150" rx="8" fill="#1C1917"/>
+                        <rect x="30" y="50" width="130" height="50" rx="6" fill="#292524" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="95" y="78" font-family="sans-serif" font-size="10" font-weight="600" fill="#F59E0B" text-anchor="middle">Cron Job Trigger</text>
+                        <rect x="200" y="35" width="150" height="80" rx="6" fill="#292524" stroke="#38BDF8" stroke-width="2"/>
+                        <text x="275" y="65" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">server-health.sh</text>
+                        <text x="275" y="85" font-family="sans-serif" font-size="9" fill="#93C5FD" text-anchor="middle">Disk / CPU / RAM Audit</text>
+                        <rect x="380" y="50" width="90" height="50" rx="6" fill="#292524" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="425" y="78" font-family="sans-serif" font-size="10" font-weight="600" fill="#10B981" text-anchor="middle">Alert Log</text>
+                        <path d="M160 75 H200" stroke="#F59E0B" stroke-width="2"/>
+                        <path d="M350 75 H380" stroke="#10B981" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'Bash Script — server-health.sh',
+                codeSnippet: `#!/bin/bash
+THRESHOLD=85
+USAGE=$(df / | grep / | awk '{ print $5 }' | sed 's/%//')
+
+if [ $USAGE -gt $THRESHOLD ]; then
+  echo "WARNING: Disk space critical on $(hostname): \${USAGE}%" | mail -s "Disk Alert" hritiksah38@gmail.com
+fi`,
+                screenshots: [
+                    { title: 'GitHub Repository', desc: 'Open-source repository hosted on @hritiksah00.' }
+                ],
+                tags: ['Shell Scripting', 'Linux', 'Bash', 'Automation', 'Cron'],
+                actionText: 'View Repo on GitHub ↗',
+                actionUrl: 'https://github.com/hritiksah00/server-health-monitor'
+            },
+
+            'pfm-finance': {
+                title: 'PFM (Personal Finance Manager)',
+                badge: 'GITHUB REPOSITORY · PYTHON',
+                category: 'Python 3 Application',
+                role: 'Python Developer',
+                description: `
+                    <p>Comprehensive Personal Finance Manager built in Python 3 to help users track transactions, compute monthly category spending, and export detailed financial reports.</p>
+                    <p>Features custom data structures, transaction logging, CSV data persistence, and category-wise spending analytics.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="150" viewBox="0 0 500 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="150" rx="8" fill="#1C1917"/>
+                        <rect x="30" y="50" width="110" height="50" rx="6" fill="#292524" stroke="#3B82F6" stroke-width="1.5"/>
+                        <text x="85" y="78" font-family="sans-serif" font-size="10" font-weight="600" fill="#3B82F6" text-anchor="middle">User Input</text>
+                        <rect x="180" y="35" width="150" height="80" rx="6" fill="#1E3A8A" stroke="#60A5FA" stroke-width="2"/>
+                        <text x="255" y="65" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">PFM Core Engine</text>
+                        <text x="255" y="85" font-family="sans-serif" font-size="9" fill="#93C5FD" text-anchor="middle">Python 3 Analytics</text>
+                        <rect x="370" y="50" width="100" height="50" rx="6" fill="#292524" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="420" y="78" font-family="sans-serif" font-size="10" font-weight="600" fill="#10B981" text-anchor="middle">CSV Export</text>
+                        <path d="M140 75 H180" stroke="#3B82F6" stroke-width="2"/>
+                        <path d="M330 75 H370" stroke="#10B981" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'Python 3 — pfm_manager.py',
+                codeSnippet: `class PersonalFinanceManager:
+    def __init__(self, filename="transactions.csv"):
+        self.filename = filename
+        self.transactions = []
+
+    def add_transaction(self, category, amount, tx_type="expense"):
+        self.transactions.append({
+            "category": category,
+            "amount": float(amount),
+            "type": tx_type
+        })`,
+                screenshots: [
+                    { title: 'GitHub Repository', desc: 'Open-source Python app on @hritiksah00/PFM.' }
+                ],
+                tags: ['Python 3', 'Finance App', 'Analytics', 'Data Processing'],
+                actionText: 'View Repo on GitHub ↗',
+                actionUrl: 'https://github.com/hritiksah00/PFM'
+            }
+        };
+
+        // Open Project Modal Function
+        function openProjectModal(projectId) {
+            const data = PROJECT_MODAL_DATA[projectId];
+            if (!data) return;
+
+            document.getElementById('modal-badge').innerText = data.badge;
+            document.getElementById('modal-category-text').innerText = data.category;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-subtitle').innerText = data.role;
+            document.getElementById('modal-description').innerHTML = data.description;
+            document.getElementById('modal-arch-container').innerHTML = data.archSvg;
+            document.getElementById('modal-code-lang').innerText = data.codeLang;
+            document.getElementById('modal-code-content').innerText = data.codeSnippet;
+
+            const screenshotsContainer = document.getElementById('modal-screenshots-container');
+            screenshotsContainer.innerHTML = '';
+            data.screenshots.forEach(sc => {
+                const box = document.createElement('div');
+                box.className = 'p-4 rounded-xl border border-stone-200 bg-white shadow-2xs';
+                box.innerHTML = `
+                    <div class="h-24 rounded-lg bg-stone-900 flex items-center justify-center text-white mb-3 text-xs font-mono border border-stone-800">
+                        <span class="text-stone-400 font-semibold">[ Image Screenshot Placeholder ]</span>
+                    </div>
+                    <h5 class="text-xs font-bold text-stone-900">${sc.title}</h5>
+                    <p class="text-[11px] text-stone-500 mt-0.5">${sc.desc}</p>
+                `;
+                screenshotsContainer.appendChild(box);
+            });
+
+            const tagsContainer = document.getElementById('modal-tags');
+            tagsContainer.innerHTML = '';
+            data.tags.forEach(t => {
+                const tag = document.createElement('span');
+                tag.className = 'text-[10px] font-mono bg-stone-100 text-stone-800 border border-stone-200 px-2.5 py-1 rounded-md font-medium';
+                tag.innerText = t;
+                tagsContainer.appendChild(tag);
+            });
+
+            const actionBtn = document.getElementById('modal-action-btn');
+            document.getElementById('modal-action-text').innerText = data.actionText;
+            actionBtn.href = data.actionUrl;
+
+            const modal = document.getElementById('project-modal');
+            const container = document.getElementById('modal-container');
+
+            document.body.classList.add('modal-open');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+
+            setTimeout(() => {
+                container.classList.remove('scale-95', 'translate-y-4', 'opacity-0');
+                container.classList.add('scale-100', 'translate-y-0', 'opacity-100');
+            }, 10);
+        }
+
+        // Close Project Modal Function
+        function closeProjectModal() {
+            const modal = document.getElementById('project-modal');
+            const container = document.getElementById('modal-container');
+
+            container.classList.remove('scale-100', 'translate-y-0', 'opacity-100');
+            container.classList.add('scale-95', 'translate-y-4', 'opacity-0');
+
+            setTimeout(() => {
+                modal.classList.remove('opacity-100');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                document.body.classList.remove('modal-open');
+            }, 200);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeProjectModal();
+            }
+        });
+
+    
+        // Web3Forms Asynchronous AJAX Contact Form Handler
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('contactSubmitBtn');
+            const btnText = document.getElementById('contactBtnText');
+            const statusMsg = document.getElementById('contactStatus');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Native HTML5 Validation Check
+                    if (!contactForm.checkValidity()) {
+                        contactForm.reportValidity();
+                        return;
+                    }
+
+                    // Set Button Loading State
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+                    btnText.innerText = 'Sending...';
+
+                    const formData = new FormData(contactForm);
+
+                    fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(async (response) => {
+                        let json = await response.json();
+                        if (response.status === 200 && json.success) {
+                            // Success Handler
+                            contactForm.reset();
+                            statusMsg.className = 'p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs text-center font-medium shadow-2xs block';
+                            statusMsg.innerText = '✓ Thank you! Your message has been sent successfully. I will respond to your email at hritiksah38@gmail.com within 24 hours.';
+                            
+                            // Fade out success message after 5 seconds
+                            setTimeout(() => {
+                                statusMsg.className = 'hidden p-4 rounded-xl text-xs font-medium text-center transition-all duration-300';
+                            }, 5000);
+                        } else {
+                            throw new Error(json.message || 'Something went wrong. Please try again.');
+                        }
+                    })
+                    .catch((error) => {
+                        // Error Handler
+                        statusMsg.className = 'p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs text-center font-medium shadow-2xs block';
+                        statusMsg.innerText = '✕ Error: ' + (error.message || 'Unable to send message. Please try again later.');
+                    })
+                    .finally(() => {
+                        // Restore Button State
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                        btnText.innerText = 'Send Message';
+                    });
+                });
+            }
+        });
+    </script>
+    <!-- Dynamic Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out">
+        <!-- Backdrop Overlay -->
+        <div id="modal-backdrop" onclick="closeProjectModal()" class="absolute inset-0 bg-stone-900/65 backdrop-blur-sm cursor-pointer"></div>
+
+        <!-- Modal Dialog Window -->
+        <div id="modal-container" class="relative bg-[#FAF8F5] border border-stone-200 rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden transform scale-95 translate-y-4 opacity-0 transition-all duration-300 ease-out z-10">
+            
+            <!-- Modal Header -->
+            <div class="px-6 py-5 border-b border-stone-200 flex items-center justify-between bg-white flex-shrink-0">
+                <div class="flex items-center gap-3">
+                    <span id="modal-badge" class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full bg-stone-900 text-white shadow-2xs">PROJECT DETAILS</span>
+                    <span id="modal-category-text" class="text-xs text-stone-500 font-mono font-medium">AWS Infrastructure</span>
+                </div>
+                <!-- Close Button (X) -->
+                <button onclick="closeProjectModal()" class="w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-stone-900 flex items-center justify-center transition-colors focus:outline-none cursor-pointer" aria-label="Close modal">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Modal Body Content (Scrollable) -->
+            <div class="p-6 md:p-8 overflow-y-auto space-y-6 text-stone-800">
+                <!-- Project Title & Subtitle -->
+                <div>
+                    <h2 id="modal-title" class="text-2xl md:text-3xl font-bold text-stone-950 tracking-tight mb-1">Project Title</h2>
+                    <p id="modal-subtitle" class="text-xs text-stone-500 font-semibold uppercase tracking-wider">Role / Overview</p>
+                </div>
+
+                <!-- Detailed Description Area -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">Detailed Overview &amp; Key Learnings</h4>
+                    <div id="modal-description" class="text-sm leading-relaxed text-stone-700 space-y-3 bg-white p-5 rounded-xl border border-stone-200 shadow-2xs">
+                        <!-- Dynamic Description HTML -->
+                    </div>
+                </div>
+
+                <!-- Cloud Architecture Diagram Section -->
+                <div id="modal-arch-section">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-stone-500">Cloud Architecture Diagram</h4>
+                        <span class="text-[10px] font-mono text-sky-700 font-semibold">AWS / System Topology</span>
+                    </div>
+                    <div id="modal-arch-container" class="rounded-xl overflow-hidden border border-stone-200 bg-stone-950 p-3 shadow-2xs">
+                        <!-- Dynamic Architecture Diagram (SVG) -->
+                    </div>
+                </div>
+
+                <!-- Screenshots / Previews Section -->
+                <div id="modal-screenshots-section">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">Screenshots &amp; UI Previews</h4>
+                    <div id="modal-screenshots-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Dynamic Screenshots -->
+                    </div>
+                </div>
+
+                <!-- Infrastructure Code Snippets Section -->
+                <div id="modal-code-section">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-stone-500">Infrastructure Code Snippet</h4>
+                        <span id="modal-code-lang" class="text-[10px] font-mono text-stone-500 font-medium">Terraform / HCL</span>
+                    </div>
+                    <div class="relative rounded-xl overflow-hidden bg-stone-900 border border-stone-800 text-stone-200">
+                        <pre class="p-4 text-xs font-mono overflow-x-auto leading-relaxed"><code id="modal-code-content">// Infrastructure definition code snippet...</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-6 py-4 border-t border-stone-200 bg-white flex flex-col sm:flex-row items-center justify-between gap-4 flex-shrink-0">
+                <div id="modal-tags" class="flex gap-1.5 flex-wrap">
+                    <!-- Stack Tags -->
+                </div>
+                <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+                    <button onclick="closeProjectModal()" class="px-5 py-2.5 rounded-full text-xs font-semibold border border-stone-300 text-stone-700 hover:bg-stone-100 transition-all cursor-pointer">Close</button>
+                    <a id="modal-action-btn" href="#" target="_blank" rel="noopener" class="px-6 py-2.5 rounded-full text-xs font-semibold bg-stone-900 hover:bg-stone-800 text-white transition-all shadow-sm flex items-center justify-center gap-1.5">
+                        <span id="modal-action-text">View Live</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js">
+        // Project Details Data Store for Dynamic Modal
+        const PROJECT_MODAL_DATA = {
+            'cloudfront-s3': {
+                title: 'Global Website Deployment via AWS S3 & CloudFront CDN',
+                badge: 'AWS FEATURED PROJECT',
+                category: 'AWS CloudFront & S3',
+                role: 'Cloud Infrastructure Architect',
+                description: `
+                    <p>Designed and deployed a highly available, globally distributed static website hosting infrastructure leveraging Amazon S3 as origin storage and AWS CloudFront CDN for edge caching across 600+ Points of Presence (PoPs).</p>
+                    <p><strong>Security Hardening:</strong> Configured Origin Access Control (OAC) to completely block direct public access to the S3 bucket, forcing all traffic through CloudFront edge locations with ACM SSL/TLS certificates and Route 53 custom domain DNS routing.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="180" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="600" height="180" rx="8" fill="#1C1917"/>
+                        <rect x="25" y="70" width="85" height="40" rx="6" fill="#292524" stroke="#38BDF8" stroke-width="1.5"/>
+                        <text x="67.5" y="94" font-family="sans-serif" font-size="10" font-weight="600" fill="#F8FAFC" text-anchor="middle">Users / Clients</text>
+                        <rect x="150" y="20" width="110" height="36" rx="6" fill="#292524" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="205" y="42" font-family="sans-serif" font-size="10" font-weight="600" fill="#F59E0B" text-anchor="middle">Route 53 DNS</text>
+                        <rect x="290" y="50" width="140" height="80" rx="8" fill="#0284C7" stroke="#38BDF8" stroke-width="2"/>
+                        <text x="360" y="80" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">AWS CloudFront CDN</text>
+                        <text x="360" y="98" font-family="sans-serif" font-size="9" fill="#E0F2FE" text-anchor="middle">Global Edge Cache</text>
+                        <text x="360" y="113" font-family="sans-serif" font-size="9" fill="#BAE6FD" text-anchor="middle">ACM SSL Encryption</text>
+                        <rect x="475" y="70" width="100" height="40" rx="6" fill="#292524" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="525" y="94" font-family="sans-serif" font-size="10" font-weight="600" fill="#10B981" text-anchor="middle">Amazon S3 Origin</text>
+                        <path d="M110 90 H290" stroke="#38BDF8" stroke-width="2"/>
+                        <path d="M205 56 V90" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3 3"/>
+                        <path d="M430 90 H475" stroke="#10B981" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'S3 Origin Access Control (OAC) Policy',
+                codeSnippet: `{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCloudFrontServicePrincipalReadOnly",
+      "Effect": "Allow",
+      "Principal": { "Service": "cloudfront.amazonaws.com" },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::ritik-cloud-portfolio-origin/*",
+      "Condition": {
+        "StringEquals": {
+          "AWS:SourceArn": "arn:aws:cloudfront::123456789012:distribution/EDFDV2608EXAMPLE"
+        }
+      }
+    }
+  ]
+}`,
+                screenshots: [
+                    { title: 'CloudFront Edge Distribution', desc: 'Active edge cache deployment with sub-50ms latency.' },
+                    { title: 'ACM TLS 1.3 Certificate', desc: 'Secure custom domain SSL certificate binding.' }
+                ],
+                tags: ['AWS CloudFront', 'Amazon S3', 'ACM SSL', 'Route 53', 'OAC Security'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'serverless-resume': {
+                title: 'Serverless Cloud Resume Website',
+                badge: 'AWS SERVERLESS PROJECT',
+                category: 'Amazon S3 & IAM Security',
+                role: 'AWS Cloud Trainee',
+                description: `
+                    <p><strong>Overview & Hosting:</strong> Designed and deployed a highly available, serverless static resume website hosted on Amazon S3 to demonstrate foundational cloud infrastructure capabilities.</p>
+                    <p><strong>Security & IAM:</strong> Authored custom JSON bucket policies and IAM access rules to enable secure public read access while restricting backend resource settings.</p>
+                    <p><strong>Core Learnings:</strong> Gained hands-on experience in cloud storage architecture, object-level security management, and AWS console resource provisioning.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="160" viewBox="0 0 500 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="160" rx="8" fill="#1C1917"/>
+                        <rect x="30" y="60" width="100" height="40" rx="6" fill="#292524" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="80" y="84" font-family="sans-serif" font-size="10" font-weight="600" fill="#10B981" text-anchor="middle">Browser User</text>
+                        <rect x="200" y="45" width="120" height="70" rx="6" fill="#047857" stroke="#34D399" stroke-width="2"/>
+                        <text x="260" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Amazon S3 Bucket</text>
+                        <text x="260" y="93" font-family="sans-serif" font-size="9" fill="#A7F3D0" text-anchor="middle">Static Website Hosting</text>
+                        <rect x="370" y="60" width="100" height="40" rx="6" fill="#292524" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="420" y="84" font-family="sans-serif" font-size="10" font-weight="600" fill="#F59E0B" text-anchor="middle">AWS IAM Policy</text>
+                        <path d="M130 80 H200" stroke="#10B981" stroke-width="2"/>
+                        <path d="M320 80 H370" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3 3"/>
+                    </svg>
+                `,
+                codeLang: 'Amazon S3 Public Bucket Policy (JSON)',
+                codeSnippet: `{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::serverless-cloud-resume-ritik/*"
+    }
+  ]
+}`,
+                screenshots: [
+                    { title: 'S3 Static Endpoint', desc: 'Bucket static web hosting enabled.' },
+                    { title: 'IAM Policy Editor', desc: 'Custom JSON read permissions applied.' }
+                ],
+                tags: ['Amazon S3', 'AWS IAM', 'Serverless', 'HTML/CSS'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'multiregion-aws': {
+                title: 'AWS Multi-Region Auto-Scaling Stack',
+                badge: 'HIGH AVAILABILITY STACK',
+                category: 'AWS EC2, ALB & RDS',
+                role: 'Cloud Systems Engineer',
+                description: `
+                    <p>Engineered a multi-region, fault-tolerant cloud architecture across <code>us-east-1</code> and <code>us-west-2</code> AWS regions to guarantee zero-downtime application availability.</p>
+                    <p><strong>Traffic Routing & Failover:</strong> Configured Amazon Route 53 Latency Routing and Health Checks to automatically redirect web traffic to secondary active region during outages. Deployed EC2 Auto Scaling Groups behind Application Load Balancers with Multi-AZ RDS MySQL database replication.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="170" viewBox="0 0 550 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="550" height="170" rx="8" fill="#1C1917"/>
+                        <rect x="210" y="15" width="130" height="35" rx="6" fill="#292524" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="275" y="37" font-family="sans-serif" font-size="10" font-weight="600" fill="#F59E0B" text-anchor="middle">Route 53 Latency Routing</text>
+                        
+                        <rect x="40" y="65" width="200" height="85" rx="6" fill="#1F2937" stroke="#38BDF8" stroke-width="1.5"/>
+                        <text x="140" y="85" font-family="sans-serif" font-size="10" font-weight="bold" fill="#38BDF8" text-anchor="middle">Region A: us-east-1</text>
+                        <text x="140" y="105" font-family="sans-serif" font-size="9" fill="#9CA3AF" text-anchor="middle">ALB + EC2 Auto Scaling Group</text>
+                        <text x="140" y="125" font-family="sans-serif" font-size="9" fill="#10B981" text-anchor="middle">RDS Primary Database</text>
+
+                        <rect x="310" y="65" width="200" height="85" rx="6" fill="#1F2937" stroke="#38BDF8" stroke-width="1.5"/>
+                        <text x="410" y="85" font-family="sans-serif" font-size="10" font-weight="bold" fill="#38BDF8" text-anchor="middle">Region B: us-west-2</text>
+                        <text x="410" y="105" font-family="sans-serif" font-size="9" fill="#9CA3AF" text-anchor="middle">ALB + EC2 Auto Scaling Group</text>
+                        <text x="410" y="125" font-family="sans-serif" font-size="9" fill="#F59E0B" text-anchor="middle">RDS Multi-AZ Replica</text>
+
+                        <path d="M275 50 L140 65" stroke="#F59E0B" stroke-width="1.5"/>
+                        <path d="M275 50 L410 65" stroke="#F59E0B" stroke-width="1.5"/>
+                        <path d="M240 125 H310" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3 3"/>
+                    </svg>
+                `,
+                codeLang: 'AWS Target Tracking Auto Scaling Policy',
+                codeSnippet: `resource "aws_autoscaling_policy" "cpu_target_tracking" {
+  name                   = "target-cpu-70-percent"
+  autoscaling_group_name = aws_autoscaling_group.web_asg.name
+  policy_type            = "TargetTrackingScaling"
+
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+    target_value = 70.0
+  }
+}`,
+                screenshots: [
+                    { title: 'Target Group Health', desc: 'Dual-AZ EC2 instances pass HTTP health checks.' },
+                    { title: 'Multi-AZ Database Failover', desc: 'Synchronous standby replica ready.' }
+                ],
+                tags: ['EC2 ASG', 'ALB', 'RDS Multi-AZ', 'Route 53', 'VPC Peering'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'terraform-pipeline': {
+                title: 'Terraform AWS GitOps Pipeline',
+                badge: 'DEVOPS & IAC PIPELINE',
+                category: 'Terraform & GitHub Actions',
+                role: 'DevOps & IaC Specialist',
+                description: `
+                    <p>Built an automated Infrastructure as Code (IaC) GitOps delivery pipeline leveraging Terraform modules to provision AWS VPC subnets, Security Groups, and EC2 instances.</p>
+                    <p><strong>State & Security Automation:</strong> Implemented remote state persistence using Amazon S3 with state locking via Amazon DynamoDB. Integrated Checkov and TFLint static security scanners directly into GitHub Actions workflows to catch misconfigurations before deployment.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="160" viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="520" height="160" rx="8" fill="#1C1917"/>
+                        <rect x="25" y="60" width="100" height="40" rx="6" fill="#292524" stroke="#A855F7" stroke-width="1.5"/>
+                        <text x="75" y="84" font-family="sans-serif" font-size="10" font-weight="600" fill="#A855F7" text-anchor="middle">Git Push / PR</text>
+                        
+                        <rect x="165" y="45" width="130" height="70" rx="6" fill="#581C87" stroke="#C084FC" stroke-width="2"/>
+                        <text x="230" y="72" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">GitHub Actions</text>
+                        <text x="230" y="90" font-family="sans-serif" font-size="9" fill="#E9D5FF" text-anchor="middle">Checkov + TF Plan</text>
+
+                        <rect x="335" y="45" width="160" height="70" rx="6" fill="#1F2937" stroke="#38BDF8" stroke-width="1.5"/>
+                        <text x="415" y="72" font-family="sans-serif" font-size="11" font-weight="bold" fill="#38BDF8" text-anchor="middle">AWS Cloud Infra</text>
+                        <text x="415" y="90" font-family="sans-serif" font-size="9" fill="#9CA3AF" text-anchor="middle">S3 State + DynamoDB Lock</text>
+
+                        <path d="M125 80 H165" stroke="#A855F7" stroke-width="2"/>
+                        <path d="M295 80 H335" stroke="#38BDF8" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'main.tf — Terraform S3 Remote State Backend',
+                codeSnippet: `terraform {
+  required_version = ">= 1.5.0"
+  backend "s3" {
+    bucket         = "ritik-tf-state-backend"
+    key            = "prod/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "ritik-tf-locks"
+    encrypt        = true
+  }
+}`,
+                screenshots: [
+                    { title: 'GitHub Actions Workflow', desc: 'Automated terraform plan & security scans.' },
+                    { title: 'DynamoDB Lock Table', desc: 'Concurrency lock protecting state file.' }
+                ],
+                tags: ['Terraform', 'GitHub Actions', 'S3 Backend', 'DynamoDB', 'Checkov'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'ubuntu-hardening': {
+                title: 'CIS Hardened Ubuntu 24.04 Server',
+                badge: 'LINUX SECURITY & HARDENING',
+                category: 'Ubuntu Linux & CIS Compliance',
+                role: 'Systems Security Engineer',
+                description: `
+                    <p>Developed and executed automated Linux server hardening scripts applying CIS (Center for Internet Security) Level 1 Benchmark security guidelines on Ubuntu 24.04 LTS servers.</p>
+                    <p><strong>Security Controls:</strong> Disabled root SSH logins, configured strict UFW firewall rule sets, deployed Fail2ban for automated SSH brute-force IP ban enforcement, configured Auditd kernel audit rules, and conducted automated compliance audits using Lynis.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="160" viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="520" height="160" rx="8" fill="#1C1917"/>
+                        <rect x="30" y="45" width="130" height="70" rx="6" fill="#881337" stroke="#F43F5E" stroke-width="2"/>
+                        <text x="95" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Ubuntu 24.04 LTS</text>
+                        <text x="95" y="93" font-family="sans-serif" font-size="9" fill="#FECDD3" text-anchor="middle">CIS Level 1 Benchmark</text>
+
+                        <rect x="200" y="45" width="130" height="70" rx="6" fill="#1F2937" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="265" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#10B981" text-anchor="middle">UFW & Fail2ban</text>
+                        <text x="265" y="93" font-family="sans-serif" font-size="9" fill="#D1D5DB" text-anchor="middle">SSH Brute-Force Ban</text>
+
+                        <rect x="370" y="45" width="120" height="70" rx="6" fill="#1F2937" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="430" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#F59E0B" text-anchor="middle">Lynis Audit</text>
+                        <text x="430" y="93" font-family="sans-serif" font-size="9" fill="#D1D5DB" text-anchor="middle">Auditd Kernel Logs</text>
+
+                        <path d="M160 80 H200" stroke="#F43F5E" stroke-width="2"/>
+                        <path d="M330 80 H370" stroke="#10B981" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'Bash Hardening Script snippet',
+                codeSnippet: `#!/usr/bin/env bash
+# Disable Root SSH Login & Password Authentication
+sed -i 's/^PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
+sed -i 's/^PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
+
+# UFW Firewall Baseline
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow 22/tcp
+ufw --force enable`,
+                screenshots: [
+                    { title: 'Lynis Security Score', desc: 'Achieved 84+ rating on CIS benchmarks.' },
+                    { title: 'Fail2ban Jail Status', desc: 'Active SSH brute-force protection.' }
+                ],
+                tags: ['Ubuntu 24.04', 'CIS Benchmark', 'UFW Firewall', 'Fail2ban', 'Lynis'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'server-monitor': {
+                title: 'server-health-monitor',
+                badge: 'GITHUB REPOSITORY · SHELL',
+                category: 'Linux Automation & Shell',
+                role: 'Systems Automation Specialist',
+                description: `
+                    <p>Automated Shell script designed to monitor system vitals, disk space utilization, CPU/RAM thresholds, and active web services on Linux servers.</p>
+                    <p>Triggers immediate system alerts when resource thresholds exceed predefined limits, ensuring continuous uptime and system reliability.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="150" viewBox="0 0 500 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="150" rx="8" fill="#1C1917"/>
+                        <rect x="30" y="50" width="130" height="50" rx="6" fill="#292524" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="95" y="78" font-family="sans-serif" font-size="10" font-weight="600" fill="#F59E0B" text-anchor="middle">Cron Job Trigger</text>
+                        <rect x="200" y="35" width="150" height="80" rx="6" fill="#292524" stroke="#38BDF8" stroke-width="2"/>
+                        <text x="275" y="65" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">server-health.sh</text>
+                        <text x="275" y="85" font-family="sans-serif" font-size="9" fill="#93C5FD" text-anchor="middle">Disk / CPU / RAM Audit</text>
+                        <rect x="380" y="50" width="90" height="50" rx="6" fill="#292524" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="425" y="78" font-family="sans-serif" font-size="10" font-weight="600" fill="#10B981" text-anchor="middle">Alert Log</text>
+                        <path d="M160 75 H200" stroke="#F59E0B" stroke-width="2"/>
+                        <path d="M350 75 H380" stroke="#10B981" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'Bash Script — server-health.sh',
+                codeSnippet: `#!/bin/bash
+THRESHOLD=85
+USAGE=$(df / | grep / | awk '{ print $5 }' | sed 's/%//')
+
+if [ $USAGE -gt $THRESHOLD ]; then
+  echo "WARNING: Disk space critical on $(hostname): \${USAGE}%" | mail -s "Disk Alert" hritiksah38@gmail.com
+fi`,
+                screenshots: [
+                    { title: 'GitHub Repository', desc: 'Open-source repository hosted on @hritiksah00.' }
+                ],
+                tags: ['Shell Scripting', 'Linux', 'Bash', 'Automation', 'Cron'],
+                actionText: 'View Repo on GitHub ↗',
+                actionUrl: 'https://github.com/hritiksah00/server-health-monitor'
+            },
+
+            'pfm-finance': {
+                title: 'PFM (Personal Finance Manager)',
+                badge: 'GITHUB REPOSITORY · PYTHON',
+                category: 'Python 3 Application',
+                role: 'Python Developer',
+                description: `
+                    <p>Comprehensive Personal Finance Manager built in Python 3 to help users track transactions, compute monthly category spending, and export detailed financial reports.</p>
+                    <p>Features custom data structures, transaction logging, CSV data persistence, and category-wise spending analytics.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="150" viewBox="0 0 500 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="150" rx="8" fill="#1C1917"/>
+                        <rect x="30" y="50" width="110" height="50" rx="6" fill="#292524" stroke="#3B82F6" stroke-width="1.5"/>
+                        <text x="85" y="78" font-family="sans-serif" font-size="10" font-weight="600" fill="#3B82F6" text-anchor="middle">User Input</text>
+                        <rect x="180" y="35" width="150" height="80" rx="6" fill="#1E3A8A" stroke="#60A5FA" stroke-width="2"/>
+                        <text x="255" y="65" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">PFM Core Engine</text>
+                        <text x="255" y="85" font-family="sans-serif" font-size="9" fill="#93C5FD" text-anchor="middle">Python 3 Analytics</text>
+                        <rect x="370" y="50" width="100" height="50" rx="6" fill="#292524" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="420" y="78" font-family="sans-serif" font-size="10" font-weight="600" fill="#10B981" text-anchor="middle">CSV Export</text>
+                        <path d="M140 75 H180" stroke="#3B82F6" stroke-width="2"/>
+                        <path d="M330 75 H370" stroke="#10B981" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'Python 3 — pfm_manager.py',
+                codeSnippet: `class PersonalFinanceManager:
+    def __init__(self, filename="transactions.csv"):
+        self.filename = filename
+        self.transactions = []
+
+    def add_transaction(self, category, amount, tx_type="expense"):
+        self.transactions.append({
+            "category": category,
+            "amount": float(amount),
+            "type": tx_type
+        })`,
+                screenshots: [
+                    { title: 'GitHub Repository', desc: 'Open-source Python app on @hritiksah00/PFM.' }
+                ],
+                tags: ['Python 3', 'Finance App', 'Analytics', 'Data Processing'],
+                actionText: 'View Repo on GitHub ↗',
+                actionUrl: 'https://github.com/hritiksah00/PFM'
+            }
+        };
+
+        // Open Project Modal Function
+        function openProjectModal(projectId) {
+            const data = PROJECT_MODAL_DATA[projectId];
+            if (!data) return;
+
+            document.getElementById('modal-badge').innerText = data.badge;
+            document.getElementById('modal-category-text').innerText = data.category;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-subtitle').innerText = data.role;
+            document.getElementById('modal-description').innerHTML = data.description;
+            document.getElementById('modal-arch-container').innerHTML = data.archSvg;
+            document.getElementById('modal-code-lang').innerText = data.codeLang;
+            document.getElementById('modal-code-content').innerText = data.codeSnippet;
+
+            const screenshotsContainer = document.getElementById('modal-screenshots-container');
+            screenshotsContainer.innerHTML = '';
+            data.screenshots.forEach(sc => {
+                const box = document.createElement('div');
+                box.className = 'p-4 rounded-xl border border-stone-200 bg-white shadow-2xs';
+                box.innerHTML = `
+                    <div class="h-24 rounded-lg bg-stone-900 flex items-center justify-center text-white mb-3 text-xs font-mono border border-stone-800">
+                        <span class="text-stone-400 font-semibold">[ Image Screenshot Placeholder ]</span>
+                    </div>
+                    <h5 class="text-xs font-bold text-stone-900">${sc.title}</h5>
+                    <p class="text-[11px] text-stone-500 mt-0.5">${sc.desc}</p>
+                `;
+                screenshotsContainer.appendChild(box);
+            });
+
+            const tagsContainer = document.getElementById('modal-tags');
+            tagsContainer.innerHTML = '';
+            data.tags.forEach(t => {
+                const tag = document.createElement('span');
+                tag.className = 'text-[10px] font-mono bg-stone-100 text-stone-800 border border-stone-200 px-2.5 py-1 rounded-md font-medium';
+                tag.innerText = t;
+                tagsContainer.appendChild(tag);
+            });
+
+            const actionBtn = document.getElementById('modal-action-btn');
+            document.getElementById('modal-action-text').innerText = data.actionText;
+            actionBtn.href = data.actionUrl;
+
+            const modal = document.getElementById('project-modal');
+            const container = document.getElementById('modal-container');
+
+            document.body.classList.add('modal-open');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+
+            setTimeout(() => {
+                container.classList.remove('scale-95', 'translate-y-4', 'opacity-0');
+                container.classList.add('scale-100', 'translate-y-0', 'opacity-100');
+            }, 10);
+        }
+
+        // Close Project Modal Function
+        function closeProjectModal() {
+            const modal = document.getElementById('project-modal');
+            const container = document.getElementById('modal-container');
+
+            container.classList.remove('scale-100', 'translate-y-0', 'opacity-100');
+            container.classList.add('scale-95', 'translate-y-4', 'opacity-0');
+
+            setTimeout(() => {
+                modal.classList.remove('opacity-100');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                document.body.classList.remove('modal-open');
+            }, 200);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeProjectModal();
+            }
+        });
+
+    
+        // Web3Forms Asynchronous AJAX Contact Form Handler
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('contactSubmitBtn');
+            const btnText = document.getElementById('contactBtnText');
+            const statusMsg = document.getElementById('contactStatus');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Native HTML5 Validation Check
+                    if (!contactForm.checkValidity()) {
+                        contactForm.reportValidity();
+                        return;
+                    }
+
+                    // Set Button Loading State
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+                    btnText.innerText = 'Sending...';
+
+                    const formData = new FormData(contactForm);
+
+                    fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(async (response) => {
+                        let json = await response.json();
+                        if (response.status === 200 && json.success) {
+                            // Success Handler
+                            contactForm.reset();
+                            statusMsg.className = 'p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs text-center font-medium shadow-2xs block';
+                            statusMsg.innerText = '✓ Thank you! Your message has been sent successfully. I will respond to your email at hritiksah38@gmail.com within 24 hours.';
+                            
+                            // Fade out success message after 5 seconds
+                            setTimeout(() => {
+                                statusMsg.className = 'hidden p-4 rounded-xl text-xs font-medium text-center transition-all duration-300';
+                            }, 5000);
+                        } else {
+                            throw new Error(json.message || 'Something went wrong. Please try again.');
+                        }
+                    })
+                    .catch((error) => {
+                        // Error Handler
+                        statusMsg.className = 'p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs text-center font-medium shadow-2xs block';
+                        statusMsg.innerText = '✕ Error: ' + (error.message || 'Unable to send message. Please try again later.');
+                    })
+                    .finally(() => {
+                        // Restore Button State
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                        btnText.innerText = 'Send Message';
+                    });
+                });
+            }
+        });
+    </script>
+    <!-- Dynamic Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out">
+        <!-- Backdrop Overlay -->
+        <div id="modal-backdrop" onclick="closeProjectModal()" class="absolute inset-0 bg-stone-900/65 backdrop-blur-sm cursor-pointer"></div>
+
+        <!-- Modal Dialog Window -->
+        <div id="modal-container" class="relative bg-[#FAF8F5] border border-stone-200 rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden transform scale-95 translate-y-4 opacity-0 transition-all duration-300 ease-out z-10">
+            
+            <!-- Modal Header -->
+            <div class="px-6 py-5 border-b border-stone-200 flex items-center justify-between bg-white flex-shrink-0">
+                <div class="flex items-center gap-3">
+                    <span id="modal-badge" class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full bg-stone-900 text-white shadow-2xs">PROJECT DETAILS</span>
+                    <span id="modal-category-text" class="text-xs text-stone-500 font-mono font-medium">AWS Infrastructure</span>
+                </div>
+                <!-- Close Button (X) -->
+                <button onclick="closeProjectModal()" class="w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-stone-900 flex items-center justify-center transition-colors focus:outline-none cursor-pointer" aria-label="Close modal">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Modal Body Content (Scrollable) -->
+            <div class="p-6 md:p-8 overflow-y-auto space-y-6 text-stone-800">
+                <!-- Project Title & Subtitle -->
+                <div>
+                    <h2 id="modal-title" class="text-2xl md:text-3xl font-bold text-stone-950 tracking-tight mb-1">Project Title</h2>
+                    <p id="modal-subtitle" class="text-xs text-stone-500 font-semibold uppercase tracking-wider">Role / Overview</p>
+                </div>
+
+                <!-- Detailed Description Area -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">Detailed Overview &amp; Key Learnings</h4>
+                    <div id="modal-description" class="text-sm leading-relaxed text-stone-700 space-y-3 bg-white p-5 rounded-xl border border-stone-200 shadow-2xs">
+                        <!-- Dynamic Description HTML -->
+                    </div>
+                </div>
+
+                <!-- Cloud Architecture Diagram Section -->
+                <div id="modal-arch-section">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-stone-500">Cloud Architecture Diagram</h4>
+                        <span class="text-[10px] font-mono text-sky-700 font-semibold">AWS / System Topology</span>
+                    </div>
+                    <div id="modal-arch-container" class="rounded-xl overflow-hidden border border-stone-200 bg-stone-950 p-3 shadow-2xs">
+                        <!-- Dynamic Architecture Diagram (SVG) -->
+                    </div>
+                </div>
+
+                <!-- Screenshots / Previews Section -->
+                <div id="modal-screenshots-section">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">Screenshots &amp; UI Previews</h4>
+                    <div id="modal-screenshots-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Dynamic Screenshots -->
+                    </div>
+                </div>
+
+                <!-- Infrastructure Code Snippets Section -->
+                <div id="modal-code-section">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-stone-500">Infrastructure Code Snippet</h4>
+                        <span id="modal-code-lang" class="text-[10px] font-mono text-stone-500 font-medium">Terraform / HCL</span>
+                    </div>
+                    <div class="relative rounded-xl overflow-hidden bg-stone-900 border border-stone-800 text-stone-200">
+                        <pre class="p-4 text-xs font-mono overflow-x-auto leading-relaxed"><code id="modal-code-content">// Infrastructure definition code snippet...</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-6 py-4 border-t border-stone-200 bg-white flex flex-col sm:flex-row items-center justify-between gap-4 flex-shrink-0">
+                <div id="modal-tags" class="flex gap-1.5 flex-wrap">
+                    <!-- Stack Tags -->
+                </div>
+                <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+                    <button onclick="closeProjectModal()" class="px-5 py-2.5 rounded-full text-xs font-semibold border border-stone-300 text-stone-700 hover:bg-stone-100 transition-all cursor-pointer">Close</button>
+                    <a id="modal-action-btn" href="#" target="_blank" rel="noopener" class="px-6 py-2.5 rounded-full text-xs font-semibold bg-stone-900 hover:bg-stone-800 text-white transition-all shadow-sm flex items-center justify-center gap-1.5">
+                        <span id="modal-action-text">View Live</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
   <!-- Google Fonts: Geist & Inter -->
   <link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
@@ -59,6 +1161,12 @@
       0%   { opacity: 0; transform: translateY(12px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+  
+    /* Modal Animation Styles */
+    .modal-backdrop-active { opacity: 1 !important; pointer-events: auto !important; }
+    .modal-container-active { opacity: 1 !important; transform: scale(1) translateY(0) !important; }
+    body.modal-open { overflow: hidden !important; }
+
   </style>
 </head>
 <body class="bg-[#F5F2EF] font-sans antialiased selection:bg-stone-200 selection:text-stone-900 relative text-stone-800 font-geist">
@@ -112,7 +1220,7 @@
                     </h1>
                     
                     <p class="leading-relaxed text-lg md:text-xl text-stone-700 mb-10 max-w-2xl">
-                        Hi, I'm <strong>Ritik Sah</strong>. I study Cloud Computing & Cybersecurity at KFA Business School & IT. 
+                       Hi, I'm <strong>Ritik Sah</strong>. I study Cloud Computing & Cybersecurity at KFA Business School & IT. 
   I focus on building invisible, cost-effective infrastructure. My current work includes deploying high-availability, 
   low-latency static portfolios globally utilizing AWS CloudFront CDN caching to reduce load times and minimize 
   S3 data egress costs, alongside configuring hardened Linux servers and writing Terraform code.
@@ -384,7 +1492,7 @@
                             <span class="text-[11px] font-mono bg-stone-100 text-stone-800 px-2.5 py-1 rounded font-medium">ACM SSL</span>
                             <span class="text-[11px] font-mono bg-stone-100 text-stone-800 px-2.5 py-1 rounded font-medium">Route 53</span>
                         </div>
-                        <span class="text-xs font-semibold text-emerald-700">✓ Live Project</span>
+                        <button onclick="openProjectModal('cloudfront-s3')" class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 transition-all cursor-pointer flex items-center gap-1 shadow-2xs">✓ Live Project ↗</button>
                     </div>
                 </div>
 
@@ -420,7 +1528,7 @@
                             <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded font-medium">AWS IAM</span>
                             <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded font-medium">HTML/CSS</span>
                         </div>
-                        <span class="text-xs font-semibold text-emerald-700">✓ Deployed</span>
+                        <button onclick="openProjectModal('serverless-resume')" class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 transition-all cursor-pointer flex items-center gap-1 shadow-2xs">✓ Deployed ↗</button>
                     </div>
                 </div>
 
@@ -448,7 +1556,7 @@
                             <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">ALB</span>
                             <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">RDS Multi-AZ</span>
                         </div>
-                        <span class="text-xs font-semibold text-stone-900">Case Study</span>
+                        <button onclick="openProjectModal('multiregion-aws')" class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-stone-900 bg-stone-100 border border-stone-200 hover:bg-stone-200 transition-all cursor-pointer flex items-center gap-1 shadow-2xs">Case Study ↗</button>
                     </div>
                 </div>
 
@@ -476,7 +1584,7 @@
                             <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">S3 State</span>
                             <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">GitHub Actions</span>
                         </div>
-                        <span class="text-xs font-semibold text-stone-900">Case Study</span>
+                        <button onclick="openProjectModal('terraform-pipeline')" class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-stone-900 bg-stone-100 border border-stone-200 hover:bg-stone-200 transition-all cursor-pointer flex items-center gap-1 shadow-2xs">Case Study ↗</button>
                     </div>
                 </div>
 
@@ -498,7 +1606,7 @@
                             <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">UFW</span>
                             <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">Lynis</span>
                         </div>
-                        <span class="text-xs font-semibold text-stone-900">Case Study</span>
+                        <button onclick="openProjectModal('ubuntu-hardening')" class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-stone-900 bg-stone-100 border border-stone-200 hover:bg-stone-200 transition-all cursor-pointer flex items-center gap-1 shadow-2xs">Case Study ↗</button>
                     </div>
                 </div>
 
@@ -516,7 +1624,7 @@
                     </div>
                     <div class="pt-4 border-t border-stone-300/40 flex items-center justify-between">
                         <span class="text-[10px] font-mono text-stone-700 font-semibold">Shell / Bash Script</span>
-                        <a href="https://github.com/hritiksah00/server-health-monitor" target="_blank" rel="noopener" class="text-xs font-semibold text-stone-900 hover:text-stone-600 flex items-center gap-1">View on GitHub ↗</a>
+                        <button onclick="openProjectModal('server-monitor')" class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-stone-900 bg-stone-200/80 border border-stone-300 hover:bg-stone-300 transition-all cursor-pointer flex items-center gap-1 shadow-2xs">View Details ↗</button>
                     </div>
                 </div>
 
@@ -527,14 +1635,14 @@
                             <span class="text-[10px] font-bold tracking-widest uppercase text-stone-800 bg-stone-200 px-2.5 py-1 rounded-full border border-stone-300">GITHUB REPO · PYTHON</span>
                             <iconify-icon icon="solar:wallet-money-line-duotone" class="text-2xl text-stone-600"></iconify-icon>
                         </div>
-                        <h3 class="text-xl font-semibold text-stone-900 mb-3">PFM — Personal Finance Manager</h3>
+                        <h3 class="text-xl font-semibold text-stone-900 mb-3">PFM (Personal Finance Manager)</h3>
                         <p class="text-xs text-stone-600 leading-relaxed mb-6">
                             Personal finance tracking application built in Python to log transactions, compute monthly category spending, and export analytics.
                         </p>
                     </div>
                     <div class="pt-4 border-t border-stone-300/40 flex items-center justify-between">
                         <span class="text-[10px] font-mono text-stone-700 font-semibold">Python 3</span>
-                        <a href="https://github.com/hritiksah00/PFM" target="_blank" rel="noopener" class="text-xs font-semibold text-stone-900 hover:text-stone-600 flex items-center gap-1">View on GitHub ↗</a>
+                        <button onclick="openProjectModal('pfm-finance')" class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-stone-900 bg-stone-200/80 border border-stone-300 hover:bg-stone-300 transition-all cursor-pointer flex items-center gap-1 shadow-2xs">View Details ↗</button>
                     </div>
                 </div>
 
@@ -557,35 +1665,35 @@
                             <label class="block text-sm font-semibold mb-4 text-stone-900">Select Architecture Scope</label>
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 <label class="cursor-pointer relative">
-                                    <input type="radio" name="archTier" value="150" class="peer sr-only" checked onchange="calculatePrice()">
+                                    <input type="radio" name="archTier" value="1.00" data-type="static" data-name="Static CDN Deployment" class="peer sr-only" checked>
                                     <div class="p-4 rounded-xl border peer-checked:border-stone-900 peer-checked:ring-1 peer-checked:ring-stone-900 transition-all h-full flex flex-col gap-2 border-stone-200 bg-stone-50 hover:bg-stone-100">
                                         <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-800 flex items-center justify-center shadow-xs">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
                                         </div>
                                         <span class="font-semibold text-stone-900 tier-name text-sm">Static CDN Deployment</span>
-                                        <span class="text-xs text-stone-500">AWS CloudFront + S3 + ACM SSL + Route 53.</span>
+                                        <span class="text-xs text-stone-500">AWS CloudFront + S3 ($1.00/mo base).</span>
                                     </div>
                                 </label>
 
                                 <label class="cursor-pointer relative">
-                                    <input type="radio" name="archTier" value="450" class="peer sr-only" onchange="calculatePrice()">
+                                    <input type="radio" name="archTier" value="48.00" data-type="vpc" data-name="High-Availability AWS VPC" class="peer sr-only">
                                     <div class="p-4 rounded-xl border peer-checked:border-stone-900 peer-checked:ring-1 peer-checked:ring-stone-900 transition-all h-full flex flex-col gap-2 border-stone-200 bg-stone-50 hover:bg-stone-100">
                                         <div class="w-8 h-8 rounded-lg bg-stone-900 text-white flex items-center justify-center shadow-xs">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15a4 4 0 004 4h9a5 5 0 001-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
                                         </div>
                                         <span class="font-semibold text-stone-900 tier-name text-sm">High-Availability AWS VPC</span>
-                                        <span class="text-xs text-stone-500">EC2 ASG + ALB + Terraform IaC + RDS.</span>
+                                        <span class="text-xs text-stone-500">1 ALB + 1 NAT Gateway ($48.00/mo base).</span>
                                     </div>
                                 </label>
 
                                 <label class="cursor-pointer relative">
-                                    <input type="radio" name="archTier" value="850" class="peer sr-only" onchange="calculatePrice()">
+                                    <input type="radio" name="archTier" value="25.00" data-type="zerotrust" data-name="Zero-Trust Security Stack" class="peer sr-only">
                                     <div class="p-4 rounded-xl border peer-checked:border-stone-900 peer-checked:ring-1 peer-checked:ring-stone-900 transition-all h-full flex flex-col gap-2 border-stone-200 bg-stone-50 hover:bg-stone-100">
                                         <div class="w-8 h-8 rounded-lg bg-emerald-950 text-white flex items-center justify-center shadow-xs">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                                         </div>
                                         <span class="font-semibold text-stone-900 tier-name text-sm">Zero-Trust Security Stack</span>
-                                        <span class="text-xs text-stone-500">CIS Hardened + WireGuard + Auditd.</span>
+                                        <span class="text-xs text-stone-500">AWS WAF + Security Hub ($25.00/mo base).</span>
                                     </div>
                                 </label>
                             </div>
@@ -613,27 +1721,27 @@
                             <label class="block text-sm font-semibold mb-4 text-stone-900">Architecture Enhancements &amp; Security Add-ons</label>
                             <div class="space-y-3">
                                 <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="checkbox" id="addonFailover" class="peer sr-only" onchange="calculatePrice()">
+                                    <input type="checkbox" id="addonFailover" value="25.00" class="peer sr-only">
                                     <div class="w-5 h-5 border rounded flex items-center justify-center peer-checked:bg-stone-900 peer-checked:border-stone-900 transition-colors border-stone-300 bg-white">
-                                        <iconify-icon icon="solar:check-read-linear" class="w-3.5 h-3.5 opacity-0 peer-checked:opacity-100 text-white"></iconify-icon>
+                                        <svg class="w-3.5 h-3.5 opacity-0 peer-checked:opacity-100 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                                     </div>
-                                    <span class="text-sm text-stone-700 group-hover:text-stone-900">Multi-Region Route 53 Automatic Failover (+$350/mo)</span>
+                                    <span class="text-sm text-stone-700 group-hover:text-stone-900">Multi-Region Route 53 Automatic Failover (+$25.00/mo)</span>
                                 </label>
 
                                 <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="checkbox" id="addonHardening" class="peer sr-only" onchange="calculatePrice()">
+                                    <input type="checkbox" id="addonHardening" value="125.00" class="peer sr-only">
                                     <div class="w-5 h-5 border rounded flex items-center justify-center peer-checked:bg-stone-900 peer-checked:border-stone-900 transition-colors border-stone-300 bg-white">
-                                        <iconify-icon icon="solar:check-read-linear" class="w-3.5 h-3.5 opacity-0 peer-checked:opacity-100 text-white"></iconify-icon>
+                                        <svg class="w-3.5 h-3.5 opacity-0 peer-checked:opacity-100 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                                     </div>
-                                    <span class="text-sm text-stone-700 group-hover:text-stone-900">Automated CIS Level 1 Hardening &amp; Lynis Compliance Audit (+$250/mo)</span>
+                                    <span class="text-sm text-stone-700 group-hover:text-stone-900">Automated CIS Level 1 Hardening &amp; Sync Compliance Audit (+$125.00/mo)</span>
                                 </label>
 
                                 <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="checkbox" id="addonDatabase" class="peer sr-only" onchange="calculatePrice()">
-                                    <div class="w-5 h-5 border rounded flex items-center justify-center peer-checked:bg-stone-300 peer-checked:border-stone-900 transition-colors border-stone-300 bg-white">
-                                        <iconify-icon icon="solar:check-read-linear" class="w-3.5 h-3.5 opacity-0 peer-checked:opacity-100 text-stone-900"></iconify-icon>
+                                    <input type="checkbox" id="addonDatabase" value="46.72" class="peer sr-only">
+                                    <div class="w-5 h-5 border rounded flex items-center justify-center peer-checked:bg-stone-900 peer-checked:border-stone-900 transition-colors border-stone-300 bg-white">
+                                        <svg class="w-3.5 h-3.5 opacity-0 peer-checked:opacity-100 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                                     </div>
-                                    <span class="text-sm text-stone-700 group-hover:text-stone-900">Managed RDS Multi-AZ Database Cluster (+$400/mo)</span>
+                                    <span class="text-sm text-stone-700 group-hover:text-stone-900">Managed RDS Multi-AZ Database Cluster (+$46.72/mo)</span>
                                 </label>
                             </div>
                         </div>
@@ -666,7 +1774,7 @@
                         </div>
                         
                         <div class="flex items-end justify-between mb-8 relative z-10">
-                            <span class="text-xs text-stone-400">Total Estimated Budget</span>
+                            <span class="text-xs text-stone-400">Estimated Monthly AWS Bill</span>
                             <span class="text-3xl font-bold tracking-tight" id="totalPrice">$650/mo</span>
                         </div>
                         
@@ -863,40 +1971,45 @@
                         <h2 class="text-4xl font-semibold text-stone-900 tracking-tight mb-6">Let's Connect &amp; Collaborate</h2>
                         <p class="text-stone-600 mb-8 leading-relaxed">Whether you have an inquiry about cloud infrastructure, DevOps deployment, or career opportunities, feel free to send me a message.</p>
                         
-                        <form id="contactForm" class="space-y-6" onsubmit="handleContact(event)">
+                        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                            <!-- Web3Forms Access Key Credentials -->
+                            <input type="hidden" name="access_key" value="6fbf5a35-5b6f-4f6f-8cf6-37952b60b482">
+                            <!-- Honeypot Anti-Spam Botcheck -->
+                            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div class="space-y-2">
                                     <label class="text-xs font-semibold text-stone-900 uppercase tracking-wider">Your Name</label>
-                                    <input type="text" required class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-stone-900 border-stone-300 bg-white text-sm" placeholder="e.g. Sarah Connor">
+                                    <input type="text" name="name" required pattern="^[a-zA-Z\s]+$" title="Please enter only letters and spaces" class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-stone-900 border-stone-300 bg-white text-sm" placeholder="e.g. Sarah Connor">
                                 </div>
                                 <div class="space-y-2">
                                     <label class="text-xs font-semibold text-stone-900 uppercase tracking-wider">Your Email</label>
-                                    <input type="email" required class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-stone-900 border-stone-300 bg-white text-sm" placeholder="sarah@example.com">
+                                    <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-stone-900 border-stone-300 bg-white text-sm" placeholder="sarah@example.com">
                                 </div>
                             </div>
 
                             <div class="space-y-2">
                                 <label class="text-xs font-semibold text-stone-900 uppercase tracking-wider">Topic / Opportunity</label>
-                                <select class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-stone-900 border-stone-300 bg-white text-sm">
-                                    <option>AWS Cloud / Deployment Project</option>
-                                    <option>DevOps &amp; Terraform Automation</option>
-                                    <option>Linux Security Hardening</option>
-                                    <option>Internship / Job Opportunity</option>
-                                    <option>Other Inquiry</option>
+                                <select name="subject" class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-stone-900 border-stone-300 bg-white text-sm">
+                                    <option value="AWS Cloud / Deployment Project">AWS Cloud / Deployment Project</option>
+                                    <option value="DevOps &amp; Terraform Automation">DevOps &amp; Terraform Automation</option>
+                                    <option value="Linux Security Hardening">Linux Security Hardening</option>
+                                    <option value="Internship / Job Opportunity">Internship / Job Opportunity</option>
+                                    <option value="Other Inquiry">Other Inquiry</option>
                                 </select>
                             </div>
 
                             <div class="space-y-2">
                                 <label class="text-xs font-semibold text-stone-900 uppercase tracking-wider">Message</label>
-                                <textarea rows="4" required class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-stone-900 border-stone-300 bg-white text-sm" placeholder="Hi Ritik, I would like to connect regarding..."></textarea>
+                                <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-stone-900 border-stone-300 bg-white text-sm" placeholder="Hi Ritik, I would like to connect regarding..."></textarea>
                             </div>
 
-                            <button type="submit" class="w-full font-semibold py-4 rounded-lg transition-all shadow-md bg-stone-900 text-white hover:bg-stone-800 text-sm">
-                                Send Message
+                            <button type="submit" id="contactSubmitBtn" class="w-full font-semibold py-4 rounded-lg transition-all shadow-md bg-stone-900 text-white hover:bg-stone-800 text-sm cursor-pointer flex items-center justify-center gap-2">
+                                <span id="contactBtnText">Send Message</span>
                             </button>
-                            <div id="contactSuccess" class="hidden p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs text-center font-medium">
-                                ✓ Thanks! Message received. I will respond to your email within 24 hours.
-                            </div>
+                            
+                            <!-- Status Notification Alert -->
+                            <div id="contactStatus" class="hidden p-4 rounded-xl text-xs font-medium text-center transition-all duration-300"></div>
                         </form>
                     </div>
 
@@ -1051,9 +2164,7 @@
 
     <!-- Application Script -->
     <script>
-        window.addEventListener('load', () => {
-            calculatePrice();
-        });
+        
 
         // Portfolio Filtering Logic
         function filterPortfolio(category) {
@@ -1082,36 +2193,102 @@
             });
         }
 
-        // Cloud Calculator Logic
-        function calculatePrice() {
-            const tierRadio = document.querySelector('input[name="archTier"]:checked');
-            const tierBasePrice = parseInt(tierRadio.value);
-            
-            const tierCard = tierRadio.nextElementSibling;
-            const tierName = tierCard.querySelector('.tier-name').innerText;
-            document.getElementById('summaryTier').innerText = tierName;
+        // Real-World AWS Pricing Dynamic Calculator
+        function calculateTotal() {
+            const selectedScope = document.querySelector('input[name="archTier"]:checked');
+            if (!selectedScope) return;
 
-            const nodes = parseInt(document.getElementById('nodes').value);
-            const requests = parseInt(document.getElementById('requests').value);
+            const scopeBaseCost = parseFloat(selectedScope.value) || 0;
+            const scopeType = selectedScope.getAttribute('data-type');
+            const scopeName = selectedScope.getAttribute('data-name');
 
-            document.getElementById('nodeVal').innerText = nodes + ' Nodes';
-            document.getElementById('reqVal').innerText = requests + 'K RPM';
-            document.getElementById('summaryNodes').innerText = nodes + ' Nodes';
+            const nodesSlider = document.getElementById('nodes');
+            const requestsSlider = document.getElementById('requests');
 
-            let baseCost = tierBasePrice + (nodes * 90) + (requests * 3);
-            
-            let addonCost = 0;
-            if(document.getElementById('addonFailover').checked) addonCost += 350;
-            if(document.getElementById('addonHardening').checked) addonCost += 250;
-            if(document.getElementById('addonDatabase').checked) addonCost += 400;
+            const nodeValEl = document.getElementById('nodeVal');
+            const reqValEl = document.getElementById('reqVal');
+            const summaryTierEl = document.getElementById('summaryTier');
+            const summaryNodesEl = document.getElementById('summaryNodes');
+            const summaryAddonCostEl = document.getElementById('summaryAddonCost');
+            const totalPriceEl = document.getElementById('totalPrice');
 
-            document.getElementById('summaryAddonCost').innerText = '$' + addonCost.toLocaleString();
+            // 1. Scope Summary Tier Name
+            if (summaryTierEl && scopeName) {
+                summaryTierEl.innerText = scopeName;
+            }
 
-            const setupFee = 300;
-            const total = Math.floor(baseCost + setupFee + addonCost);
-            
-            document.getElementById('totalPrice').innerText = '$' + total.toLocaleString() + '/mo';
+            // 2. Compute Node Count Calculation ($30.37 per node, per month)
+            let nodeCost = 0;
+            let nodesCount = parseInt(nodesSlider.value) || 0;
+
+            if (scopeType === 'static') {
+                nodesSlider.disabled = true;
+                nodesSlider.classList.add('opacity-40', 'cursor-not-allowed');
+                if (nodeValEl) nodeValEl.innerText = 'Disabled (Static)';
+                if (summaryNodesEl) summaryNodesEl.innerText = 'N/A (Static CDN)';
+            } else {
+                nodesSlider.disabled = false;
+                nodesSlider.classList.remove('opacity-40', 'cursor-not-allowed');
+                nodeCost = nodesCount * 30.37;
+                if (nodeValEl) nodeValEl.innerText = nodesCount + (nodesCount === 1 ? ' Node' : ' Nodes');
+                if (summaryNodesEl) summaryNodesEl.innerText = nodesCount + (nodesCount === 1 ? ' Node' : ' Nodes');
+            }
+
+            // 3. Traffic Request Volume (RPM) Formula: (SliderValue * 43200 / 1000) * 0.085
+            const requestsRPM = parseFloat(requestsSlider.value) || 0;
+            if (reqValEl) reqValEl.innerText = requestsRPM + 'K RPM';
+            const trafficCost = (requestsRPM * 43200 / 1000) * 0.085;
+
+            // 4. Architecture Enhancements Checkboxes
+            let addonsTotal = 0;
+            const chkFailover = document.getElementById('addonFailover');
+            const chkHardening = document.getElementById('addonHardening');
+            const chkDatabase = document.getElementById('addonDatabase');
+
+            if (chkFailover && chkFailover.checked) addonsTotal += parseFloat(chkFailover.value) || 25.00;
+            if (chkHardening && chkHardening.checked) addonsTotal += parseFloat(chkHardening.value) || 125.00;
+            if (chkDatabase && chkDatabase.checked) addonsTotal += parseFloat(chkDatabase.value) || 46.72;
+
+            if (summaryAddonCostEl) {
+                summaryAddonCostEl.innerText = '$' + addonsTotal.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+            }
+
+            // 5. Total Price Calculation
+            const grandTotal = scopeBaseCost + nodeCost + trafficCost + addonsTotal;
+
+            if (totalPriceEl) {
+                totalPriceEl.innerText = '$' + grandTotal.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }) + '/mo';
+            }
         }
+
+        // Attach Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Scope Radio Buttons
+            document.querySelectorAll('input[name="archTier"]').forEach(radio => {
+                radio.addEventListener('change', calculateTotal);
+            });
+
+            // Sliders (input event for instant updates while dragging)
+            const nodesSlider = document.getElementById('nodes');
+            const requestsSlider = document.getElementById('requests');
+            if (nodesSlider) nodesSlider.addEventListener('input', calculateTotal);
+            if (requestsSlider) requestsSlider.addEventListener('input', calculateTotal);
+
+            // Checkboxes
+            ['addonFailover', 'addonHardening', 'addonDatabase'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener('change', calculateTotal);
+            });
+
+            // Run initial calculation
+            calculateTotal();
+        });
 
         function handleContact(e) {
             e.preventDefault();
@@ -1122,6 +2299,557 @@
                 msg.classList.add('hidden');
             }, 6000);
         }
+    
+        // Project Details Data Store for Dynamic Modal
+        const PROJECT_MODAL_DATA = {
+            'cloudfront-s3': {
+                title: 'Global Website Deployment via AWS S3 & CloudFront CDN',
+                badge: 'AWS FEATURED PROJECT',
+                category: 'AWS CloudFront & S3',
+                role: 'Cloud Infrastructure Architect',
+                description: `
+                    <p>Designed and deployed a highly available, globally distributed static website hosting infrastructure leveraging Amazon S3 as origin storage and AWS CloudFront CDN for edge caching across 600+ Points of Presence (PoPs).</p>
+                    <p><strong>Security Hardening:</strong> Configured Origin Access Control (OAC) to completely block direct public access to the S3 bucket, forcing all traffic through CloudFront edge locations with ACM SSL/TLS certificates and Route 53 custom domain DNS routing.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="180" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="600" height="180" rx="8" fill="#1C1917"/>
+                        <rect x="25" y="70" width="85" height="40" rx="6" fill="#292524" stroke="#38BDF8" stroke-width="1.5"/>
+                        <text x="67.5" y="94" font-family="sans-serif" font-size="10" font-weight="600" fill="#F8FAFC" text-anchor="middle">Users / Clients</text>
+                        <rect x="150" y="20" width="110" height="36" rx="6" fill="#292524" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="205" y="42" font-family="sans-serif" font-size="10" font-weight="600" fill="#F59E0B" text-anchor="middle">Route 53 DNS</text>
+                        <rect x="290" y="50" width="140" height="80" rx="8" fill="#0284C7" stroke="#38BDF8" stroke-width="2"/>
+                        <text x="360" y="80" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">AWS CloudFront CDN</text>
+                        <text x="360" y="98" font-family="sans-serif" font-size="9" fill="#E0F2FE" text-anchor="middle">Global Edge Cache</text>
+                        <text x="360" y="113" font-family="sans-serif" font-size="9" fill="#BAE6FD" text-anchor="middle">ACM SSL Encryption</text>
+                        <rect x="475" y="70" width="100" height="40" rx="6" fill="#292524" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="525" y="94" font-family="sans-serif" font-size="10" font-weight="600" fill="#10B981" text-anchor="middle">Amazon S3 Origin</text>
+                        <path d="M110 90 H290" stroke="#38BDF8" stroke-width="2"/>
+                        <path d="M205 56 V90" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3 3"/>
+                        <path d="M430 90 H475" stroke="#10B981" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'S3 Origin Access Control (OAC) Policy',
+                codeSnippet: `{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCloudFrontServicePrincipalReadOnly",
+      "Effect": "Allow",
+      "Principal": { "Service": "cloudfront.amazonaws.com" },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::ritik-cloud-portfolio-origin/*",
+      "Condition": {
+        "StringEquals": {
+          "AWS:SourceArn": "arn:aws:cloudfront::123456789012:distribution/EDFDV2608EXAMPLE"
+        }
+      }
+    }
+  ]
+}`,
+                screenshots: [
+                    { title: 'CloudFront Edge Distribution', desc: 'Active edge cache deployment with sub-50ms latency.' },
+                    { title: 'ACM TLS 1.3 Certificate', desc: 'Secure custom domain SSL certificate binding.' }
+                ],
+                tags: ['AWS CloudFront', 'Amazon S3', 'ACM SSL', 'Route 53', 'OAC Security'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'serverless-resume': {
+                title: 'Serverless Cloud Resume Website',
+                badge: 'AWS SERVERLESS PROJECT',
+                category: 'Amazon S3 & IAM Security',
+                role: 'AWS Cloud Trainee',
+                description: `
+                    <p><strong>Overview & Hosting:</strong> Designed and deployed a highly available, serverless static resume website hosted on Amazon S3 to demonstrate foundational cloud infrastructure capabilities.</p>
+                    <p><strong>Security & IAM:</strong> Authored custom JSON bucket policies and IAM access rules to enable secure public read access while restricting backend resource settings.</p>
+                    <p><strong>Core Learnings:</strong> Gained hands-on experience in cloud storage architecture, object-level security management, and AWS console resource provisioning.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="160" viewBox="0 0 500 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="160" rx="8" fill="#1C1917"/>
+                        <rect x="30" y="60" width="100" height="40" rx="6" fill="#292524" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="80" y="84" font-family="sans-serif" font-size="10" font-weight="600" fill="#10B981" text-anchor="middle">Browser User</text>
+                        <rect x="200" y="45" width="120" height="70" rx="6" fill="#047857" stroke="#34D399" stroke-width="2"/>
+                        <text x="260" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Amazon S3 Bucket</text>
+                        <text x="260" y="93" font-family="sans-serif" font-size="9" fill="#A7F3D0" text-anchor="middle">Static Website Hosting</text>
+                        <rect x="370" y="60" width="100" height="40" rx="6" fill="#292524" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="420" y="84" font-family="sans-serif" font-size="10" font-weight="600" fill="#F59E0B" text-anchor="middle">AWS IAM Policy</text>
+                        <path d="M130 80 H200" stroke="#10B981" stroke-width="2"/>
+                        <path d="M320 80 H370" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3 3"/>
+                    </svg>
+                `,
+                codeLang: 'Amazon S3 Public Bucket Policy (JSON)',
+                codeSnippet: `{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::serverless-cloud-resume-ritik/*"
+    }
+  ]
+}`,
+                screenshots: [
+                    { title: 'S3 Static Endpoint', desc: 'Bucket static web hosting enabled.' },
+                    { title: 'IAM Policy Editor', desc: 'Custom JSON read permissions applied.' }
+                ],
+                tags: ['Amazon S3', 'AWS IAM', 'Serverless', 'HTML/CSS'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'multiregion-aws': {
+                title: 'AWS Multi-Region Auto-Scaling Stack',
+                badge: 'HIGH AVAILABILITY STACK',
+                category: 'AWS EC2, ALB & RDS',
+                role: 'Cloud Systems Engineer',
+                description: `
+                    <p>Engineered a multi-region, fault-tolerant cloud architecture across <code>us-east-1</code> and <code>us-west-2</code> AWS regions to guarantee zero-downtime application availability.</p>
+                    <p><strong>Traffic Routing & Failover:</strong> Configured Amazon Route 53 Latency Routing and Health Checks to automatically redirect web traffic to secondary active region during outages. Deployed EC2 Auto Scaling Groups behind Application Load Balancers with Multi-AZ RDS MySQL database replication.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="170" viewBox="0 0 550 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="550" height="170" rx="8" fill="#1C1917"/>
+                        <rect x="210" y="15" width="130" height="35" rx="6" fill="#292524" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="275" y="37" font-family="sans-serif" font-size="10" font-weight="600" fill="#F59E0B" text-anchor="middle">Route 53 Latency Routing</text>
+                        
+                        <rect x="40" y="65" width="200" height="85" rx="6" fill="#1F2937" stroke="#38BDF8" stroke-width="1.5"/>
+                        <text x="140" y="85" font-family="sans-serif" font-size="10" font-weight="bold" fill="#38BDF8" text-anchor="middle">Region A: us-east-1</text>
+                        <text x="140" y="105" font-family="sans-serif" font-size="9" fill="#9CA3AF" text-anchor="middle">ALB + EC2 Auto Scaling Group</text>
+                        <text x="140" y="125" font-family="sans-serif" font-size="9" fill="#10B981" text-anchor="middle">RDS Primary Database</text>
+
+                        <rect x="310" y="65" width="200" height="85" rx="6" fill="#1F2937" stroke="#38BDF8" stroke-width="1.5"/>
+                        <text x="410" y="85" font-family="sans-serif" font-size="10" font-weight="bold" fill="#38BDF8" text-anchor="middle">Region B: us-west-2</text>
+                        <text x="410" y="105" font-family="sans-serif" font-size="9" fill="#9CA3AF" text-anchor="middle">ALB + EC2 Auto Scaling Group</text>
+                        <text x="410" y="125" font-family="sans-serif" font-size="9" fill="#F59E0B" text-anchor="middle">RDS Multi-AZ Replica</text>
+
+                        <path d="M275 50 L140 65" stroke="#F59E0B" stroke-width="1.5"/>
+                        <path d="M275 50 L410 65" stroke="#F59E0B" stroke-width="1.5"/>
+                        <path d="M240 125 H310" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3 3"/>
+                    </svg>
+                `,
+                codeLang: 'AWS Target Tracking Auto Scaling Policy',
+                codeSnippet: `resource "aws_autoscaling_policy" "cpu_target_tracking" {
+  name                   = "target-cpu-70-percent"
+  autoscaling_group_name = aws_autoscaling_group.web_asg.name
+  policy_type            = "TargetTrackingScaling"
+
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+    target_value = 70.0
+  }
+}`,
+                screenshots: [
+                    { title: 'Target Group Health', desc: 'Dual-AZ EC2 instances pass HTTP health checks.' },
+                    { title: 'Multi-AZ Database Failover', desc: 'Synchronous standby replica ready.' }
+                ],
+                tags: ['EC2 ASG', 'ALB', 'RDS Multi-AZ', 'Route 53', 'VPC Peering'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'terraform-pipeline': {
+                title: 'Terraform AWS GitOps Pipeline',
+                badge: 'DEVOPS & IAC PIPELINE',
+                category: 'Terraform & GitHub Actions',
+                role: 'DevOps & IaC Specialist',
+                description: `
+                    <p>Built an automated Infrastructure as Code (IaC) GitOps delivery pipeline leveraging Terraform modules to provision AWS VPC subnets, Security Groups, and EC2 instances.</p>
+                    <p><strong>State & Security Automation:</strong> Implemented remote state persistence using Amazon S3 with state locking via Amazon DynamoDB. Integrated Checkov and TFLint static security scanners directly into GitHub Actions workflows to catch misconfigurations before deployment.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="160" viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="520" height="160" rx="8" fill="#1C1917"/>
+                        <rect x="25" y="60" width="100" height="40" rx="6" fill="#292524" stroke="#A855F7" stroke-width="1.5"/>
+                        <text x="75" y="84" font-family="sans-serif" font-size="10" font-weight="600" fill="#A855F7" text-anchor="middle">Git Push / PR</text>
+                        
+                        <rect x="165" y="45" width="130" height="70" rx="6" fill="#581C87" stroke="#C084FC" stroke-width="2"/>
+                        <text x="230" y="72" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">GitHub Actions</text>
+                        <text x="230" y="90" font-family="sans-serif" font-size="9" fill="#E9D5FF" text-anchor="middle">Checkov + TF Plan</text>
+
+                        <rect x="335" y="45" width="160" height="70" rx="6" fill="#1F2937" stroke="#38BDF8" stroke-width="1.5"/>
+                        <text x="415" y="72" font-family="sans-serif" font-size="11" font-weight="bold" fill="#38BDF8" text-anchor="middle">AWS Cloud Infra</text>
+                        <text x="415" y="90" font-family="sans-serif" font-size="9" fill="#9CA3AF" text-anchor="middle">S3 State + DynamoDB Lock</text>
+
+                        <path d="M125 80 H165" stroke="#A855F7" stroke-width="2"/>
+                        <path d="M295 80 H335" stroke="#38BDF8" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'main.tf — Terraform S3 Remote State Backend',
+                codeSnippet: `terraform {
+  required_version = ">= 1.5.0"
+  backend "s3" {
+    bucket         = "ritik-tf-state-backend"
+    key            = "prod/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "ritik-tf-locks"
+    encrypt        = true
+  }
+}`,
+                screenshots: [
+                    { title: 'GitHub Actions Workflow', desc: 'Automated terraform plan & security scans.' },
+                    { title: 'DynamoDB Lock Table', desc: 'Concurrency lock protecting state file.' }
+                ],
+                tags: ['Terraform', 'GitHub Actions', 'S3 Backend', 'DynamoDB', 'Checkov'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'ubuntu-hardening': {
+                title: 'CIS Hardened Ubuntu 24.04 Server',
+                badge: 'LINUX SECURITY & HARDENING',
+                category: 'Ubuntu Linux & CIS Compliance',
+                role: 'Systems Security Engineer',
+                description: `
+                    <p>Developed and executed automated Linux server hardening scripts applying CIS (Center for Internet Security) Level 1 Benchmark security guidelines on Ubuntu 24.04 LTS servers.</p>
+                    <p><strong>Security Controls:</strong> Disabled root SSH logins, configured strict UFW firewall rule sets, deployed Fail2ban for automated SSH brute-force IP ban enforcement, configured Auditd kernel audit rules, and conducted automated compliance audits using Lynis.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="160" viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="520" height="160" rx="8" fill="#1C1917"/>
+                        <rect x="30" y="45" width="130" height="70" rx="6" fill="#881337" stroke="#F43F5E" stroke-width="2"/>
+                        <text x="95" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Ubuntu 24.04 LTS</text>
+                        <text x="95" y="93" font-family="sans-serif" font-size="9" fill="#FECDD3" text-anchor="middle">CIS Level 1 Benchmark</text>
+
+                        <rect x="200" y="45" width="130" height="70" rx="6" fill="#1F2937" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="265" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#10B981" text-anchor="middle">UFW & Fail2ban</text>
+                        <text x="265" y="93" font-family="sans-serif" font-size="9" fill="#D1D5DB" text-anchor="middle">SSH Brute-Force Ban</text>
+
+                        <rect x="370" y="45" width="120" height="70" rx="6" fill="#1F2937" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="430" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#F59E0B" text-anchor="middle">Lynis Audit</text>
+                        <text x="430" y="93" font-family="sans-serif" font-size="9" fill="#D1D5DB" text-anchor="middle">Auditd Kernel Logs</text>
+
+                        <path d="M160 80 H200" stroke="#F43F5E" stroke-width="2"/>
+                        <path d="M330 80 H370" stroke="#10B981" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'Bash Hardening Script snippet',
+                codeSnippet: `#!/usr/bin/env bash
+# Disable Root SSH Login & Password Authentication
+sed -i 's/^PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
+sed -i 's/^PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
+
+# UFW Firewall Baseline
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow 22/tcp
+ufw --force enable`,
+                screenshots: [
+                    { title: 'Lynis Security Score', desc: 'Achieved 84+ rating on CIS benchmarks.' },
+                    { title: 'Fail2ban Jail Status', desc: 'Active SSH brute-force protection.' }
+                ],
+                tags: ['Ubuntu 24.04', 'CIS Benchmark', 'UFW Firewall', 'Fail2ban', 'Lynis'],
+                actionText: 'View GitHub Profile',
+                actionUrl: 'https://github.com/hritiksah00'
+            },
+
+            'server-monitor': {
+                title: 'server-health-monitor',
+                badge: 'GITHUB REPOSITORY · SHELL',
+                category: 'Linux Automation & Shell',
+                role: 'Systems Automation Specialist',
+                description: `
+                    <p>Automated Shell script designed to monitor system vitals, disk space utilization, CPU/RAM thresholds, and active web services on Linux servers.</p>
+                    <p>Triggers immediate system alerts when resource thresholds exceed predefined limits, ensuring continuous uptime and system reliability.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="150" viewBox="0 0 500 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="150" rx="8" fill="#1C1917"/>
+                        <rect x="30" y="50" width="130" height="50" rx="6" fill="#292524" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="95" y="78" font-family="sans-serif" font-size="10" font-weight="600" fill="#F59E0B" text-anchor="middle">Cron Job Trigger</text>
+                        <rect x="200" y="35" width="150" height="80" rx="6" fill="#292524" stroke="#38BDF8" stroke-width="2"/>
+                        <text x="275" y="65" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">server-health.sh</text>
+                        <text x="275" y="85" font-family="sans-serif" font-size="9" fill="#93C5FD" text-anchor="middle">Disk / CPU / RAM Audit</text>
+                        <rect x="380" y="50" width="90" height="50" rx="6" fill="#292524" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="425" y="78" font-family="sans-serif" font-size="10" font-weight="600" fill="#10B981" text-anchor="middle">Alert Log</text>
+                        <path d="M160 75 H200" stroke="#F59E0B" stroke-width="2"/>
+                        <path d="M350 75 H380" stroke="#10B981" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'Bash Script — server-health.sh',
+                codeSnippet: `#!/bin/bash
+THRESHOLD=85
+USAGE=$(df / | grep / | awk '{ print $5 }' | sed 's/%//')
+
+if [ $USAGE -gt $THRESHOLD ]; then
+  echo "WARNING: Disk space critical on $(hostname): \${USAGE}%" | mail -s "Disk Alert" hritiksah38@gmail.com
+fi`,
+                screenshots: [
+                    { title: 'GitHub Repository', desc: 'Open-source repository hosted on @hritiksah00.' }
+                ],
+                tags: ['Shell Scripting', 'Linux', 'Bash', 'Automation', 'Cron'],
+                actionText: 'View Repo on GitHub ↗',
+                actionUrl: 'https://github.com/hritiksah00/server-health-monitor'
+            },
+
+            'pfm-finance': {
+                title: 'PFM (Personal Finance Manager)',
+                badge: 'GITHUB REPOSITORY · PYTHON',
+                category: 'Python 3 Application',
+                role: 'Python Developer',
+                description: `
+                    <p>Comprehensive Personal Finance Manager built in Python 3 to help users track transactions, compute monthly category spending, and export detailed financial reports.</p>
+                    <p>Features custom data structures, transaction logging, CSV data persistence, and category-wise spending analytics.</p>
+                `,
+                archSvg: `
+                    <svg width="100%" height="150" viewBox="0 0 500 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="150" rx="8" fill="#1C1917"/>
+                        <rect x="30" y="50" width="110" height="50" rx="6" fill="#292524" stroke="#3B82F6" stroke-width="1.5"/>
+                        <text x="85" y="78" font-family="sans-serif" font-size="10" font-weight="600" fill="#3B82F6" text-anchor="middle">User Input</text>
+                        <rect x="180" y="35" width="150" height="80" rx="6" fill="#1E3A8A" stroke="#60A5FA" stroke-width="2"/>
+                        <text x="255" y="65" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">PFM Core Engine</text>
+                        <text x="255" y="85" font-family="sans-serif" font-size="9" fill="#93C5FD" text-anchor="middle">Python 3 Analytics</text>
+                        <rect x="370" y="50" width="100" height="50" rx="6" fill="#292524" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="420" y="78" font-family="sans-serif" font-size="10" font-weight="600" fill="#10B981" text-anchor="middle">CSV Export</text>
+                        <path d="M140 75 H180" stroke="#3B82F6" stroke-width="2"/>
+                        <path d="M330 75 H370" stroke="#10B981" stroke-width="2"/>
+                    </svg>
+                `,
+                codeLang: 'Python 3 — pfm_manager.py',
+                codeSnippet: `class PersonalFinanceManager:
+    def __init__(self, filename="transactions.csv"):
+        self.filename = filename
+        self.transactions = []
+
+    def add_transaction(self, category, amount, tx_type="expense"):
+        self.transactions.append({
+            "category": category,
+            "amount": float(amount),
+            "type": tx_type
+        })`,
+                screenshots: [
+                    { title: 'GitHub Repository', desc: 'Open-source Python app on @hritiksah00/PFM.' }
+                ],
+                tags: ['Python 3', 'Finance App', 'Analytics', 'Data Processing'],
+                actionText: 'View Repo on GitHub ↗',
+                actionUrl: 'https://github.com/hritiksah00/PFM'
+            }
+        };
+
+        // Open Project Modal Function
+        function openProjectModal(projectId) {
+            const data = PROJECT_MODAL_DATA[projectId];
+            if (!data) return;
+
+            document.getElementById('modal-badge').innerText = data.badge;
+            document.getElementById('modal-category-text').innerText = data.category;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-subtitle').innerText = data.role;
+            document.getElementById('modal-description').innerHTML = data.description;
+            document.getElementById('modal-arch-container').innerHTML = data.archSvg;
+            document.getElementById('modal-code-lang').innerText = data.codeLang;
+            document.getElementById('modal-code-content').innerText = data.codeSnippet;
+
+            const screenshotsContainer = document.getElementById('modal-screenshots-container');
+            screenshotsContainer.innerHTML = '';
+            data.screenshots.forEach(sc => {
+                const box = document.createElement('div');
+                box.className = 'p-4 rounded-xl border border-stone-200 bg-white shadow-2xs';
+                box.innerHTML = `
+                    <div class="h-24 rounded-lg bg-stone-900 flex items-center justify-center text-white mb-3 text-xs font-mono border border-stone-800">
+                        <span class="text-stone-400 font-semibold">[ Image Screenshot Placeholder ]</span>
+                    </div>
+                    <h5 class="text-xs font-bold text-stone-900">${sc.title}</h5>
+                    <p class="text-[11px] text-stone-500 mt-0.5">${sc.desc}</p>
+                `;
+                screenshotsContainer.appendChild(box);
+            });
+
+            const tagsContainer = document.getElementById('modal-tags');
+            tagsContainer.innerHTML = '';
+            data.tags.forEach(t => {
+                const tag = document.createElement('span');
+                tag.className = 'text-[10px] font-mono bg-stone-100 text-stone-800 border border-stone-200 px-2.5 py-1 rounded-md font-medium';
+                tag.innerText = t;
+                tagsContainer.appendChild(tag);
+            });
+
+            const actionBtn = document.getElementById('modal-action-btn');
+            document.getElementById('modal-action-text').innerText = data.actionText;
+            actionBtn.href = data.actionUrl;
+
+            const modal = document.getElementById('project-modal');
+            const container = document.getElementById('modal-container');
+
+            document.body.classList.add('modal-open');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+
+            setTimeout(() => {
+                container.classList.remove('scale-95', 'translate-y-4', 'opacity-0');
+                container.classList.add('scale-100', 'translate-y-0', 'opacity-100');
+            }, 10);
+        }
+
+        // Close Project Modal Function
+        function closeProjectModal() {
+            const modal = document.getElementById('project-modal');
+            const container = document.getElementById('modal-container');
+
+            container.classList.remove('scale-100', 'translate-y-0', 'opacity-100');
+            container.classList.add('scale-95', 'translate-y-4', 'opacity-0');
+
+            setTimeout(() => {
+                modal.classList.remove('opacity-100');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                document.body.classList.remove('modal-open');
+            }, 200);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeProjectModal();
+            }
+        });
+
+    
+        // Web3Forms Asynchronous AJAX Contact Form Handler
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('contactSubmitBtn');
+            const btnText = document.getElementById('contactBtnText');
+            const statusMsg = document.getElementById('contactStatus');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Native HTML5 Validation Check
+                    if (!contactForm.checkValidity()) {
+                        contactForm.reportValidity();
+                        return;
+                    }
+
+                    // Set Button Loading State
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+                    btnText.innerText = 'Sending...';
+
+                    const formData = new FormData(contactForm);
+
+                    fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(async (response) => {
+                        let json = await response.json();
+                        if (response.status === 200 && json.success) {
+                            // Success Handler
+                            contactForm.reset();
+                            statusMsg.className = 'p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs text-center font-medium shadow-2xs block';
+                            statusMsg.innerText = '✓ Thank you! Your message has been sent successfully. I will respond to your email at hritiksah38@gmail.com within 24 hours.';
+                            
+                            // Fade out success message after 5 seconds
+                            setTimeout(() => {
+                                statusMsg.className = 'hidden p-4 rounded-xl text-xs font-medium text-center transition-all duration-300';
+                            }, 5000);
+                        } else {
+                            throw new Error(json.message || 'Something went wrong. Please try again.');
+                        }
+                    })
+                    .catch((error) => {
+                        // Error Handler
+                        statusMsg.className = 'p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs text-center font-medium shadow-2xs block';
+                        statusMsg.innerText = '✕ Error: ' + (error.message || 'Unable to send message. Please try again later.');
+                    })
+                    .finally(() => {
+                        // Restore Button State
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                        btnText.innerText = 'Send Message';
+                    });
+                });
+            }
+        });
     </script>
+    <!-- Dynamic Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out">
+        <!-- Backdrop Overlay -->
+        <div id="modal-backdrop" onclick="closeProjectModal()" class="absolute inset-0 bg-stone-900/65 backdrop-blur-sm cursor-pointer"></div>
+
+        <!-- Modal Dialog Window -->
+        <div id="modal-container" class="relative bg-[#FAF8F5] border border-stone-200 rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden transform scale-95 translate-y-4 opacity-0 transition-all duration-300 ease-out z-10">
+            
+            <!-- Modal Header -->
+            <div class="px-6 py-5 border-b border-stone-200 flex items-center justify-between bg-white flex-shrink-0">
+                <div class="flex items-center gap-3">
+                    <span id="modal-badge" class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full bg-stone-900 text-white shadow-2xs">PROJECT DETAILS</span>
+                    <span id="modal-category-text" class="text-xs text-stone-500 font-mono font-medium">AWS Infrastructure</span>
+                </div>
+                <!-- Close Button (X) -->
+                <button onclick="closeProjectModal()" class="w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-stone-900 flex items-center justify-center transition-colors focus:outline-none cursor-pointer" aria-label="Close modal">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Modal Body Content (Scrollable) -->
+            <div class="p-6 md:p-8 overflow-y-auto space-y-6 text-stone-800">
+                <!-- Project Title & Subtitle -->
+                <div>
+                    <h2 id="modal-title" class="text-2xl md:text-3xl font-bold text-stone-950 tracking-tight mb-1">Project Title</h2>
+                    <p id="modal-subtitle" class="text-xs text-stone-500 font-semibold uppercase tracking-wider">Role / Overview</p>
+                </div>
+
+                <!-- Detailed Description Area -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">Detailed Overview &amp; Key Learnings</h4>
+                    <div id="modal-description" class="text-sm leading-relaxed text-stone-700 space-y-3 bg-white p-5 rounded-xl border border-stone-200 shadow-2xs">
+                        <!-- Dynamic Description HTML -->
+                    </div>
+                </div>
+
+                <!-- Cloud Architecture Diagram Section -->
+                <div id="modal-arch-section">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-stone-500">Cloud Architecture Diagram</h4>
+                        <span class="text-[10px] font-mono text-sky-700 font-semibold">AWS / System Topology</span>
+                    </div>
+                    <div id="modal-arch-container" class="rounded-xl overflow-hidden border border-stone-200 bg-stone-950 p-3 shadow-2xs">
+                        <!-- Dynamic Architecture Diagram (SVG) -->
+                    </div>
+                </div>
+
+                <!-- Screenshots / Previews Section -->
+                <div id="modal-screenshots-section">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">Screenshots &amp; UI Previews</h4>
+                    <div id="modal-screenshots-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Dynamic Screenshots -->
+                    </div>
+                </div>
+
+                <!-- Infrastructure Code Snippets Section -->
+                <div id="modal-code-section">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-stone-500">Infrastructure Code Snippet</h4>
+                        <span id="modal-code-lang" class="text-[10px] font-mono text-stone-500 font-medium">Terraform / HCL</span>
+                    </div>
+                    <div class="relative rounded-xl overflow-hidden bg-stone-900 border border-stone-800 text-stone-200">
+                        <pre class="p-4 text-xs font-mono overflow-x-auto leading-relaxed"><code id="modal-code-content">// Infrastructure definition code snippet...</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-6 py-4 border-t border-stone-200 bg-white flex flex-col sm:flex-row items-center justify-between gap-4 flex-shrink-0">
+                <div id="modal-tags" class="flex gap-1.5 flex-wrap">
+                    <!-- Stack Tags -->
+                </div>
+                <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+                    <button onclick="closeProjectModal()" class="px-5 py-2.5 rounded-full text-xs font-semibold border border-stone-300 text-stone-700 hover:bg-stone-100 transition-all cursor-pointer">Close</button>
+                    <a id="modal-action-btn" href="#" target="_blank" rel="noopener" class="px-6 py-2.5 rounded-full text-xs font-semibold bg-stone-900 hover:bg-stone-800 text-white transition-all shadow-sm flex items-center justify-center gap-1.5">
+                        <span id="modal-action-text">View Live</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
