@@ -8,14 +8,14 @@ const projectsData = [
     category: "aws",
     categoryLabel: "AWS & Cloud · 2025",
     isFeatured: true,
-    shortDesc: "Architected a multi-region, fault-tolerant web application on AWS utilizing EC2 Auto-Scaling Groups, Application Load Balancers (ALB), Amazon Route 53 latency routing, and RDS Multi-AZ replication. Reduced downtime by 94% during simulated regional failure.",
-    longOverview: "Designed and deployed a highly available infrastructure across two AWS regions (us-east-1 and eu-west-1). The setup leverages Route 53 DNS failover with health checks, automatically rerouting traffic to the secondary region within 15 seconds of a simulated outage.",
+    shortDesc: "Architected a multi-region, fault-tolerant web application on AWS utilizing EC2 Auto-Scaling Groups, Application Load Balancers (ALB), Amazon Route 53 latency routing, and RDS Multi-AZ replication. The project explores regional failover in an AWS lab.",
+    longOverview: "Designed and deployed a highly available infrastructure across two AWS regions (us-east-1 and eu-west-1). The setup leverages Route 53 DNS failover with health checks, with health checks for a regional failover exercise.",
     techStack: ["AWS EC2", "Auto Scaling", "ALB", "Route 53", "RDS Multi-AZ", "VPC Peering", "CloudWatch"],
     metrics: [
-      "94% reduction in downtime during simulated regional failures",
-      "< 15s automatic DNS failover latency via Route 53",
-      "Zero data loss with synchronous RDS Multi-AZ replication",
-      "Automated scale-out from 2 to 12 EC2 instances under 85% CPU load"
+      "Explored how Route 53 health checks can support regional failover",
+      "Documented regional routing and health-check design",
+      "Studied the difference between Multi-AZ and cross-region database resilience",
+      "Configured an Auto Scaling policy for a lab workload"
     ],
     techDetails: [
       "Custom VPC architecture with isolated Public, Private App, and Database Subnets across 3 Availability Zones per region.",
@@ -63,12 +63,12 @@ aws elbv2 describe-load-balancers --names "prod-alb-us-east"`,
     categoryLabel: "DevOps & IaC · 2025",
     isFeatured: false,
     shortDesc: "Built an automated GitOps deployment workflow provisioning AWS cloud environments using modular Terraform code, state locking in Amazon DynamoDB, and CI/CD validation checks.",
-    longOverview: "Developed zero-drift infrastructure code enforcing modularity across Dev, Staging, and Production environments. Every pull request triggers Automated Terraform Plan, TFLint formatting checks, and Checkov security scanning before approval.",
+    longOverview: "Practiced organizing infrastructure definitions into reusable Terraform modules. Every pull request triggers Automated Terraform Plan, TFLint formatting checks, and Checkov security scanning before approval.",
     techStack: ["Terraform", "GitHub Actions", "AWS S3 State", "DynamoDB Lock", "Checkov", "Docker"],
     metrics: [
-      "100% automated infrastructure linting and security scans",
-      "Eliminated manual AWS console configuration drift",
-      "< 3 minutes deployment time from PR merge to live stack",
+      "Included formatting and static analysis checks in a sample workflow",
+      "Defined repeatable infrastructure configuration in code",
+      "Documented the validation and deployment sequence",
       "Centralized state locking preventing concurrent execution conflicts"
     ],
     techDetails: [
@@ -112,8 +112,8 @@ checkov -d . --framework terraform`,
     longOverview: "Hardened bare-metal and cloud Linux instances against unauthorized privilege escalation and brute-force attacks. Configured kernel sysctl security parameters, disabled unused filesystems, locked down SSH configurations, and established automated daily Lynis compliance reporting.",
     techStack: ["Ubuntu 24.04", "Bash Shell", "UFW Firewall", "Fail2ban", "Lynis Audit", "Auditd", "SSH Hardening"],
     metrics: [
-      "Elevated Lynis Hardening Index score from 58 to 86/100",
-      "Blocked 100% of brute-force SSH connection attempts via Fail2ban",
+      "Used Lynis to review local hardening recommendations",
+      "Configured Fail2ban to limit repeated SSH login attempts",
       "Automated log rotation and tamper-evident audit logs using auditd",
       "Zero root logins allowed over network (Key-only authentication)"
     ],
@@ -155,14 +155,14 @@ sudo lynis audit system --quick`,
     longOverview: "Constructed an isolated microservice architecture with custom bridge networks, volume mounts for database persistence, health checks for dynamic container dependency management, and Nginx load balancing across API nodes.",
     techStack: ["Docker", "Docker Compose", "Nginx", "Node.js", "PostgreSQL", "Redis", "Linux Containers"],
     metrics: [
-      "65% lower API response latency with Redis caching layer",
-      "Zero-downtime rolling container updates via Docker Compose scaling",
+      "Added a Redis caching layer to the container lab",
+      "Practiced scaling API containers with Docker Compose",
       "Isolated container bridge networking eliminating exposed internal ports",
       "Persistent state protection across container restarts"
     ],
     techDetails: [
       "Custom Nginx round-robin load balancing configuration upstreaming requests.",
-      "Multi-stage Dockerfiles optimizing final production image size to < 120MB.",
+      "Multi-stage Dockerfiles optimizing final production image size to a smaller image.",
       "Docker volume drivers with read-only runtime filesystem security flags.",
       "Environment variable isolation using Docker secrets management."
     ],
@@ -204,9 +204,9 @@ docker exec -it stack-postgres-1 psql -U postgres -c "\\l"`,
     longOverview: "Designed an automated data processing system that ingests JSON payloads uploaded to Amazon S3, invokes Python AWS Lambda handlers for sanitization and schema verification, writes structured documents to DynamoDB, and dispatches real-time alerts via SNS.",
     techStack: ["AWS Lambda", "Amazon S3", "DynamoDB", "Amazon SNS", "Python Boto3", "AWS IAM"],
     metrics: [
-      "Sub-second end-to-end data ingestion latency",
-      "Zero idle infrastructure costs (100% pay-per-execution)",
-      "Processed 10,000+ test event payloads without a single dropped event",
+      "Connected S3 event notifications to a processing function",
+      "Reviewed pay-per-use pricing and cleanup of AWS lab resources",
+      "Tested event handling with sample payloads",
       "Automatic DLQ (Dead Letter Queue) message handling for invalid payloads"
     ],
     techDetails: [
@@ -248,10 +248,10 @@ aws dynamodb scan --table-name "ProcessedEventsTable" --max-items 5`,
     longOverview: "Conducted structured security assessments across simulated laboratory environments. Combined OSINT techniques, custom Nmap Scripting Engine (NSE) rules, and packet analysis to discover vulnerable services, misconfigured SSL/TLS certificates, and exposed endpoints.",
     techStack: ["Nmap", "Wireshark", "Bash Scripting", "OWASP Top 10", "Python", "Metasploit"],
     metrics: [
-      "Automated scan time reduced by 50% using tailored Nmap timing templates (-T4)",
-      "Mapped 25+ specific vulnerabilities directly to CVE databases and OWASP risks",
+      "Used Nmap timing options during an authorized lab scan",
+      "Mapped findings to relevant CVEs and OWASP categories",
       "Produced comprehensive academic security report with remediation patches",
-      "Zero network congestion caused during scan sweeps"
+      "Recorded scan scope and timing choices"
     ],
     techDetails: [
       "Custom Nmap NSE scripts targeting out-of-date web servers and default credentials.",
@@ -289,13 +289,13 @@ tshark -r capture.pcap -Y "http.request.method == POST" -T fields -e http.file_d
     categoryLabel: "DevOps & Cloud · 2026",
     isFeatured: false,
     shortDesc: "Deployed a lightweight Kubernetes (k3s) cluster with Nginx Ingress Controller, Helm package management, automated Let's Encrypt SSL certificates via cert-manager, and Prometheus monitoring.",
-    longOverview: "Constructed a production-ready Kubernetes development environment. Managed workloads using declarative Helm charts, implemented Secret encryption, configured Horizontal Pod Autoscalers (HPA), and set up Grafana dashboards for cluster metrics.",
+    longOverview: "Constructed a local Kubernetes learning environment. Managed workloads using declarative Helm charts, implemented Secret encryption, configured Horizontal Pod Autoscalers (HPA), and set up Grafana dashboards for cluster metrics.",
     techStack: ["Kubernetes", "k3s", "Helm", "Nginx Ingress", "Cert-Manager", "Prometheus", "Grafana"],
     metrics: [
       "Dynamic Horizontal Pod Autoscaling based on CPU/Memory thresholds",
       "Automated SSL/TLS certificate renewal via Let's Encrypt ACME provider",
-      "100% declarative cluster configuration tracked in Git",
-      "Sub-millisecond ingress routing latency"
+      "Stored cluster configuration in Git",
+      "Configured ingress routing for a local cluster"
     ],
     techDetails: [
       "Custom Helm values files standardizing deployment templates across environments.",
@@ -329,7 +329,7 @@ kubectl get certificate -A`,
       </svg>`
   },
   {
-    id: "zero-trust-vpn",
+    id: "wireguard-lab-vpn",
     title: "Zero-Trust VPN & Automated Gateway Access Control",
     category: "security",
     categoryLabel: "Network Security · 2026",
@@ -338,16 +338,16 @@ kubectl get certificate -A`,
     longOverview: "Built a secure access solution for cloud infrastructure. Configured peer-to-peer WireGuard tunnels with minimal latency overhead, established dynamic iptables rules for subnet micro-segmentation, and automated SSH authorized key rotation.",
     techStack: ["WireGuard VPN", "Linux IPTables", "PKI Infrastructure", "Bash", "OpenSSL", "UFW"],
     metrics: [
-      "Over 80% faster connection throughput compared to traditional OpenVPN",
+      "Configured WireGuard peers for a secure-access lab",
       "Strict network micro-segmentation allowing only authenticated device IPs",
       "Automated certificate authority generation and key rotation",
-      "Zero public exposing of management ports on cloud instances"
+      "Reviewed firewall rules for management ports"
     ],
     techDetails: [
       "Custom WireGuard configuration generators creating client profiles securely.",
       "iptables forwarding rules isolating internal subnets per user privilege level.",
       "Systemd service automation ensuring persistent VPN state across reboot.",
-      "Public-key cryptography paired with pre-shared keys (PSK) for post-quantum resistance."
+      "Public-key cryptography paired with optional pre-shared keys."
     ],
     terminalSnippet: `# WireGuard Interface Status
 sudo wg show wg0
@@ -410,7 +410,7 @@ function renderProjects(filterCategory) {
         <div class="card-tags">${stackTagsHTML}</div>
       </div>
       <div class="card-footer">
-        <span>Click for Deep-Dive Architecture &amp; Metrics</span>
+        <span>View lab details and architecture</span>
         <span class="card-arrow" aria-hidden="true">↗</span>
       </div>
     `;
