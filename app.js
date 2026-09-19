@@ -481,26 +481,26 @@ function initTerminalEngine() {
     - <span class="cmd-highlight">whoami</span>    : Developer profile & background<br>
     - <span class="cmd-highlight">projects</span>  : List all cloud & security projects<br>
     - <span class="cmd-highlight">skills</span>    : Display technical matrix & tools<br>
-    - <span class="cmd-highlight">certs</span>     : View verified cloud certifications<br>
+    - <span class="cmd-highlight">certs</span>     : View completed training and certifications<br>
     - <span class="cmd-highlight">contact</span>   : Display email & social handles<br>
     - <span class="cmd-highlight">clear</span>     : Clear terminal history<br>
     - <span class="cmd-highlight">sudo</span>      : Execute superuser query`,
     
-    whoami: () => `Ritik Sah — Cloud Infrastructure & Cybersecurity Specialist<br>
+    whoami: () => `Ritik Sah — Cloud & DevOps Engineering Student<br>
     Education: KFA Business School & IT, Kathmandu, Nepal<br>
-    Focus: AWS Architecture, Terraform IaC, Hardened Linux Systems, Docker Microservices.`,
+    Focus: AWS fundamentals, Linux automation, GitHub Actions and project labs.`,
     
     projects: () => projectsData.map((p, i) => `[${i+1}] ${p.title} (${p.category.toUpperCase()})`).join('<br>'),
     
     skills: () => `TECHNICAL STACK MATRIX:<br>
-    - AWS Cloud      : EC2, S3, VPC, RDS, Auto Scaling, Route53, Lambda (85%)<br>
-    - Linux Systems  : Ubuntu Server, Hardening, Bash, Systemd, Auditd (95%)<br>
-    - Containers     : Docker, Docker Compose, Kubernetes k3s (80%)<br>
-    - Infrastructure : Terraform IaC, GitHub Actions GitOps (75%)<br>
-    - Security       : Nmap, Wireshark, UFW, Fail2ban, Lynis (85%)`,
+    - AWS Cloud      : S3, EC2, VPC, CloudFront, Route 53 (training and labs)<br>
+    - Linux Systems  : Ubuntu, Bash, systemd, cron (built monitor)<br>
+    - Automation     : Git, GitHub Actions, ShellCheck (working repository)<br>
+    - Containers     : Docker, Docker Compose (hands-on labs)<br>
+    - Security       : networking, Wireshark, Nmap (coursework)`,
     
-    certs: () => `VERIFIED CERTIFICATIONS:<br>
-    [1] AWS Cloud Practitioner — Amazon Web Services (2025)<br>
+    certs: () => `TRAINING & CERTIFICATIONS:<br>
+    [1] AWS Solutions Architect training — course completed; certification exam not passed<br>
     [2] Certified in Cybersecurity (CC) — ISC² (2025)<br>
     [3] Linux Essentials — Linux Professional Institute (2024)`,
     
