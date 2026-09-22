@@ -1,0 +1,101 @@
+/* The portrait artwork is a generated nine-pose atlas, not a live 3D model. */
+.avatar-hero {
+  --hero-ink: #182a38;
+  --hero-sage: #596d5e;
+  position: relative;
+  overflow: hidden;
+  padding: 148px 24px 0;
+  background: radial-gradient(ellipse at 82% 37%, #e6eade 0%, transparent 48%), #f5f2ef;
+  color: var(--hero-ink);
+  isolation: isolate;
+  scroll-margin-top: 80px;
+}
+.hero-shell { max-width: 1184px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 38px; align-items: center; }
+.hero-copy { position: relative; z-index: 2; padding: 16px 0 42px; }
+.hero-eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; color: #526255; font-size: 10px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 32px; }
+.hero-eyebrow > span:first-child { width: 6px; height: 6px; background: #718771; border-radius: 50%; box-shadow: 0 0 0 4px #73887214; }
+.hero-eyebrow-separator { margin: 0 3px; color: #9a9e90; }
+.hero-greeting { font-size: clamp(21px, 2.4vw, 30px); margin: 0 0 1px; font-weight: 450; letter-spacing: -.035em; }
+.hero-name { font-size: clamp(76px, 8.3vw, 116px); font-weight: 650; line-height: .98; letter-spacing: -.075em; margin: 0 0 25px; }
+.hero-name span { color: #536957; }
+.hero-role { font-size: clamp(20px, 2vw, 26px); font-weight: 550; line-height: 1.35; letter-spacing: -.04em; margin: 0 0 18px; }
+.hero-intro { max-width: 440px; font-size: 15px; line-height: 1.85; color: #58605e; margin: 0 0 28px; }
+.hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.hero-action { display: inline-flex; min-height: 49px; padding: 0 23px; align-items: center; justify-content: center; gap: 26px; border-radius: 100px; font-size: 12px; font-weight: 600; border: 1px solid transparent; transition: background .18s, color .18s, transform .18s; }
+.hero-action-primary { color: #faf9f6; background: var(--hero-ink); box-shadow: 0 5px 14px #182a3810; }
+.hero-action-primary:hover { background: #2c443e; transform: translateY(-2px); }
+.hero-action-secondary { color: var(--hero-ink); border-color: #bbc3b8; background: #fff7; }
+.hero-action-secondary:hover { background: #e7ebdf; transform: translateY(-2px); }
+.hero-action span { font-size: 20px; font-weight: 400; }
+.hero-current { max-width: 408px; display: flex; gap: 12px; align-items: center; margin-top: 32px; padding-top: 21px; border-top: 1px solid #cad0c4; font-size: 12px; color: #3b5146; }
+.hero-current-icon { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; background: #e3e7dc; color: #345245; font-family: monospace; font-size: 15px; }
+.hero-current small { display: block; color: #686d66; text-transform: uppercase; font-size: 9px; letter-spacing: .14em; margin-bottom: 3px; }
+.hero-current-arrow { margin-left: auto; font-size: 21px; }
+.hero-current:hover { color: #101e19; }
+.avatar-figure { margin: -18px 0 0; min-width: 0; position: relative; }
+.avatar-stage { position: relative; width: 100%; aspect-ratio: 1 / 1.03; isolation: isolate; }
+.avatar-arch { position: absolute; inset: 7% 5% 5%; border-radius: 49% 49% 30% 30%; background: linear-gradient(150deg, #d2dcc8, #becdb7 65%, #aabea5); border: 1px solid #b5c5ad; box-shadow: inset 0 0 65px #ffffff3b; }
+.avatar-arch::after { content: ''; position: absolute; inset: 14px; border: 1px solid #f7f6ec90; border-radius: inherit; }
+.avatar-orbit { position: absolute; z-index: -1; border: 1px solid #aaba9d8c; width: 93%; height: 77%; top: 13%; left: 4%; border-radius: 50%; transform: rotate(-28deg); }
+.avatar-orbit-two { width: 107%; height: 54%; left: -3%; top: 24%; transform: rotate(28deg); opacity: .5; }
+.avatar-stage-mark { position: absolute; z-index: 1; top: 19%; right: 4%; font-family: monospace; font-size: 10px; letter-spacing: .09em; color: #5d715d; transform: rotate(90deg); }
+.avatar-art { position: absolute; left: -2%; width: 104%; aspect-ratio: 1; bottom: 5%; transform: translate(var(--gaze-x, 0px), var(--gaze-y, 0px)) rotate(var(--gaze-tilt, 0deg)); transform-origin: 50% 85%; filter: drop-shadow(0 14px 16px #20352615); -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 94%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 94%, transparent 100%); }
+.avatar-poster { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: contain; opacity: 1; }
+.avatar-frame { position: absolute; inset: 0; background-size: 300% 300%; background-position: 50% 50%; background-repeat: no-repeat; opacity: 0; transition: opacity 150ms ease-out; }
+.avatar-art.has-atlas .avatar-poster { opacity: 0; }
+.avatar-frame.is-visible { opacity: 1; }
+.avatar-signature { position: absolute; z-index: 3; left: 50%; bottom: 1.2%; transform: translateX(-50%) rotate(-3deg); display: flex; align-items: center; gap: 8px; border: 1px solid #c4cdb9; border-radius: 30px; background: #f7f5ed; color: #405743; box-shadow: 0 5px 13px #30452e08; padding: 10px 20px; font-size: 12px; font-weight: 550; white-space: nowrap; }
+.avatar-signature span { width: 5px; height: 5px; background: #738d63; border-radius: 50%; }
+.avatar-caption { min-height: 43px; display: flex; justify-content: center; align-items: center; gap: 12px; padding: 16px 0 0; color: #657061; font-size: 10px; }
+.avatar-motion-button { display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0; min-height: 32px; padding: 5px 9px; border: 1px solid #ccd1c5; background: #f7f5ef; border-radius: 20px; color: #455241; font: inherit; cursor: pointer; }
+.avatar-motion-button[hidden] { display: none; }
+.avatar-motion-button:hover { background: #e4e8dd; }
+.avatar-motion-button:disabled { cursor: default; }
+.avatar-motion-icon { width: 12px; height: 12px; }
+.avatar-hero a:focus-visible, .avatar-motion-button:focus-visible { outline: 3px solid #647d60; outline-offset: 5px; }
+.hero-bottom { max-width: 1184px; margin: 30px auto 0; border-top: 1px solid #cbd0c7; padding: 25px 0 27px; display: flex; justify-content: space-between; gap: 28px; align-items: center; }
+.hero-bottom > p { font-size: 11px; line-height: 1.8; color: #657063; margin: 0; }
+.hero-bottom > p strong { color: #344334; font-weight: 550; }
+.hero-credentials { display: flex; gap: clamp(20px, 3.8vw, 58px); }
+.hero-credentials a { display: flex; flex-direction: column; gap: 3px; }
+.hero-credentials strong { font-size: 17px; color: #344636; font-weight: 600; letter-spacing: -.03em; }
+.hero-credentials span { color: #616b5d; font-size: 10px; }
+@media (min-width: 1440px) { .avatar-hero { padding-top: 166px; } .hero-shell { gap: 54px; } }
+@media (max-width: 900px) {
+  .avatar-hero { padding-top: 128px; }
+  .hero-shell { gap: 12px; grid-template-columns: 1.05fr 1fr; }
+  .hero-name { font-size: 76px; }
+  .hero-intro { font-size: 14px; }
+  .hero-eyebrow { font-size: 9px; gap: 7px; letter-spacing: .08em; }
+  .hero-action { padding: 0 18px; gap: 20px; }
+  .avatar-caption { flex-direction: column; gap: 5px; }
+  .hero-bottom { align-items: flex-start; }
+  .hero-credentials { gap: 24px; }
+  .hero-credentials span { max-width: 100px; }
+}
+@media (max-width: 640px) {
+  .avatar-hero { padding: 118px 24px 0; }
+  .hero-shell { grid-template-columns: 1fr; gap: 6px; }
+  .hero-copy { padding: 0; }
+  .hero-eyebrow { margin-bottom: 23px; }
+  .hero-greeting { font-size: 22px; }
+  .hero-name { font-size: clamp(69px, 19vw, 105px); margin-bottom: 20px; }
+  .hero-role { font-size: 21px; }
+  .hero-role br { display: none; }
+  .hero-intro { max-width: 490px; margin-bottom: 24px; }
+  .hero-actions { gap: 10px; }
+  .hero-action { min-height: 48px; gap: 24px; }
+  .hero-current { margin-top: 24px; padding-top: 16px; }
+  .avatar-figure { width: min(100%, 450px); margin: 22px auto 0; }
+  .avatar-caption { flex-direction: row; gap: 10px; padding-top: 16px; }
+  .hero-bottom { margin-top: 28px; padding: 22px 0; flex-direction: column; gap: 22px; }
+  .hero-credentials { width: 100%; justify-content: space-between; gap: 16px; }
+  .hero-credentials strong { font-size: 16px; }
+  .hero-credentials span { font-size: 9px; max-width: 105px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  .avatar-hero *, .avatar-hero *::before, .avatar-hero *::after { animation: none !important; transition: none !important; }
+  .avatar-art { transform: none !important; }
+}
+.avatar-hero[data-motion="paused"] .avatar-frame { transition: none; }
