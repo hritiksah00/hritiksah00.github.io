@@ -1,0 +1,39 @@
+name: Portfolio browser checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  avatar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Install browser test tools
+        run: |
+          npm install --no-save --package-lock=false --ignore-scripts playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - name: Check JavaScript syntax
+        run: node --check assets/avatar-hero.js
+      - name: Start a local static preview and run browser checks
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/portfolio-preview.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          node tests/avatar-browser.cjs
+      - name: Save browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: portfolio-browser-screenshots
+          path: test-results/
+          retention-days: 5
