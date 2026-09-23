@@ -41,7 +41,7 @@
 .avatar-stage-mark { position: absolute; z-index: 1; top: 19%; right: 4%; font-family: monospace; font-size: 10px; letter-spacing: .09em; color: #5d715d; transform: rotate(90deg); }
 .avatar-art { position: absolute; left: -2%; width: 104%; aspect-ratio: 1; bottom: 5%; transform: translate(var(--gaze-x, 0px), var(--gaze-y, 0px)) rotate(var(--gaze-tilt, 0deg)); transform-origin: 50% 85%; filter: drop-shadow(0 14px 16px #20352615); -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 94%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 94%, transparent 100%); }
 .avatar-poster { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: contain; opacity: 1; }
-.avatar-frame { position: absolute; inset: 0; background-size: 300% 300%; background-position: 50% 50%; background-repeat: no-repeat; opacity: 0; transition: opacity 150ms ease-out; }
+.avatar-frame { position: absolute; inset: 0; background-size: 300% 300%; background-position: 50% 50%; background-repeat: no-repeat; opacity: 0; transition: opacity 90ms ease-out; }
 .avatar-art.has-atlas .avatar-poster { opacity: 0; }
 .avatar-frame.is-visible { opacity: 1; }
 .avatar-signature { position: absolute; z-index: 3; left: 50%; bottom: 1.2%; transform: translateX(-50%) rotate(-3deg); display: flex; align-items: center; gap: 8px; border: 1px solid #c4cdb9; border-radius: 30px; background: #f7f5ed; color: #405743; box-shadow: 0 5px 13px #30452e08; padding: 10px 20px; font-size: 12px; font-weight: 550; white-space: nowrap; }

@@ -8,6 +8,7 @@ const base = process.env.PORTFOLIO_URL || 'http://127.0.0.1:4173';
 const output = path.join(__dirname, '..', 'test-results');
 let browser;
 let passed = 0;
+const failures = [];
 
 async function check(name, options, run) {
   const context = await browser.newContext({ viewport: { width: 1440, height: 1080 }, ...options });
@@ -21,7 +22,8 @@ async function check(name, options, run) {
     passed++;
   } catch (error) {
     await page.screenshot({ path: path.join(output, 'failure-' + name.replace(/\W+/g, '-') + '.png'), fullPage: false });
-    throw error;
+    console.error('FAIL ' + name, error);
+    failures.push(name);
   } finally {
     await context.close();
   }
@@ -39,10 +41,19 @@ async function ready(page) {
 
 async function pose(page, value) {
   await page.waitForFunction(value => document.getElementById('avatar-stage').dataset.pose === String(value), value);
+  await page.waitForFunction(() => [...document.querySelectorAll('.avatar-frame')].every(element => ['0', '1'].includes(getComputedStyle(element).opacity) && element.getAnimations().every(animation => animation.playState === 'finished')));
 }
 
 async function noOverflow(page) {
-  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), 'No horizontal page overflow');
+  const overflow = await page.evaluate(() => ({
+    width: window.innerWidth,
+    documentWidth: document.documentElement.scrollWidth,
+    elements: [...document.body.querySelectorAll('*')].filter(element => {
+      const rect = element.getBoundingClientRect();
+      return rect.width > 0 && (rect.right > window.innerWidth + 1 || rect.left < -1);
+    }).slice(0, 15).map(element => ({tag:element.tagName, id:element.id, classes:element.className, text:element.textContent.trim().slice(0,70), right:element.getBoundingClientRect().right}))
+  }));
+  assert.ok(overflow.documentWidth <= overflow.width + 1, 'No horizontal page overflow: ' + JSON.stringify(overflow));
   const name = await page.locator('.hero-name').boundingBox();
   assert.ok(name.x >= 0 && name.x + name.width <= page.viewportSize().width + 1, 'Name fits viewport');
 }
@@ -89,7 +100,7 @@ async function noOverflow(page) {
     const rect = await page.locator('#avatar-stage').boundingBox();
     await page.touchscreen.tap(rect.x + rect.width * 0.9, rect.y + rect.height * 0.5);
     await pose(page, 5);
-    await page.locator('.avatar-hero').screenshot({ path: path.join(output, 'mobile-hero.png') });
+    await page.screenshot({ path: path.join(output, 'mobile-portrait.png') });
     await page.getByRole('button', { name: 'Pause motion' }).tap();
     await pose(page, 4);
   });
@@ -144,5 +155,6 @@ async function noOverflow(page) {
     await page.locator('#project-modal.opacity-0').waitFor();
   });
 
+  assert.deepEqual(failures, [], 'All browser scenarios must pass');
   console.log('All ' + passed + ' browser scenarios passed.');
 })().catch(error => { console.error(error); process.exitCode = 1; }).finally(async () => { if (browser) await browser.close(); });
