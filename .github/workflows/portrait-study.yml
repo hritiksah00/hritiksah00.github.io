@@ -1,0 +1,32 @@
+name: Portrait motion study
+on:
+  push:
+    branches: [portrait-motion-study]
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Install browser tools
+        run: |
+          npm install --no-save --package-lock=false --ignore-scripts playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - name: Render and exercise the portrait
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/portrait-preview.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          node tests/portrait-test.cjs
+      - name: Save animation review
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: portrait-motion-review
+          path: test-results/
+          retention-days: 5
