@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Ritik Sah · Portrait in motion</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f2ed;color:#182a38;font-family:Inter,ui-sans-serif,system-ui,sans-serif}a{color:inherit;text-decoration:none}header{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:30px 28px;font-size:13px}header strong{font-size:20px;letter-spacing:-1px}header span{color:#627062}main{min-height:calc(100svh - 90px);max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;padding:35px 28px 65px}.eyebrow{font-size:10px;letter-spacing:2px;color:#647761;text-transform:uppercase}.greeting{font-size:30px;letter-spacing:-1px;margin:27px 0 0}h1{font-size:clamp(68px,8vw,112px);font-weight:600;letter-spacing:-7px;line-height:1.02;margin:0 0 24px}h1 span{color:#596d5e}.role{font-size:23px;font-weight:500;line-height:1.4;letter-spacing:-.7px}.intro{font-size:15px;line-height:1.85;max-width:420px;color:#616760}.actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}.actions a{padding:16px 25px;border-radius:40px;background:#182a38;color:white;font-size:12px}.actions a+ a{background:transparent;color:#182a38;border:1px solid #bcc6b4}.note{font-size:11px;color:#697768;margin-top:34px;max-width:380px;line-height:1.8}.portrait{position:relative;width:100%;aspect-ratio:1/1.07}.arch{position:absolute;inset:9% 5% 7%;border:1px solid #b3c3aa;border-radius:49% 49% 30% 30%;background:radial-gradient(ellipse at 32% 20%,#dae4d1,#bccbb3)}.arch:after{content:'';position:absolute;inset:14px;border:1px solid #ffffff8c;border-radius:inherit}.orbit{position:absolute;inset:22% -1% 17%;border:1px solid #abba9c80;border-radius:50%;transform:rotate(-28deg);z-index:-1}#portrait{position:absolute;inset:-1% -5% 0;width:110%;height:101%;mask-image:linear-gradient(#000 94%,transparent);-webkit-mask-image:linear-gradient(#000 94%,transparent)}canvas{display:block;width:100%;height:100%}.footer{display:flex;align-items:center;justify-content:center;gap:16px;color:#60715d;font-size:11px;position:relative}button{background:#f9f7f0;border:1px solid #bac7af;border-radius:30px;padding:9px 14px;color:#40543d;font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #667f61;outline-offset:5px}.label{position:absolute;bottom:3%;left:50%;transform:translateX(-50%) rotate(-3deg);background:#f8f6ee;border:1px solid #bcc9b3;border-radius:40px;padding:10px 22px;font-size:11px;white-space:nowrap;box-shadow:0 8px 20px #3c4c3020}#error{position:absolute;inset:30% 15%;font-size:14px;line-height:1.8;display:none}noscript{position:absolute;inset:30% 15%}@media(max-width:740px){header{padding:22px 24px}main{grid-template-columns:1fr;padding:35px 24px 45px;gap:20px}h1{font-size:86px}.portrait{max-width:510px;margin:auto}.role{font-size:21px}.note{margin-top:20px}}@media(max-width:380px){h1{font-size:74px;letter-spacing:-5px}.footer{gap:8px;font-size:10px}}
+</style>
+<style>
+main>section{min-width:0}header{gap:14px}header a:last-child{white-space:nowrap}
+.footer{flex-wrap:wrap;text-align:center;row-gap:10px}
+@media(max-width:740px){main{grid-template-columns:minmax(0,1fr)}h1{font-size:clamp(65px,18.5vw,86px);letter-spacing:-.065em}.orbit{inset:22% 7% 17%}}
+@media(max-width:420px){header span{display:none}}
+</style>
+</head>
+<body>
+<header><a href="/"><strong>ritik.</strong></a><span>Portrait study · 01</span><a href="/">Back to portfolio ↗</a></header>
+<main>
+<section><p class="eyebrow">Curious by nature · Building with purpose</p><p class="greeting">Hey, I’m</p><h1>Ritik <span>Sah.</span></h1><p class="role">Cloud &amp; DevOps<br>Engineering Student</p><p class="intro">Learning by building. I work with Linux, containers and cloud fundamentals—and document the decisions behind every project.</p><div class="actions"><a href="/#projects">Explore my work ↗</a><a href="/#contact">Let’s talk</a></div><p class="note">A stylized character with continuous head movement, independent eye tracking and natural blinking.</p></section>
+<section><div class="portrait"><div class="orbit"></div><div class="arch"></div><div id="portrait" role="img" aria-label="Animated stylized portrait of Ritik, with curly hair, glasses and a navy shirt"></div><div class="label">A little curiosity goes a long way.</div><p id="error">This preview needs WebGL. You can still <a href="/">visit my portfolio</a>.</p><noscript>Enable JavaScript to view the animated character.</noscript></div><div class="footer"><span id="hint">Preparing the portrait…</span><button id="motion" type="button" aria-pressed="false" disabled>Pause motion</button></div></section>
+</main>
+<script type="module">
+const button=document.querySelector('#motion'),hint=document.querySelector('#hint');
+const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+let paused=false;try{paused=localStorage.getItem('ritik-3d-motion')==='paused';}catch{}
+try{
+ const {createPortrait}=await import('./avatar.bundle.js');
+ const portrait=createPortrait(document.querySelector('#portrait'));
+ function update(){portrait.pause(paused||reduced.matches);button.disabled=reduced.matches;button.setAttribute('aria-pressed',String(paused||reduced.matches));button.textContent=reduced.matches?'Reduced motion':paused?'Play motion':'Pause motion';hint.textContent=reduced.matches?'Your motion preference is respected.':paused?'Taking a little pause.':matchMedia('(pointer: coarse)').matches?'Tap to catch my eye.':'Move your cursor. I’m following.';}
+ button.addEventListener('click',()=>{paused=!paused;try{localStorage.setItem('ritik-3d-motion',paused?'paused':'playing');}catch{}update();});reduced.addEventListener('change',update);update();
+}catch(error){document.querySelector('#error').style.display='block';hint.textContent='Interactive preview unavailable.';button.hidden=true;console.error(error);}
+</script>
+</body></html>
