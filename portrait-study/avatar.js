@@ -6,7 +6,7 @@ export function createPortrait(host, onReady = () => {}) {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.2;
+  renderer.toneMappingExposure = 1.05;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.setClearColor(0, 0);
@@ -32,9 +32,9 @@ export function createPortrait(host, onReady = () => {}) {
     }
     scene.add(lamp);
   }
-  light(0xffe4c9, 3.1, -3, 5, 5, true);
-  light(0xd1e2fc, 1.25, 3, 2, 4);
-  light(0xf2ead1, 2.9, 2, 4, -3);
+  light(0xffe4c9, 2.2, -3, 5, 5, true);
+  light(0xd1e2fc, 1.5, 3, 2, 4);
+  light(0xf2ead1, 1.5, 2, 4, -3);
 
   const character = new THREE.Group();
   scene.add(character);
@@ -48,12 +48,12 @@ export function createPortrait(host, onReady = () => {}) {
   const skin = mat('#bb805b', .7);
   const warmSkin = mat('#a9654b', .74);
   const lips = mat('#955344', .75);
-  const hairMat = mat('#171c22', .46);
-  const hairAccent = mat('#20262c', .53);
+  const hairMat = mat('#14191d', .81);
+  const hairAccent = mat('#1e252a', .83);
   const navy = mat('#172e49', .91);
   const collarMat = mat('#223e5a', .86);
   const ink = mat('#232327', .38, { metalness: .24 });
-  const eyeWhite = mat('#eee7dc', .28);
+  const eyeWhite = mat('#e3dbcd', .44);
   const irisMat = mat('#503223', .3);
   const pupilMat = mat('#0c1115', .2);
   const white = new THREE.MeshBasicMaterial({ color: '#ffffff' });
@@ -95,7 +95,7 @@ export function createPortrait(host, onReady = () => {}) {
   const pos = face.attributes.position;
   const colors = [];
   const skinColor = new THREE.Color('#bd815d');
-  const beardColor = new THREE.Color('#45342c');
+  const beardColor = new THREE.Color('#584139');
   const blush = new THREE.Color('#b57357');
   const gauss = (v, spread) => Math.exp(-v * v / (spread * spread));
   for (let i = 0; i < pos.count; i++) {
@@ -103,14 +103,14 @@ export function createPortrait(host, onReady = () => {}) {
     let y = pos.getY(i) * 1.00;
     let z = pos.getZ(i) * .64;
     const front = THREE.MathUtils.smoothstep(z, .1, .46);
-    const taper = y < -.2 ? 1 - .13 * Math.min(1, (-y - .2) / .7) : 1;
+    const taper = y < -.2 ? 1 - .045 * Math.min(1, (-y - .2) / .7) : 1;
     x *= taper;
     const nose = .18 * gauss(x, .115) * gauss(y + .075, .23) + .11 * gauss(x, .13) * gauss(y + .2, .09);
     const cheek = .045 * (gauss(x - .39, .2) + gauss(x + .39, .2)) * gauss(y + .15, .23);
     z += front * (nose + cheek + .035 * gauss(x, .25) * gauss(y + .69, .19));
     pos.setXYZ(i, x, y, z);
-    const beardLine = -.52 + .56 * Math.pow(Math.abs(x) / .75, 2.5);
-    let amount = THREE.MathUtils.smoothstep(beardLine - y, -.07, .09) * .81;
+    const beardLine = -.63 + .57 * Math.pow(Math.abs(x) / .75, 2.5);
+    let amount = THREE.MathUtils.smoothstep(beardLine - y, -.08, .11) * .64;
     if (z < -.1) amount *= .25;
     const color = skinColor.clone().lerp(beardColor, amount);
     color.lerp(blush, gauss(Math.abs(x) - .43, .19) * gauss(y + .12, .19) * front * .15);
@@ -141,20 +141,21 @@ export function createPortrait(host, onReady = () => {}) {
     const gaze = new THREE.Group();
     eye.add(gaze);
     ellipsoid(gaze, irisMat, [0, -.003, .112], [.074, .079, .025]);
-    ellipsoid(gaze, pupilMat, [0, -.003, .135], [.038, .044, .012]);
+    ellipsoid(gaze, pupilMat, [0, -.003, .135], [.046, .052, .012]);
     ellipsoid(gaze, white, [-.025, .028, .146], [.015, .017, .006]).castShadow = false;
     ellipsoid(gaze, white, [.024, -.025, .147], [.006, .007, .004]).castShadow = false;
     tube(eye, [[-.192,0,.05],[-.132,.080,.099],[0,.112,.117],[.132,.080,.099],[.192,0,.05]], .011, warmSkin, 24);
     tube(eye, [[-.192,0,.05],[-.126,-.066,.102],[0,-.084,.113],[.126,-.066,.102],[.192,0,.05]], .008, warmSkin, 24);
+    eye.scale.y=.78;
     eyes.push({ eye, gaze });
     // Soft, slightly asymmetric brows.
     tube(head, [[s*.14,.413,.583],[s*.26,.465,.594],[s*.40,.456,.551],[s*.51,.418,.476]], .032, hairMat, 25, 8);
   }
 
-  tube(head, [[-.205,-.463,.564],[-.09,-.485,.609],[0,-.495,.619],[.1,-.482,.607],[.203,-.451,.567]], .018, lips);
-  tube(head, [[-.178,-.481,.581],[-.085,-.52,.612],[0,-.525,.62],[.09,-.51,.61],[.18,-.475,.58]], .024, lips);
+  tube(head, [[-.205,-.463,.564],[-.09,-.485,.609],[0,-.495,.619],[.1,-.482,.607],[.203,-.451,.567]], .011, lips);
+  tube(head, [[-.178,-.481,.581],[-.085,-.514,.612],[0,-.52,.62],[.09,-.505,.61],[.18,-.475,.58]], .016, lips);
   for (const s of [-1, 1]) {
-    tube(head, [[s*.013,-.384,.63],[s*.086,-.39,.636],[s*.162,-.417,.60],[s*.204,-.44,.564]], .026, hairMat);
+    tube(head, [[s*.013,-.399,.63],[s*.086,-.405,.636],[s*.162,-.432,.60],[s*.204,-.447,.564]], .019, hairMat);
   }
 
   // Lightweight metal glasses, with actual depth and side arms.
@@ -170,12 +171,13 @@ export function createPortrait(host, onReady = () => {}) {
       const y = Math.sign(Math.sin(a)) * Math.pow(Math.abs(Math.sin(a)), .72) * .206;
       rim.push([center + x, y, .744 - .095 * Math.pow(Math.abs(center + x), 2)]);
     }
-    tube(glasses, rim, .012, ink, 80, 7);
+    tube(glasses, rim, .009, ink, 80, 7);
     tube(glasses, [[s*.607,.052,.70],[s*.69,.055,.47],[s*.76,.046,.03],[s*.749,-.075,-.08]], .013, ink, 24);
     // Restrained reflection highlight along the upper rim.
     tube(glasses, [[center-.18,.194,.757],[center-.1,.206,.763],[center-.015,.209,.766]], .0035, mat('#879b9e', .24), 12, 5);
   }
   tube(glasses, [[-.062,.045,.758],[-.032,.071,.798],[.032,.071,.798],[.062,.045,.758]], .013, ink);
+  glasses.traverse(part=>{if(part.isMesh)part.castShadow=false;});
 
   // Curly silhouette with individual ringlets, not a spherical helmet.
   const hair = new THREE.Group();
@@ -194,12 +196,12 @@ export function createPortrait(host, onReady = () => {}) {
     for (let j = 0; j <= 32; j++) {
       const t=j/32;
       const a=t*Math.PI*2*turn+phase;
-      const r=radius*(.7+.25*Math.sin(t*Math.PI));
-      const p=base.clone().addScaledVector(u,Math.cos(a)*r).addScaledVector(v,Math.sin(a)*r*.86).addScaledVector(n,.075*Math.sin(t*Math.PI)+t*.055);
+      const r=radius*(.38+.65*Math.sin(t*Math.PI));
+      const p=base.clone().addScaledVector(u,Math.cos(a)*r).addScaledVector(v,Math.sin(a)*r*.68).addScaledVector(n,.1*Math.sin(t*Math.PI)+t*.055);
       points.push([p.x,p.y,p.z]);
     }
-    tube(hair,points,.038+random()*.012,i%4===0?hairAccent:hairMat,36,6);
-    ellipsoid(hair,hairMat,center,[radius*.95,radius*.94,radius*.86]);
+    tube(hair,points,.024+random()*.012,i%4===0?hairAccent:hairMat,36,6);
+    ellipsoid(hair,hairMat,center,[radius*.83,radius*.94,radius*.64]);
   }
   const golden = Math.PI*(3-Math.sqrt(5));
   for(let i=0;i<68;i++) {
@@ -210,7 +212,7 @@ export function createPortrait(host, onReady = () => {}) {
     const z=Math.sin(a)*r;
     const j=(random()-.5)*.06;
     const center=[x*.84,.60+h*.63+j,z*.64-.065];
-    ringlet(center,[x,h*.8,z],.115+random()*.035,1.12+random()*.40,i);
+    ringlet(center,[x+random()*.4-.2,h*.8,z+random()*.4-.2],.115+random()*.035,.82+random()*.35,i);
   }
   // Loose curls around the forehead and temples add the recognizable silhouette.
   for(let i=0;i<8;i++) {
@@ -239,7 +241,9 @@ export function createPortrait(host, onReady = () => {}) {
   }
 
   const neck = ellipsoid(character,skin,[0,1.155,-.10],[.29,.50,.31]);
-  const profile = [[-.22,1.21,.49],[.05,1.33,.55],[.40,1.38,.57],[.68,1.34,.51],[.87,1.03,.45],[1.03,.52,.365],[1.09,.35,.31]];
+  const profileControl = [[-.22,1.21,.49],[.05,1.33,.55],[.40,1.38,.57],[.68,1.34,.51],[.87,1.03,.45],[1.03,.52,.365],[1.09,.35,.31]];
+  const profileCurve=new THREE.CatmullRomCurve3(profileControl.map(p=>new THREE.Vector3(...p)));
+  const profile=profileCurve.getPoints(45).map(p=>[p.x,p.y,p.z]);
   const shirtVertices=[], shirtIndices=[];
   const sides=80;
   for(let row=0;row<profile.length;row++) {
@@ -295,7 +299,7 @@ export function createPortrait(host, onReady = () => {}) {
       if(progress>=1){blink=0;blinkTime=2.7+random()*3.0;}
     }
     for(const e of eyes) {
-      e.eye.scale.y=Math.max(.025,1-blink);
+      e.eye.scale.y=.78*Math.max(.025,1-blink);
       e.gaze.position.x=x*.044;
       e.gaze.position.y=-y*.033;
     }
@@ -305,7 +309,7 @@ export function createPortrait(host, onReady = () => {}) {
     raf=requestAnimationFrame(draw);
   }
   function run(){if(!raf&&!paused&&!reduced.matches&&visible&&!document.hidden){last=performance.now();raf=requestAnimationFrame(draw);}}
-  function rest(){cancelAnimationFrame(raf);raf=0;neckPivot.rotation.set(0,0,0);character.rotation.set(0,0,0);character.scale.y=1;hair.rotation.z=0;for(const e of eyes){e.eye.scale.y=1;e.gaze.position.set(0,0,0);}renderer.render(scene,camera);}
+  function rest(){cancelAnimationFrame(raf);raf=0;neckPivot.rotation.set(0,0,0);character.rotation.set(0,0,0);character.scale.y=1;hair.rotation.z=0;for(const e of eyes){e.eye.scale.y=.78;e.gaze.position.set(0,0,0);}renderer.render(scene,camera);}
   function aim(nx,ny){targetX=clamp(nx,-1,1);targetY=clamp(ny,-1,1);pointerActive=true;run();}
   function pointer(event){if(event.pointerType==='touch')return;const r=host.getBoundingClientRect();aim((event.clientX-r.left-r.width*.5)/(r.width*.7),(event.clientY-r.top-r.height*.35)/(r.height*.62));}
   function leave(event){if(!event.relatedTarget){pointerActive=false;targetX=targetY=0;}}
