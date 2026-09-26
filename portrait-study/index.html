@@ -2,26 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-  <title>Portrait preview unavailable · Ritik Sah</title>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; background: #f5f2ed; color: #182a38; font-family: system-ui, sans-serif; }
-    main { max-width: 640px; margin: 14vh auto; padding: 32px 24px; }
-    .eyebrow { color: #596d5e; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
-    h1 { font-size: clamp(32px, 7vw, 48px); line-height: 1.12; letter-spacing: -.04em; }
-    p { color: #616760; line-height: 1.8; }
-    a { display: inline-block; margin-top: 20px; padding: 14px 22px; border-radius: 32px; background: #182a38; color: white; text-decoration: none; }
-    a:focus-visible { outline: 3px solid #667f61; outline-offset: 5px; }
-  </style>
+  <title>Ritik Sah · Portrait motion preview</title>
+  <link rel="stylesheet" href="motion.css">
+  <script src="motion.js" defer></script>
 </head>
 <body>
+  <header class="header">
+    <a class="brand" href="/">ritik<span>.</span></a>
+    <span class="preview-label">Portrait motion preview</span>
+    <a class="back" href="/">Back to portfolio <span aria-hidden="true">↗</span></a>
+  </header>
   <main>
-    <p class="eyebrow">Ritik Sah · Portfolio</p>
-    <h1>This portrait preview has been withdrawn.</h1>
-    <p>The experimental character is no longer displayed. The main portfolio is still available.</p>
-    <a href="/">Back to portfolio ↗</a>
+    <section class="intro" aria-labelledby="title">
+      <p class="eyebrow"><span></span> Cloud &amp; DevOps Engineering Student</p>
+      <p class="greeting">Hey, I’m</p>
+      <h1 id="title">Ritik <em>Sah.</em></h1>
+      <p class="description">Curious about the systems behind the screen.<br>Learning by building, one project at a time.</p>
+      <a class="project-link" href="/#projects">Explore my work <span aria-hidden="true">↗</span></a>
+      <p class="preview-note">A motion preview using my existing illustrated portrait.</p>
+    </section>
+    <section class="portrait-column" aria-label="Portrait preview">
+      <div id="stage" class="stage" data-motion="paused">
+        <div class="halo" aria-hidden="true"></div>
+        <div class="orbit orbit-one" aria-hidden="true"></div>
+        <div class="orbit orbit-two" aria-hidden="true"></div>
+        <span class="spark spark-one" aria-hidden="true">✦</span>
+        <span class="spark spark-two" aria-hidden="true">+</span>
+        <div class="portrait-shadow" aria-hidden="true"></div>
+        <div class="portrait-layer">
+          <img id="portrait" src="../assets/ritik-avatar-poster.webp" width="418" height="418" fetchpriority="high" decoding="async" alt="Illustrated portrait of Ritik with curly hair, glasses and a navy shirt">
+        </div>
+        <span class="name-tag" aria-hidden="true"><span></span> Always curious.</span>
+      </div>
+      <div class="controls">
+        <p id="motion-hint">Move your cursor to explore.</p>
+        <button id="motion-toggle" type="button" aria-pressed="true" hidden>Play motion</button>
+      </div>
+      <noscript><p class="noscript-note">The portrait is available with motion turned off.</p></noscript>
+    </section>
   </main>
+  <footer>Linux · Containers · Cloud fundamentals</footer>
 </body>
 </html>
